@@ -1,0 +1,266 @@
+<UserControl x:Class="Peel.Windows.Client.Utilities.CommandCenterView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:local="clr-namespace:Peel.Windows.Client.Utilities"
+ Background="{DynamicResource StudioBackground}" Foreground="#EDF0F4">
+ <UserControl.Resources><ResourceDictionary><ResourceDictionary.MergedDictionaries><ResourceDictionary Source="StudioTheme.xaml"/></ResourceDictionary.MergedDictionaries><BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/></ResourceDictionary></UserControl.Resources>
+ <Grid Margin="24,18">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+  <StackPanel Margin="0,0,0,20"><TextBlock x:Name="PageTitle" Text="App Mechanic" FontSize="28" FontWeight="SemiBold"/><TextBlock x:Name="PageStatus" Text="{Binding Notice}" Foreground="{StaticResource StudioMuted}" FontSize="12" Margin="0,6,0,0" TextWrapping="Wrap"/></StackPanel>
+  <StackPanel x:Name="SystemGauges" Grid.Row="1">
+   <ItemsControl ItemsSource="{Binding GaugeCards}"><ItemsControl.ItemsPanel><ItemsPanelTemplate><UniformGrid Columns="{Binding GaugeColumns}"/></ItemsPanelTemplate></ItemsControl.ItemsPanel><ItemsControl.ItemTemplate><DataTemplate>
+    <Border Style="{StaticResource Card}" Margin="0,0,10,12"><StackPanel><TextBlock Text="{Binding Name}"/><TextBlock Text="{Binding Value}" FontSize="24" Margin="0,8,0,0" TextWrapping="Wrap"/><TextBlock Text="{Binding Detail}" FontSize="12" Margin="0,6,0,0" TextWrapping="Wrap"/></StackPanel></Border>
+   </DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+   <TextBlock Text="{Binding SystemDetailLabel}" FontSize="12" Margin="0,0,0,10" TextWrapping="Wrap"/>
+  </StackPanel>
+  <local:StudioPageHost x:Name="Sections" Grid.Row="2" Background="Transparent" BorderThickness="0"><TabControl.Template><ControlTemplate TargetType="TabControl"><ContentPresenter ContentSource="SelectedContent"/></ControlTemplate></TabControl.Template>
+   <TabItem Header="App Mechanic" Padding="18,10" AutomationProperties.AutomationId="MechanicTab">
+    <Grid Margin="18"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+     <DockPanel Margin="0,0,0,12"><CheckBox DockPanel.Dock="Right" Content="Apps with windows" IsChecked="{Binding ApplicationsOnly}" VerticalAlignment="Center" Margin="16,0,0,0"/>
+      <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding ProcessRankings}" SelectedItem="{Binding ProcessRanking}" Width="110" Margin="12,0,0,0" Padding="8" AutomationProperties.Name="Rank processes by"/>
+      <TextBox Text="{Binding ProcessFilter, UpdateSourceTrigger=PropertyChanged}" Padding="8" AutomationProperties.Name="Filter processes"/></DockPanel>
+     <DataGrid Grid.Row="1" ItemsSource="{Binding Processes}" SelectedItem="{Binding SelectedProcess}" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" HeadersVisibility="Column" CanUserAddRows="False" AutomationProperties.AutomationId="MechanicProcesses">
+      <DataGrid.Columns><DataGridTextColumn Header="App" Binding="{Binding Name}" Width="*" MinWidth="240"/><DataGridTextColumn Header="PID" Binding="{Binding Id}" Width="90"/><DataGridTextColumn Header="CPU" Binding="{Binding CpuLabel}" Width="100"/><DataGridTextColumn Header="Memory" Binding="{Binding MemoryLabel}" Width="130"/><DataGridTextColumn Header="State" Binding="{Binding StateLabel}" Width="100"/></DataGrid.Columns>
+     </DataGrid>
+     <StackPanel Grid.Row="2" Margin="0,14,0,0"><WrapPanel><Button Content="Close app" Tag="close" Click="ProcessAction_Click"/><Button Content="Hold" Tag="hold" Click="ProcessAction_Click"/><Button Content="Resume" Tag="resume" Click="ProcessAction_Click"/><Button Content="Force quit…" Tag="kill" Click="ProcessAction_Click"/></WrapPanel>
+      <TextBlock Text="Actions apply to the selected app instance in your session. Held apps resume when Peel Pro exits normally." Margin="0,10,0,0" TextWrapping="Wrap" FontSize="12"/></StackPanel>
+    </Grid>
+   </TabItem>
+   <TabItem Header="Usage Limits" Padding="18,10" AutomationProperties.AutomationId="UsageLimitsTab">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="18">
+     <DockPanel><Button DockPanel.Dock="Right" Content="Refresh usage" Command="{Binding RefreshUsageCommand}" AutomationProperties.AutomationId="RefreshUsage"/><StackPanel><TextBlock Text="Account allowances" FontSize="22"/><TextBlock Text="{Binding UsageStatus}" TextWrapping="Wrap" Margin="0,8,12,18"/></StackPanel></DockPanel>
+     <CheckBox Content="Refresh account allowances every five minutes" IsChecked="{Binding AutomaticUsageRefresh}" Margin="0,0,0,16"/>
+     <WrapPanel Margin="0,0,0,18"><TextBlock Text="Pinned allowance" VerticalAlignment="Center" Margin="0,0,12,0"/><ComboBox ItemsSource="{Binding UsageChoices}" SelectedValuePath="Id" DisplayMemberPath="Label" SelectedValue="{Binding PinnedUsageId}" Width="260" Padding="8" Margin="0,0,12,0"/><Button Content="Show compact bar" Command="{Binding ShowUsageBarCommand}"/></WrapPanel>
+     <ItemsControl ItemsSource="{Binding Usage}"><ItemsControl.ItemTemplate><DataTemplate>
+      <Border BorderBrush="#414650" BorderThickness="1" CornerRadius="10" Padding="18" Margin="0,0,0,12"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="160"/></Grid.ColumnDefinitions>
+       <StackPanel><TextBlock Text="{Binding Label}" FontSize="17" FontWeight="SemiBold"/><TextBlock Text="{Binding ResetLabel}" Margin="0,6,0,10"/><ProgressBar Value="{Binding RemainingPercent, Mode=OneWay}" Height="7"/></StackPanel><TextBlock Grid.Column="1" Text="{Binding RemainingLabel}" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid></Border>
+     </DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+     <TextBlock Text="Readings come from your local signed-in Codex account. Missing limits remain unavailable. No allowance resets or credits are consumed." TextWrapping="Wrap" FontSize="12"/>
+     <Expander Header="Usage history · last 30 days" Margin="0,22,0,0"><DataGrid ItemsSource="{Binding UsageHistory}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" MaxHeight="320" Margin="0,14,0,0"><DataGrid.Columns><DataGridTextColumn Header="Sampled" Binding="{Binding SampledLabel}" Width="170"/><DataGridTextColumn Header="Allowance" Binding="{Binding Label}" Width="*" MinWidth="220"/><DataGridTextColumn Header="Remaining" Binding="{Binding RemainingLabel}" Width="150"/></DataGrid.Columns></DataGrid></Expander>
+    </StackPanel></ScrollViewer>
+   </TabItem>
+   <TabItem Header="Agent Hub" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="18">
+    <TextBlock Text="Local agent connection" FontSize="22"/>
+    <CheckBox Content="Allow local agents to connect for this Peel Pro session" IsChecked="{Binding AllowLocalAgents}" Margin="0,18,0,10"/>
+    <TextBlock Text="Agents can list apps and windows, launch a listed app, bring a listed window forward, read stream state, and show a local notification. Seeing window contents, typing and clicking need the separate permission below. Access stops when disabled, Windows locks, or Peel Pro exits. Connected-device agent actions are unavailable in this build." TextWrapping="Wrap"/>
+    <CheckBox Content="Allow AI to see and use apps on this PC (this session only)" IsChecked="{Binding AllowAgentAppControl}" IsEnabled="{Binding AgentAppControlEnabled}" Margin="0,16,0,6" AutomationProperties.AutomationId="AllowAgentAppControl"/>
+    <TextBlock Text="Off each time Peel Pro starts; agents can never turn it on. When on, an agent can capture one listed foreground window, then do one bounded click, type, key, scroll or drag per capture, including in apps such as Terminal that can run commands; it can also open Windows Terminal with your default profile. Using your keyboard or mouse pauses it and voids its captures; pen, touch and virtual or remote input devices are not guaranteed to. Stop, locking Windows or sleep turns it off. Secure, credential, Task Manager and administrator windows are never captured or controlled, and paired devices gain no control from this. Window images and text are untrusted content, not instructions." TextWrapping="Wrap" Foreground="{StaticResource StudioMuted}" FontSize="12"/>
+    <DockPanel Margin="0,8,0,0">
+     <Button DockPanel.Dock="Left" Content="Stop AI control" Command="{Binding StopAgentAppControlCommand}" Visibility="{Binding IsAgentAppControlActive, Converter={StaticResource BooleanToVisibilityConverter}}" AutomationProperties.AutomationId="StopAgentAppControl"/>
+     <TextBlock Text="{Binding AgentAppControlStatus}" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="12"/>
+    </DockPanel>
+    <Button Content="Copy MCP configuration" Click="CopyAgentConfiguration_Click" HorizontalAlignment="Left" Margin="0,16,0,22"/>
+    <TextBlock Text="Local Codex activity" FontSize="22"/><TextBlock Text="{Binding LocalActivityStatus}" TextWrapping="Wrap" Margin="0,8,0,12"/>
+    <TextBlock Text="Last observed state from bounded local activity records. Conversation and tool text are not shown or stored. Approval waits that are not recorded remain unavailable. Quiet tasks can outlive the 15-minute observation window." TextWrapping="Wrap" Margin="0,0,0,12"/>
+    <DataGrid ItemsSource="{Binding LocalActivity}" SelectedItem="{Binding SelectedActivity}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" Height="220"><DataGrid.Columns>
+     <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="*" MinWidth="220"/><DataGridTextColumn Header="Last observed state" Binding="{Binding StateLabel}" Width="200"/><DataGridTextColumn Header="Tool" Binding="{Binding Tool}" Width="200"/><DataGridTextColumn Header="Event time" Binding="{Binding EventLabel}" Width="140"/>
+    </DataGrid.Columns></DataGrid>
+    <WrapPanel Margin="0,14,0,10"><Button Content="Dismiss selected activity signal" Command="{Binding DismissActivityCommand}"/><Button Content="Show compact bar" Command="{Binding ShowUsageBarCommand}"/></WrapPanel>
+    <TextBlock Text="Dismiss hides this observation in the compact bar. A new event restores it; it does not approve, cancel, or change the task. Recent local activity takes priority over remote device signals." TextWrapping="Wrap" Margin="0,0,0,22"/>
+    <TextBlock Text="Agent apps on this PC" FontSize="22"/><TextBlock Text="Live process activity. A running app does not imply an active task." Margin="0,8,0,18"/>
+    <ItemsControl ItemsSource="{Binding Agents}"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Margin="0,8"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+    <Separator Margin="0,20"/><DockPanel><Button DockPanel.Dock="Right" Content="Refresh local chats" Command="{Binding RefreshAgentHistoryCommand}"/><TextBlock Text="Recent Codex chats" FontSize="22"/></DockPanel>
+    <TextBlock Text="{Binding HistoryStatus}" TextWrapping="Wrap" Margin="0,12,0,8"/><TextBlock Text="Recorded activity does not imply a task is running. Reads local metadata only." TextWrapping="Wrap" Margin="0,0,0,12"/>
+    <DataGrid ItemsSource="{Binding AgentHistory}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" Height="280"><DataGrid.Columns><DataGridTextColumn Header="Chat" Binding="{Binding Title}" Width="*" MinWidth="240"/><DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="130"/><DataGridTextColumn Header="Updated" Binding="{Binding UpdatedLabel}" Width="170"/><DataGridTextColumn Header="Recorded tokens" Binding="{Binding TokensLabel}" Width="125"/><DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="110"/><DataGridTextColumn Header="State" Binding="{Binding State}" Width="90"/></DataGrid.Columns></DataGrid>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Alerts" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="22">
+    <CheckBox Content="Show app activity notifications" IsChecked="{Binding AlertsEnabled}"/>
+    <TextBlock Text="Alerts use sustained readings from apps with windows. CPU thresholds use a per-core scale; the process table uses total machine capacity." TextWrapping="Wrap" Margin="0,12,0,16"/>
+    <WrapPanel Margin="0,0,0,12"><CheckBox Content="High CPU alerts" IsChecked="{Binding AlertPolicy.CpuAlertsEnabled}" Margin="0,0,24,0"/><CheckBox Content="High memory alerts" IsChecked="{Binding AlertPolicy.MemoryAlertsEnabled}"/></WrapPanel>
+    <WrapPanel><StackPanel Margin="0,0,20,14"><TextBlock Text="CPU threshold (%)"/><TextBox Text="{Binding AlertPolicy.CpuThreshold}" Width="140" Padding="8" Margin="0,6,0,0"/></StackPanel>
+     <StackPanel Margin="0,0,20,14"><TextBlock Text="App memory (MB)"/><TextBox Text="{Binding AlertPolicy.MemoryThresholdMb}" Width="140" Padding="8" Margin="0,6,0,0"/></StackPanel>
+     <StackPanel Margin="0,0,20,14"><TextBlock Text="Consecutive 2s samples"/><TextBox Text="{Binding AlertPolicy.ConsecutiveSamples}" Width="150" Padding="8" Margin="0,6,0,0"/></StackPanel>
+     <StackPanel Margin="0,0,20,14"><TextBlock Text="Cooldown (seconds)"/><TextBox Text="{Binding AlertPolicy.CooldownSeconds}" Width="150" Padding="8" Margin="0,6,0,0"/></StackPanel></WrapPanel>
+    <CheckBox Content="Notify when the most active app changes" IsChecked="{Binding AlertPolicy.NotifyTopAppChanged}" Margin="0,0,0,14"/>
+    <TextBlock Text="Notify when an app appears (name contains)"/><TextBox Text="{Binding AlertPolicy.WatchedApp}" Width="320" HorizontalAlignment="Left" Padding="8" Margin="0,6,0,18"/>
+    <Separator Margin="0,0,0,18"/><TextBlock Text="Runaway memory protection" FontSize="20"/>
+    <CheckBox Content="Automatically hold the matching app for this Peel Pro session" IsChecked="{Binding AlertPolicy.MemoryProtectionEnabled}" Margin="0,14,0,8"/>
+    <TextBlock Text="The app stops responding until you resume it in App Mechanic or exit Peel Pro normally. Only an exact process-name match is eligible. Windows shell/system apps and Peel Pro itself are protected. This starts off after each Peel Pro launch." TextWrapping="Wrap" Margin="0,0,0,14"/>
+    <WrapPanel><StackPanel Margin="0,0,20,14"><TextBlock Text="Exact process name"/><TextBox Text="{Binding AlertPolicy.MemoryProtectionApp}" Width="240" Padding="8" Margin="0,6,0,0"/></StackPanel>
+     <StackPanel Margin="0,0,20,14"><TextBlock Text="Hold above (MB)"/><TextBox Text="{Binding AlertPolicy.MemoryProtectionMb}" Width="150" Padding="8" Margin="0,6,0,0"/></StackPanel></WrapPanel>
+    <Button Content="Save alert rules" Command="{Binding SaveAlertPolicyCommand}" HorizontalAlignment="Left" Margin="0,0,0,18"/>
+    <ItemsControl ItemsSource="{Binding Alerts}"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,6"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Streaming" Padding="18,10">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="900" HorizontalAlignment="Left">
+     <WrapPanel Margin="0,0,0,20"><Button Content="Remote machine" Tag="5" Click="UtilityPage_Click"/><Button Content="Audio" Tag="6" Click="UtilityPage_Click"/></WrapPanel>
+     <TextBlock Text="Hosting quality" FontSize="22" FontWeight="SemiBold"/>
+     <TextBlock Text="Frame-rate target" Margin="0,20,0,8"/><ComboBox ItemsSource="{Binding FrameRates}" SelectedItem="{Binding TargetFrameRate}" Width="180" HorizontalAlignment="Left" Padding="10"/>
+     <TextBlock Text="Video bitrate (Mbps)" Margin="0,20,0,8"/><TextBox Text="{Binding TargetBitrate, UpdateSourceTrigger=LostFocus}" Width="180" HorizontalAlignment="Left" Padding="10"/>
+     <CheckBox Content="Use hardware video encoding when available" IsChecked="{Binding HardwareEncoding}" Margin="0,20,0,12"/>
+     <CheckBox Content="Prefer HEVC for compatible receivers" IsChecked="{Binding EnableHevc}" Margin="0,0,0,20"/>
+     <TextBlock Text="5K uses HEVC and a source at 5120 × 2880. A 120 fps setting is a target, not a measured delivery rate. H.264 remains available for older receivers." TextWrapping="Wrap" Margin="0,0,0,20"/>
+     <Button Content="Apply and restart hosting" Command="{Binding ApplyStreamingCommand}" HorizontalAlignment="Left"/>
+     <TextBlock Text="{Binding StreamingStatus}" TextWrapping="Wrap" Margin="0,20,0,0"/>
+     <Separator Margin="0,24"/><TextBlock Text="Streaming diagnostics" FontSize="22"/>
+     <CheckBox Content="Collect stream counters for this Peel Pro session" IsChecked="{Binding StreamingDiagnosticsEnabled}" Margin="0,18,0,12"/>
+     <TextBlock Text="Counts and timings stay in memory and exclude screen content, app titles and addresses. Viewer updates are not physical display refreshes. Codec calls and separate device clocks do not measure input-to-photon latency. Counters clear when disabled, Windows locks or Peel Pro exits." TextWrapping="Wrap"/>
+     <TextBlock Text="{Binding DiagnosticsSummary}" TextWrapping="Wrap" Margin="0,18,0,12"/>
+     <Button Content="Copy diagnostics snapshot" Click="CopyDiagnostics_Click" HorizontalAlignment="Left"/>
+     <Expander Header="Detailed counters and paired receiver observations" Margin="0,14,0,0"><TextBox Text="{Binding DiagnosticsJson, Mode=OneWay}" IsReadOnly="True" FontFamily="Consolas" FontSize="12" Height="320" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,12,0,0"/></Expander>
+    </StackPanel></ScrollViewer>
+   </TabItem>
+   <TabItem Header="Machine Status" Padding="18,10">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24">
+     <TextBlock Text="Status sharing" FontSize="22"/>
+     <CheckBox Content="Allow paired devices to request this PC's status" IsChecked="{Binding ShareMachineStatus}" Margin="0,18,0,8"/>
+     <TextBlock Text="Shares CPU, memory, disk, battery, network rates, top app names and recent usage limits. Requests require a visible paired client and an additional pairing proof." TextWrapping="Wrap" MaxWidth="740" HorizontalAlignment="Left"/>
+     <Separator Margin="0,24"/>
+     <TextBlock Text="Connected host" FontSize="22"/>
+     <Button Content="Request status snapshot" Command="{Binding RefreshRemoteStatusCommand}" Margin="0,18,0,18" HorizontalAlignment="Left"/>
+     <TextBlock Text="{Binding RemoteStatus}" TextWrapping="Wrap"/>
+    </StackPanel></ScrollViewer>
+   </TabItem>
+   <TabItem Header="Audio" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="740" HorizontalAlignment="Left">
+    <TextBlock Text="Share this PC's system audio" FontSize="22"/>
+    <TextBlock Text="Allow a paired client to listen to sound from other apps on this PC. Peel Pro's own sound is excluded. Sharing is on unless you turn it off here, and your choice is saved. It pauses on lock, suspend or exit and returns to your saved choice; each paired client must still request playback with its pairing proof while visible." TextWrapping="Wrap" Margin="0,18,0,16"/>
+    <CheckBox Content="Allow system audio sharing" IsChecked="{Binding ShareSystemAudio}" IsEnabled="{Binding CanShareSystemAudio}"/>
+    <TextBlock Text="{Binding HostAudioStatus}" TextWrapping="Wrap" Margin="0,16,0,0"/>
+    <Separator Margin="0,24"/>
+    <TextBlock Text="Listen to the connected host" FontSize="22"/>
+    <TextBlock Text="Host audio starts automatically when a stream from that computer begins, if it shares audio. Stop audio keeps it off for that computer, including after reconnecting or restarting Peel Pro, until you start it again. Audio also stops when you disconnect, hide every Peel Pro window, lock Windows, or exit Peel Pro; those stops don't change your choice. Voice and the microphone never start automatically." TextWrapping="Wrap" Margin="0,18,0,20"/>
+    <WrapPanel><Button Content="Start host audio" Command="{Binding StartAudioCommand}"/><Button Content="Stop audio" Command="{Binding StopAudioCommand}"/></WrapPanel>
+    <TextBlock Text="{Binding AudioStatus}" TextWrapping="Wrap" Margin="0,22,0,0"/>
+    <Separator Margin="0,24"/><TextBlock Text="Forward this PC's microphone" FontSize="22"/>
+    <TextBlock Text="Start voice sends the Windows default microphone to the connected computer and plays host audio here. The computer must support remote voice, have it enabled and have its microphone component installed. Use headphones to reduce feedback. Stop audio ends both directions." TextWrapping="Wrap" Margin="0,18,0,20"/>
+    <Button Content="Start voice — share microphone" Command="{Binding StartVoiceCommand}" HorizontalAlignment="Left"/>
+    <Separator Margin="0,24"/><TextBlock Text="Viewer controls" FontSize="22"/>
+    <TextBlock Text="Volume, mute and media buttons in each viewer act on the streamed computer: volume and mute change that computer's own system volume, never this PC's. Listen above controls only playback here. Hiding the buttons only hides them; playback and the other computer are unchanged." TextWrapping="Wrap" Margin="0,18,0,16"/>
+    <CheckBox Content="Show volume controls" IsChecked="{Binding ShowSourceVolume}" AutomationProperties.AutomationId="ShowSourceVolume"/>
+    <CheckBox Content="Show previous, play/pause and next controls" IsChecked="{Binding ShowSourceMediaControls}" Margin="0,10,0,0" AutomationProperties.AutomationId="ShowSourceMediaControls"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Device Signals" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24">
+    <Border Style="{StaticResource Card}" CornerRadius="24"><StackPanel><DockPanel><Button Content="Lighting" Tag="15" Click="UtilityPage_Click" DockPanel.Dock="Right"/><StackPanel><TextBlock Text="Your agents, at a glance" FontSize="26" FontWeight="SemiBold"/><TextBlock Text="{Binding ActivityLabel}" Foreground="{StaticResource StudioMuted}" Margin="0,10,0,18" TextWrapping="Wrap"/></StackPanel></DockPanel>
+     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="24"/><ColumnDefinition Width="110"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="PRO · 8 LIGHTS" Style="{StaticResource StudioCaption}"/><Border Background="#191D24" CornerRadius="16" Padding="12"><local:SignalLights Program="{Binding ActivityProgram}" StartedAt="{Binding ActivityStartedAt}" ValidUntil="{Binding ActivityValidUntil}" Height="40"/></Border></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="DOT · 2 LIGHTS" Style="{StaticResource StudioCaption}"/><Border Background="#191D24" CornerRadius="16" Padding="12"><local:SignalLights LedCount="2" Program="{Binding ActivityDotProgram}" StartedAt="{Binding ActivityStartedAt}" ValidUntil="{Binding ActivityValidUntil}" Height="40"/></Border></StackPanel></Grid>
+     <TextBlock Text="{Binding AllocationStatus}" TextWrapping="Wrap" Foreground="{StaticResource StudioMuted}" FontSize="12" Margin="0,16,0,0"/>
+    </StackPanel></Border>
+    <Border Style="{StaticResource Card}"><StackPanel><DockPanel><Button Content="Agents" Tag="2" Click="UtilityPage_Click" DockPanel.Dock="Right"/><TextBlock Text="Local activity" FontSize="20" FontWeight="SemiBold"/></DockPanel><TextBlock Text="{Binding LocalActivityStatus}" Foreground="{StaticResource StudioMuted}" TextWrapping="Wrap" Margin="0,8,0,12"/>
+     <ItemsControl ItemsSource="{Binding LocalActivity}"><ItemsControl.ItemTemplate><DataTemplate><Border CornerRadius="12" Background="#333B48" Padding="14" Margin="0,0,0,8"><DockPanel><TextBlock DockPanel.Dock="Right" Text="{Binding StateLabel}" Foreground="{StaticResource StudioAccent}" Margin="16,0,0,0"/><TextBlock Text="{Binding Project}" TextTrimming="CharacterEllipsis"/></DockPanel></Border></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+    </StackPanel></Border>
+    <TextBlock Text="Signal routes" FontSize="24" FontWeight="SemiBold" Margin="0,8,0,22"/>
+    <TextBlock Text="Share this PC's activity" FontSize="22"/>
+    <TextBlock Text="Share observed Codex states with nearby paired devices and their SidePulse displays. Chat titles, project names, messages and tool arguments stay on this PC. Sharing starts off and stops on lock, suspend or exit." TextWrapping="Wrap" MaxWidth="740" HorizontalAlignment="Left" Margin="0,16,0,14"/>
+    <WrapPanel><Button Content="Share local activity" Command="{Binding StartPublishingSignalsCommand}"/><Button Content="Stop sharing" Command="{Binding StopPublishingSignalsCommand}"/></WrapPanel>
+    <TextBlock Text="{Binding PublishingStatus}" TextWrapping="Wrap" Margin="0,14,0,28"/>
+    <TextBlock Text="Follow paired device activity" FontSize="22"/>
+    <TextBlock Text="See SidePulse activity from nearby paired computers. Enable SidePulse sharing on the computer, then start following here. Signals stop when Windows locks, Peel Pro exits, or you stop following." TextWrapping="Wrap" MaxWidth="740" HorizontalAlignment="Left" Margin="0,18,0,20"/>
+    <WrapPanel><Button Content="Follow paired devices" Command="{Binding StartSignalsCommand}"/><Button Content="Stop following" Command="{Binding StopSignalsCommand}"/><Button Content="Show compact bar" Command="{Binding ShowUsageBarCommand}"/></WrapPanel>
+    <TextBlock Text="{Binding SignalStatus}" TextWrapping="Wrap" Margin="0,22,0,18"/>
+    <TextBlock Text="{Binding SignalLabel}" FontSize="20" TextWrapping="Wrap" Margin="0,0,0,18"/>
+    <DataGrid ItemsSource="{Binding SignalRows}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" Height="240"><DataGrid.Columns>
+     <DataGridTextColumn Header="Paired device" Binding="{Binding DisplayName}" Width="*" MinWidth="240"/><DataGridTextColumn Header="Agent state" Binding="{Binding StateLabel}" Width="200"/><DataGridTextColumn Header="Activity" Binding="{Binding ActivityLabel}" Width="190"/>
+    </DataGrid.Columns></DataGrid>
+    <TextBlock Text="Only authenticated, recent signals appear. Older Windows pairings may need to be renewed because their local device identity was not retained. Remote activity is labeled by device; running local processes are not treated as active agent tasks." TextWrapping="Wrap" Margin="0,18,0,0" MaxWidth="740" HorizontalAlignment="Left"/>
+    <Separator Margin="0,24"/><TextBlock Text="Activity display" FontSize="22"/>
+    <TextBlock Text="Choose the activity shown in Peel Pro and the compact bar. Automatic follows this PC first, then the highest-priority paired signal." TextWrapping="Wrap" Margin="0,12,0,14"/>
+    <ComboBox ItemsSource="{Binding SignalSources}" SelectedValue="{Binding SignalSource}" SelectedValuePath="Id" DisplayMemberPath="Label" HorizontalAlignment="Left" MinWidth="290" MaxWidth="600" Padding="8" AutomationProperties.Name="Activity source"/>
+    <WrapPanel Margin="0,16,0,0"><CheckBox Content="Show activity lights in compact bar" IsChecked="{Binding ShowActivityLights}" Margin="0,0,24,12"/><CheckBox Content="Show pinned allowance in compact bar" IsChecked="{Binding ShowUsageInBar}" Margin="0,0,0,12"/></WrapPanel>
+    <TextBlock Text="{Binding ActivityLabel}" TextWrapping="Wrap"/>
+    <local:SignalLights Program="{Binding ActivityProgram}" StartedAt="{Binding ActivityStartedAt}" ValidUntil="{Binding ActivityValidUntil}" Height="30" Width="360" HorizontalAlignment="Left" Margin="0,14,0,14" AutomationProperties.Name="Activity light preview"/>
+    <Expander Header="Custom local light programs" Margin="0,14,0,0"><StackPanel Margin="0,14,0,0">
+     <TextBlock Text="Advanced overrides replace the selected profile only for Simple mode or one visible session. Multiple sessions use Lighting Profiles. Paired devices keep their own programs. Each override supports up to 20 lines and 512 UTF-8 bytes." TextWrapping="Wrap" Margin="0,0,0,12"/>
+     <ComboBox ItemsSource="{Binding SignalStyleStates}" SelectedItem="{Binding SelectedSignalState}" HorizontalAlignment="Left" Width="200" Padding="8" AutomationProperties.Name="Signal state"/>
+     <TextBlock Text="Pro · eight lights" Margin="0,14,0,6"/><TextBox Text="{Binding EditProProgram, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" Height="130" MaxLength="512" AutomationProperties.Name="Pro light program"/>
+     <TextBlock Text="Dot · two lights" Margin="0,14,0,6"/><TextBox Text="{Binding EditDotProgram, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" Height="130" MaxLength="512" AutomationProperties.Name="Dot light program"/>
+     <WrapPanel Margin="0,14,0,0"><Button Content="Save programs" Command="{Binding SaveSignalStyleCommand}"/><Button Content="Restore state defaults" Command="{Binding ResetSignalStyleCommand}"/></WrapPanel>
+     <TextBlock Text="{Binding SignalStyleStatus}" TextWrapping="Wrap" Margin="0,12,0,0"/>
+    </StackPanel></Expander>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Metric History" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24">
+    <TextBlock Text="System history" FontSize="22"/>
+    <TextBlock Text="Local readings from the last 15 minutes of this Peel Pro session. Hover over the chart to inspect an observation. Missing readings and sampling gaps remain empty." TextWrapping="Wrap" Margin="0,12,0,18"/>
+    <WrapPanel><ComboBox ItemsSource="{Binding HistoryMetrics}" SelectedItem="{Binding HistoryMetric}" Width="200" Padding="8" Margin="0,0,14,0" AutomationProperties.Name="History metric"/>
+     <ComboBox ItemsSource="{Binding HistoryDurations}" SelectedItem="{Binding HistoryMinutes}" Width="75" Padding="8" AutomationProperties.Name="History minutes"/><TextBlock Text="minutes" VerticalAlignment="Center" Margin="10,0,0,0"/></WrapPanel>
+    <local:MetricHistoryGraph Samples="{Binding HistorySamples}" Metric="{Binding HistoryMetric}" WindowMinutes="{Binding HistoryMinutes}" Height="230" Margin="0,18,0,10" AutomationProperties.Name="Recent system metric history"/>
+    <TextBlock Text="{Binding HistoryAverageLabel}" FontSize="16" TextWrapping="Wrap"/>
+    <TextBlock Text="Averages appear after at least 80% of their time window has been observed. Values are weighted by observed duration; gaps do not count as zero." TextWrapping="Wrap" Margin="0,10,0,24"/>
+    <TextBlock Text="{Binding DiskWriteHistoryLabel}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+    <TextBlock Text="{Binding GpuMemoryLabel}" TextWrapping="Wrap"/>
+    <TextBlock Text="Disk activity comes from Windows physical-disk counters. Storage capacity above describes the system volume. Lifetime drive writes and media-engine utilization are unavailable here." TextWrapping="Wrap" FontSize="12" Margin="0,18,0,0"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Mechanic Settings" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="760" HorizontalAlignment="Left">
+    <TextBlock Text="App Mechanic settings" FontSize="22"/>
+    <TextBlock Text="Gauges" FontSize="18" Margin="0,22,0,12"/>
+    <WrapPanel><CheckBox Content="CPU" IsChecked="{Binding GaugeCpu}" Margin="0,0,24,12"/><CheckBox Content="RAM occupancy" IsChecked="{Binding GaugeMemory}" Margin="0,0,24,12"/><CheckBox Content="Disk busy" IsChecked="{Binding GaugeDisk}" Margin="0,0,24,12"/><CheckBox Content="GPU" IsChecked="{Binding GaugeGpu}" Margin="0,0,24,12"/></WrapPanel>
+    <CheckBox Content="Combine selected gauges into one average" IsChecked="{Binding CombinedGauges}" Margin="0,0,0,12"/>
+    <TextBlock Text="{Binding SelectedGaugesLabel}" FontSize="17" TextWrapping="Wrap"/>
+    <TextBlock Text="Combined activity averages the available selected gauges. RAM is occupied physical memory; disk is busy time. This is a display preference, not a Windows health score." TextWrapping="Wrap" Margin="0,12,0,24"/>
+    <TextBlock Text="Compact bar" FontSize="18" Margin="0,0,0,12"/>
+    <CheckBox Content="Show selected gauges" IsChecked="{Binding ShowBarGauge}" Margin="0,0,0,12"/><CheckBox Content="Show top apps" IsChecked="{Binding ShowBarApps}" Margin="0,0,0,12"/>
+    <WrapPanel><TextBlock Text="Top apps" VerticalAlignment="Center" Margin="0,0,12,0"/><ComboBox ItemsSource="{Binding TopAppCounts}" SelectedItem="{Binding TopAppCount}" Width="75" Padding="8" Margin="0,0,16,0"/><TextBlock Text="Rank by" VerticalAlignment="Center" Margin="0,0,12,0"/><ComboBox ItemsSource="{Binding ProcessRankings}" SelectedItem="{Binding ProcessRanking}" Width="120" Padding="8"/></WrapPanel>
+    <Button Content="Show compact bar" Command="{Binding ShowUsageBarCommand}" HorizontalAlignment="Left" Margin="0,18,0,0"/>
+    <TextBlock Text="These preferences are saved on this PC. Launch at login and the notification-area icon are managed in the main Peel Pro window." TextWrapping="Wrap" Margin="0,24,0,0"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="USB Lights" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="760" HorizontalAlignment="Left">
+    <TextBlock Text="SidePulse USB output" FontSize="22"/>
+    <TextBlock Text="Send the selected activity display to a connected SidePulse Pro or Dot. Output starts off each session and stops on lock, suspend or exit. After unplugging, scan and start again." TextWrapping="Wrap" Margin="0,12,0,16"/>
+    <Button Content="Scan USB light devices" Command="{Binding ScanLightDevicesCommand}" HorizontalAlignment="Left"/><TextBlock Text="{Binding HardwareScanStatus}" TextWrapping="Wrap" Margin="0,12,0,20"/>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="16"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+     <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="SidePulse Pro" FontSize="22" FontWeight="SemiBold"/><TextBlock Text="Eight individually allocated lights" Style="{StaticResource StudioCaption}" Margin="0,8,0,18"/>
+      <ComboBox ItemsSource="{Binding ProDevices}" SelectedItem="{Binding SelectedPro}" DisplayMemberPath="Label" AutomationProperties.Name="Pro USB device"/>
+      <TextBlock Text="{Binding ProOutputStatus}" TextWrapping="Wrap" Foreground="{StaticResource StudioMuted}" Margin="0,16,0,18"/><Button Content="Start Pro output" Command="{Binding StartProOutputCommand}" HorizontalAlignment="Left"/>
+     </StackPanel></Border>
+     <Border Grid.Column="2" Style="{StaticResource Card}"><StackPanel><TextBlock Text="SidePulse Dot" FontSize="22" FontWeight="SemiBold"/><TextBlock Text="Two individually allocated lights" Style="{StaticResource StudioCaption}" Margin="0,8,0,18"/>
+      <ComboBox ItemsSource="{Binding DotDevices}" SelectedItem="{Binding SelectedDot}" DisplayMemberPath="Label" AutomationProperties.Name="Dot USB device"/>
+      <TextBlock Text="{Binding DotOutputStatus}" TextWrapping="Wrap" Foreground="{StaticResource StudioMuted}" Margin="0,16,0,18"/><Button Content="Start Dot output" Command="{Binding StartDotOutputCommand}" HorizontalAlignment="Left"/>
+     </StackPanel></Border>
+    </Grid>
+    <TextBlock Text="Output brightness"/><Slider Value="{Binding LightBrightness}" Minimum="0" Maximum="1" Width="360" HorizontalAlignment="Left" Margin="0,10,0,12" AutomationProperties.Name="USB light brightness"/>
+    <TextBlock Text="Dot uses its calibrated 40% brightness and 75% blue output. Flashlight uses full neutral white. Choose the source in Overview and edit profiles in Lighting." TextWrapping="Wrap" Margin="0,0,0,18"/>
+    <Button Content="Stop all USB light output" Command="{Binding StopLightOutputCommand}" HorizontalAlignment="Left"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Utilities" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="760" HorizontalAlignment="Left">
+    <WrapPanel Margin="0,0,0,20"><Button Content="Progress" Tag="12" Click="UtilityPage_Click"/><Button Content="ON AIR" Tag="13" Click="UtilityPage_Click"/><Button Content="Battery" Tag="14" Click="UtilityPage_Click"/></WrapPanel>
+    <TextBlock Text="Light modes" FontSize="22"/><TextBlock Text="Choose what appears in the compact bar, preview and enabled USB lights. Activity sharing continues to report local agent activity." TextWrapping="Wrap" Margin="0,12,0,14"/>
+    <ComboBox ItemsSource="{Binding LightModes}" SelectedItem="{Binding LightMode}" HorizontalAlignment="Left" Width="230" Padding="8" AutomationProperties.Name="Light mode"/>
+    <local:SignalLights Program="{Binding ActivityProgram}" StartedAt="{Binding ActivityStartedAt}" ValidUntil="{Binding ActivityValidUntil}" Height="28" Width="360" HorizontalAlignment="Left" Margin="0,14,0,12"/>
+    <TextBlock Text="Countdown" FontSize="22" Margin="0,10,0,12"/>
+    <WrapPanel><StackPanel Margin="0,0,20,12"><TextBlock Text="Duration · seconds (1–86400)"/><TextBox Text="{Binding TimerSeconds, UpdateSourceTrigger=PropertyChanged}" Width="190" Padding="8" Margin="0,6,0,0" AutomationProperties.Name="Countdown duration seconds"/></StackPanel>
+     <StackPanel Margin="0,0,0,12"><TextBlock Text="Warning · seconds remaining"/><TextBox Text="{Binding TimerWarningSeconds, UpdateSourceTrigger=PropertyChanged}" Width="190" Padding="8" Margin="0,6,0,0" AutomationProperties.Name="Countdown warning seconds"/></StackPanel></WrapPanel>
+    <CheckBox Content="Animate the full array instead of a remaining-time bar" IsChecked="{Binding TimerAnimation}" Margin="0,0,0,12"/>
+    <WrapPanel><Button Content="Start" Command="{Binding StartTimerCommand}"/><Button Content="Pause" Command="{Binding PauseTimerCommand}"/><Button Content="Resume" Command="{Binding ResumeTimerCommand}"/><Button Content="Reset / dismiss" Command="{Binding ResetTimerCommand}"/></WrapPanel>
+    <TextBlock Text="{Binding TimerLabel}" FontSize="24" Margin="0,14,0,22"/>
+    <TextBlock Text="Coffee · keep awake" FontSize="22"/><CheckBox Content="Prevent idle system sleep for this session" IsChecked="{Binding KeepAwake}" Margin="0,14,0,12"/>
+    <TextBlock Text="{Binding KeepAwakeStatus}" TextWrapping="Wrap"/><TextBlock Text="Releases on lock, suspend or exit. The display can still sleep. Windows continues to control manual sleep, lid-close behavior and battery limits." TextWrapping="Wrap" Margin="0,10,0,0"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Progress" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="820" HorizontalAlignment="Left">
+    <TextBlock Text="Command progress" FontSize="22"/>
+    <TextBlock Text="Run a PowerShell command in the selected folder. The command can print SIDEPULSE_PROGRESS=0 through SIDEPULSE_PROGRESS=100 on stdout to drive its gauge. Unknown progress stays indeterminate." TextWrapping="Wrap" Margin="0,12,0,14"/>
+    <TextBox Text="{Binding ProgressCommand, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" FontFamily="Consolas" Height="100" MinWidth="620" MaxLength="8192" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="PowerShell progress command"/>
+    <TextBlock Text="Working directory" Margin="0,12,0,6"/><TextBox Text="{Binding ProgressDirectory, UpdateSourceTrigger=PropertyChanged}" Padding="8" MaxLength="2048" AutomationProperties.Name="Progress working directory"/>
+    <Button Content="Run command" Command="{Binding RunProgressCommand}" HorizontalAlignment="Left" Margin="0,12,0,16"/>
+    <TextBlock Text="Watch an existing process" FontSize="18"/>
+    <WrapPanel Margin="0,12,0,16"><TextBox Text="{Binding ProgressPid, UpdateSourceTrigger=PropertyChanged}" Width="120" Padding="8" Margin="0,0,12,0" AutomationProperties.Name="Process ID to watch"/><Button Content="Watch PID" Command="{Binding WatchProgressCommand}"/><Button Content="Watch selected App Mechanic app" Command="{Binding WatchSelectedAppCommand}"/></WrapPanel>
+    <TextBlock Text="{Binding ProgressTitle}" TextWrapping="Wrap" FontWeight="SemiBold"/><TextBlock Text="{Binding ProgressStatus}" TextWrapping="Wrap" Margin="0,8,0,12"/>
+    <ProgressBar Value="{Binding ProgressValue, Mode=OneWay}" IsIndeterminate="{Binding ProgressIndeterminate}" Minimum="0" Maximum="100" Height="16"/>
+    <CheckBox Content="Use the full array for progress animation" IsChecked="{Binding ProgressAnimation}" Margin="0,14,0,10"/>
+    <WrapPanel><Button Content="Cancel task / stop watching" Command="{Binding CancelProgressCommand}"/><Button Content="Clear / dismiss" Command="{Binding ClearProgressCommand}"/></WrapPanel>
+    <TextBlock Text="Cancel stops commands started here and their Windows job. Watching only observes a specific process instance. Commands run without an interactive window or elevation and are stopped when Peel Pro exits." TextWrapping="Wrap" Margin="0,12,0,14"/>
+    <Expander Header="Command output"><StackPanel Margin="0,12,0,0"><TextBox Text="{Binding ProgressOutputText, Mode=OneWay}" IsReadOnly="True" FontFamily="Consolas" Height="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/><Button Content="Copy retained output" Command="{Binding CopyProgressOutputCommand}" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+     <TextBlock Text="Output stays in this session. Up to 2 MiB is retained; the view shows its final 16 KiB. Clear discards it." TextWrapping="Wrap" Margin="0,10,0,0"/></StackPanel></Expander>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="ON AIR" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="800" HorizontalAlignment="Left">
+    <TextBlock Text="ON AIR · capture activity" FontSize="22"/>
+    <TextBlock Text="Show active Windows microphone sessions and Peel Pro's own video hosting in the compact bar and enabled USB lights. Orange indicates active input or Peel Pro capture; yellow indicates active input endpoints reporting mute." TextWrapping="Wrap" Margin="0,12,0,18"/>
+    <CheckBox Content="Observe input-session status for this session" IsChecked="{Binding OnAirEnabled}" Margin="0,0,0,18"/>
+    <TextBlock Text="{Binding OnAirStatus}" FontSize="18" TextWrapping="Wrap"/><TextBlock Text="{Binding OnAirDevices}" TextWrapping="Wrap" Margin="0,10,0,18"/>
+    <TextBlock Text="{Binding OnAirCaptureStatus}" TextWrapping="Wrap"/>
+    <Button Content="Show compact bar" Command="{Binding ShowUsageBarCommand}" HorizontalAlignment="Left" Margin="0,20,0,20"/>
+    <TextBlock Text="Peel Pro reads session and mute status without recording microphone samples or changing mute. Endpoint mute can be a Windows software control; a separate physical switch may not be reported. Some exclusive or driver-specific input paths may be unavailable." TextWrapping="Wrap" Margin="0,0,0,16"/>
+    <TextBlock Text="Video status covers Peel Pro's own hosting. Windows does not provide a complete public inventory of other apps' screen recordings or screenshots here. Observation stops on lock, suspend or exit." TextWrapping="Wrap"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Battery" Padding="18,10"><ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24" MaxWidth="760" HorizontalAlignment="Left">
+    <TextBlock Text="Battery light previews" FontSize="22"/><TextBlock Text="{Binding BatteryLabel}" FontSize="24" Margin="0,12,0,8"/><TextBlock Text="{Binding BatteryPowerLabel}" Margin="0,0,0,18"/>
+    <Button Content="Show battery for two seconds" Command="{Binding ShowBatteryCommand}" HorizontalAlignment="Left"/>
+    <TextBlock Text="The preview fills over half a second, holds briefly, then restores the selected light mode. It also appears on USB lights when their output is enabled." TextWrapping="Wrap" Margin="0,14,0,20"/>
+    <ComboBox ItemsSource="{Binding BatteryModes}" SelectedValue="{Binding BatteryMode}" SelectedValuePath="Id" DisplayMemberPath="Label" Width="300" Padding="8" HorizontalAlignment="Left" AutomationProperties.Name="Battery light style"/>
+    <CheckBox Content="Enable battery previews" IsChecked="{Binding ShowBatteryCharge}" Margin="0,22,0,14"/>
+    <CheckBox Content="Preview when external power connects or disconnects" IsChecked="{Binding BatteryPowerChanges}" Margin="0,0,0,14"/>
+    <CheckBox Content="Repeat a preview when battery power is low" IsChecked="{Binding BatteryReminders}" Margin="0,0,0,14"/>
+    <WrapPanel><StackPanel Margin="0,0,20,14"><TextBlock Text="Low-battery threshold · percent"/><TextBox Text="{Binding BatteryThreshold, UpdateSourceTrigger=PropertyChanged}" Width="180" Padding="8" Margin="0,6,0,0" AutomationProperties.Name="Low battery percent"/></StackPanel>
+     <StackPanel Margin="0,0,0,14"><TextBlock Text="Reminder interval · seconds"/><TextBox Text="{Binding BatteryReminderSeconds, UpdateSourceTrigger=PropertyChanged}" Width="180" Padding="8" Margin="0,6,0,0" AutomationProperties.Name="Battery reminder interval seconds"/></StackPanel></WrapPanel>
+    <TextBlock Text="Low-battery reminders require a known battery reading with external power and charging both off. Unavailable battery or power readings do not trigger a reminder. Lid-triggered previews are unavailable here." TextWrapping="Wrap"/>
+   </StackPanel></ScrollViewer></TabItem>
+   <TabItem Header="Lighting Profiles"><local:LightingStudioView/></TabItem>
+  </local:StudioPageHost>
+ </Grid>
+</UserControl>

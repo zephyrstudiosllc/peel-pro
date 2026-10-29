@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		5C1A7E000000000000000018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C1A7E000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C1A7E000000000000000010;
+			remoteInfo = PeelVisionUITestHarness;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5C1A7E000000000000000004 /* PeelVisionUITestHarness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeelVisionUITestHarness.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1A7E000000000000000005 /* PeelVisionUITestHarnessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeelVisionUITestHarnessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5C1A7E000000000000000006 /* PeelVisionUITestHarness */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PeelVisionUITestHarness;
+			sourceTree = "<group>";
+		};
+		5C1A7E000000000000000007 /* PeelVisionUITestHarnessUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PeelVisionUITestHarnessUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C1A7E000000000000000013 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7E000000000000000016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C1A7E000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				5C1A7E000000000000000006 /* PeelVisionUITestHarness */,
+				5C1A7E000000000000000007 /* PeelVisionUITestHarnessUITests */,
+				5C1A7E000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C1A7E000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A7E000000000000000004 /* PeelVisionUITestHarness.app */,
+				5C1A7E000000000000000005 /* PeelVisionUITestHarnessUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C1A7E000000000000000010 /* PeelVisionUITestHarness */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1A7E000000000000000023 /* Build configuration list for PBXNativeTarget "PeelVisionUITestHarness" */;
+			buildPhases = (
+				5C1A7E000000000000000012 /* Sources */,
+				5C1A7E000000000000000013 /* Frameworks */,
+				5C1A7E000000000000000014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5C1A7E000000000000000006 /* PeelVisionUITestHarness */,
+			);
+			name = PeelVisionUITestHarness;
+			packageProductDependencies = (
+			);
+			productName = PeelVisionUITestHarness;
+			productReference = 5C1A7E000000000000000004 /* PeelVisionUITestHarness.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5C1A7E000000000000000011 /* PeelVisionUITestHarnessUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1A7E000000000000000026 /* Build configuration list for PBXNativeTarget "PeelVisionUITestHarnessUITests" */;
+			buildPhases = (
+				5C1A7E000000000000000015 /* Sources */,
+				5C1A7E000000000000000016 /* Frameworks */,
+				5C1A7E000000000000000017 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C1A7E000000000000000019 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5C1A7E000000000000000007 /* PeelVisionUITestHarnessUITests */,
+			);
+			name = PeelVisionUITestHarnessUITests;
+			packageProductDependencies = (
+			);
+			productName = PeelVisionUITestHarnessUITests;
+			productReference = 5C1A7E000000000000000005 /* PeelVisionUITestHarnessUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C1A7E000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					5C1A7E000000000000000010 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					5C1A7E000000000000000011 = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = 5C1A7E000000000000000010;
+					};
+				};
+			};
+			buildConfigurationList = 5C1A7E000000000000000020 /* Build configuration list for PBXProject "PeelVisionUITestHarness" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C1A7E000000000000000002;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5C1A7E000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C1A7E000000000000000010 /* PeelVisionUITestHarness */,
+				5C1A7E000000000000000011 /* PeelVisionUITestHarnessUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C1A7E000000000000000014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7E000000000000000017 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C1A7E000000000000000012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7E000000000000000015 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C1A7E000000000000000019 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C1A7E000000000000000010 /* PeelVisionUITestHarness */;
+			targetProxy = 5C1A7E000000000000000018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5C1A7E000000000000000021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xrsimulator;
+				SUPPORTED_PLATFORMS = xrsimulator;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		5C1A7E000000000000000022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				SDKROOT = xrsimulator;
+				SUPPORTED_PLATFORMS = xrsimulator;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		5C1A7E000000000000000024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Vision UI Test Harness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelVisionUITestHarness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Debug;
+		};
+		5C1A7E000000000000000025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Vision UI Test Harness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelVisionUITestHarness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Release;
+		};
+		5C1A7E000000000000000027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelVisionUITestHarnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				TEST_TARGET_NAME = PeelVisionUITestHarness;
+			};
+			name = Debug;
+		};
+		5C1A7E000000000000000028 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelVisionUITestHarnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				TEST_TARGET_NAME = PeelVisionUITestHarness;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C1A7E000000000000000020 /* Build configuration list for PBXProject "PeelVisionUITestHarness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7E000000000000000021 /* Debug */,
+				5C1A7E000000000000000022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1A7E000000000000000023 /* Build configuration list for PBXNativeTarget "PeelVisionUITestHarness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7E000000000000000024 /* Debug */,
+				5C1A7E000000000000000025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1A7E000000000000000026 /* Build configuration list for PBXNativeTarget "PeelVisionUITestHarnessUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7E000000000000000027 /* Debug */,
+				5C1A7E000000000000000028 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C1A7E000000000000000001 /* Project object */;
+}

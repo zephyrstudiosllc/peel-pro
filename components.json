@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "layout": "monorepo",
+  "snapshot_date": "2026-10-29",
+  "components": [
+    {
+      "id": "mac-host",
+      "path": "Sources/PeelHost",
+      "role": "unified macOS application",
+      "license": "0BSD with embedded third-party exceptions"
+    },
+    {
+      "id": "apple-client",
+      "path": "Sources/PeelApple",
+      "role": "iPhone, iPad, visionOS and Watch clients",
+      "license": "0BSD with third-party dependencies"
+    },
+    {
+      "id": "windows",
+      "path": "Sources/PeelWindows",
+      "role": "Windows host and receiver",
+      "license": "0BSD with third-party dependencies"
+    },
+    {
+      "id": "desktop",
+      "path": "Sources/SidePulse",
+      "role": "Command Center, notch and hardware",
+      "license": "MIT"
+    },
+    {
+      "id": "system",
+      "path": "Sources/AppMechanic",
+      "role": "system/process monitoring and controls",
+      "license": "0BSD"
+    },
+    {
+      "id": "usage",
+      "path": "Sources/CodexBar",
+      "role": "provider adapters and usage CLI",
+      "license": "MIT with vendored notices"
+    }
+  ]
+}

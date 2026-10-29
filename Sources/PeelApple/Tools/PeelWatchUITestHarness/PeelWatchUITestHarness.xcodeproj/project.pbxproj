@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		5C1A7F000000000000000018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C1A7F000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C1A7F000000000000000010;
+			remoteInfo = PeelWatchUITestHarness;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5C1A7F000000000000000004 /* PeelWatchUITestHarness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeelWatchUITestHarness.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1A7F000000000000000005 /* PeelWatchUITestHarnessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeelWatchUITestHarnessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5C1A7F000000000000000006 /* PeelWatchUITestHarness */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PeelWatchUITestHarness;
+			sourceTree = "<group>";
+		};
+		5C1A7F000000000000000007 /* PeelWatchUITestHarnessUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PeelWatchUITestHarnessUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C1A7F000000000000000013 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7F000000000000000016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C1A7F000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				5C1A7F000000000000000006 /* PeelWatchUITestHarness */,
+				5C1A7F000000000000000007 /* PeelWatchUITestHarnessUITests */,
+				5C1A7F000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C1A7F000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A7F000000000000000004 /* PeelWatchUITestHarness.app */,
+				5C1A7F000000000000000005 /* PeelWatchUITestHarnessUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C1A7F000000000000000010 /* PeelWatchUITestHarness */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1A7F000000000000000023 /* Build configuration list for PBXNativeTarget "PeelWatchUITestHarness" */;
+			buildPhases = (
+				5C1A7F000000000000000012 /* Sources */,
+				5C1A7F000000000000000013 /* Frameworks */,
+				5C1A7F000000000000000014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5C1A7F000000000000000006 /* PeelWatchUITestHarness */,
+			);
+			name = PeelWatchUITestHarness;
+			packageProductDependencies = (
+			);
+			productName = PeelWatchUITestHarness;
+			productReference = 5C1A7F000000000000000004 /* PeelWatchUITestHarness.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5C1A7F000000000000000011 /* PeelWatchUITestHarnessUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1A7F000000000000000026 /* Build configuration list for PBXNativeTarget "PeelWatchUITestHarnessUITests" */;
+			buildPhases = (
+				5C1A7F000000000000000015 /* Sources */,
+				5C1A7F000000000000000016 /* Frameworks */,
+				5C1A7F000000000000000017 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C1A7F000000000000000019 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5C1A7F000000000000000007 /* PeelWatchUITestHarnessUITests */,
+			);
+			name = PeelWatchUITestHarnessUITests;
+			packageProductDependencies = (
+			);
+			productName = PeelWatchUITestHarnessUITests;
+			productReference = 5C1A7F000000000000000005 /* PeelWatchUITestHarnessUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C1A7F000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					5C1A7F000000000000000010 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					5C1A7F000000000000000011 = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = 5C1A7F000000000000000010;
+					};
+				};
+			};
+			buildConfigurationList = 5C1A7F000000000000000020 /* Build configuration list for PBXProject "PeelWatchUITestHarness" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C1A7F000000000000000002;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5C1A7F000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C1A7F000000000000000010 /* PeelWatchUITestHarness */,
+				5C1A7F000000000000000011 /* PeelWatchUITestHarnessUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C1A7F000000000000000014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7F000000000000000017 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C1A7F000000000000000012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1A7F000000000000000015 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C1A7F000000000000000019 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C1A7F000000000000000010 /* PeelWatchUITestHarness */;
+			targetProxy = 5C1A7F000000000000000018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5C1A7F000000000000000021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = watchsimulator;
+				SUPPORTED_PLATFORMS = watchsimulator;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		5C1A7F000000000000000022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				SDKROOT = watchsimulator;
+				SUPPORTED_PLATFORMS = watchsimulator;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		5C1A7F000000000000000024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Watch UI Test Harness";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelWatchUITestHarness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		5C1A7F000000000000000025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Watch UI Test Harness";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelWatchUITestHarness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		5C1A7F000000000000000027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelWatchUITestHarnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = PeelWatchUITestHarness;
+			};
+			name = Debug;
+		};
+		5C1A7F000000000000000028 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.PeelWatchUITestHarnessUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = PeelWatchUITestHarness;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C1A7F000000000000000020 /* Build configuration list for PBXProject "PeelWatchUITestHarness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7F000000000000000021 /* Debug */,
+				5C1A7F000000000000000022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1A7F000000000000000023 /* Build configuration list for PBXNativeTarget "PeelWatchUITestHarness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7F000000000000000024 /* Debug */,
+				5C1A7F000000000000000025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1A7F000000000000000026 /* Build configuration list for PBXNativeTarget "PeelWatchUITestHarnessUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1A7F000000000000000027 /* Debug */,
+				5C1A7F000000000000000028 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C1A7F000000000000000001 /* Project object */;
+}

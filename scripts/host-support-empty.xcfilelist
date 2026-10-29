@@ -1,0 +1,2 @@
+# Default for ordinary builds, whose reviewed-support phase is disabled.
+# Signing-enabled packaging overrides this with its exact prepared resource list.

@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		929BB7FF2F648DA2004C61AE /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 929BB7FE2F648DA2004C61AE /* Sparkle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9268C4CD2F5F9FDB002D00D5 /* Peel Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peel Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FEE100000000000000000011 /* Exceptions for "SidePulse" folder in "Peel-Host" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Info.plist,
+			);
+			target = 9268C4CC2F5F9FDB002D00D5 /* Peel-Host */;
+		};
+		FEE100000000000000000012 /* Exceptions for "AppMechanic" folder in "Peel-Host" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Info.plist,
+			);
+			target = 9268C4CC2F5F9FDB002D00D5 /* Peel-Host */;
+		};
+		FEE100000000000000000014 /* Exceptions for "UsageIntegration" folder in "Peel-Host" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Info.plist,
+			);
+			target = 9268C4CC2F5F9FDB002D00D5 /* Peel-Host */;
+		};
+		FEE100000000000000000015 /* Exceptions for "Peel-Host" folder in "Peel-Host" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9268C4CC2F5F9FDB002D00D5 /* Peel-Host */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9268C4CF2F5F9FDB002D00D5 /* Peel-Host */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FEE100000000000000000015 /* Exceptions for "Peel-Host" folder in "Peel-Host" target */,
+			);
+			path = "Peel-Host";
+			sourceTree = "<group>";
+		};
+		FEE100000000000000000001 /* SidePulse */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FEE100000000000000000011 /* Exceptions for "SidePulse" folder in "Peel-Host" target */,
+			);
+			name = SidePulse;
+			path = "../SidePulse/sidepuls-z-swift";
+			sourceTree = "<group>";
+		};
+		FEE100000000000000000002 /* AppMechanic */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FEE100000000000000000012 /* Exceptions for "AppMechanic" folder in "Peel-Host" target */,
+			);
+			name = AppMechanic;
+			path = "../AppMechanic/Kill Switch";
+			sourceTree = "<group>";
+		};
+		FEE100000000000000000003 /* Integration */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = Integration;
+			path = ../../Integration;
+			sourceTree = "<group>";
+		};
+		FEE100000000000000000004 /* UsageIntegration */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FEE100000000000000000014 /* Exceptions for "UsageIntegration" folder in "Peel-Host" target */,
+			);
+			name = UsageIntegration;
+			path = ../../Apps/Peel/Integration;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9268C4CA2F5F9FDB002D00D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				929BB7FF2F648DA2004C61AE /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9268C4C42F5F9FDB002D00D5 = {
+			isa = PBXGroup;
+			children = (
+				9268C4CF2F5F9FDB002D00D5 /* Peel-Host */,
+				FEE100000000000000000001 /* SidePulse */,
+				FEE100000000000000000002 /* AppMechanic */,
+				FEE100000000000000000003 /* Integration */,
+				FEE100000000000000000004 /* UsageIntegration */,
+				9268C4CE2F5F9FDB002D00D5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9268C4CE2F5F9FDB002D00D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9268C4CD2F5F9FDB002D00D5 /* Peel Pro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9268C4CC2F5F9FDB002D00D5 /* Peel-Host */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9268C4D82F5F9FDC002D00D5 /* Build configuration list for PBXNativeTarget "Peel-Host" */;
+			buildPhases = (
+				9268C4C92F5F9FDB002D00D5 /* Sources */,
+				9268C4CA2F5F9FDB002D00D5 /* Frameworks */,
+				9268C4CB2F5F9FDB002D00D5 /* Resources */,
+				FEE100000000000000000021 /* Bundle reviewed archive support */,
+				FEE100000000000000000022 /* Stage private development support */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9268C4CF2F5F9FDB002D00D5 /* Peel-Host */,
+				FEE100000000000000000001 /* SidePulse */,
+				FEE100000000000000000002 /* AppMechanic */,
+				FEE100000000000000000003 /* Integration */,
+				FEE100000000000000000004 /* UsageIntegration */,
+			);
+			name = "Peel-Host";
+			packageProductDependencies = (
+				929BB7FE2F648DA2004C61AE /* Sparkle */,
+			);
+			productName = "Peel Pro";
+			productReference = 9268C4CD2F5F9FDB002D00D5 /* Peel Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9268C4C52F5F9FDB002D00D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					9268C4CC2F5F9FDB002D00D5 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 9268C4C82F5F9FDB002D00D5 /* Build configuration list for PBXProject "Peel-Host" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9268C4C42F5F9FDB002D00D5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				929BB7FD2F648DA1004C61AE /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9268C4CE2F5F9FDB002D00D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9268C4CC2F5F9FDB002D00D5 /* Peel-Host */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9268C4CB2F5F9FDB002D00D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FEE100000000000000000021 /* Bundle reviewed archive support */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(PEEL_ARCHIVE_SUPPORT_DIRECTORY)",
+				"$(PROJECT_DIR)/../../scripts",
+				"$(PROJECT_DIR)/../../Tools/PeelMCP/peel_mcp_server.py",
+				"$(PROJECT_DIR)/Peel-Host/PeelHost.entitlements",
+				"$(PROJECT_DIR)/../SidePulse/LICENSE",
+				"$(PROJECT_DIR)/../SidePulse/NOTICE",
+				"$(PROJECT_DIR)/../CodexBar/LICENSE",
+				"$(PROJECT_DIR)/../CodexBar/Sources/CQuickJS/LICENSE",
+			);
+			name = "Bundle reviewed archive support";
+			outputFileListPaths = (
+				"$(PEEL_ARCHIVE_SUPPORT_OUTPUT_FILE_LIST)",
+			);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Helpers",
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Helpers/CodexBarCLI",
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Resources/peel_mcp_server.py",
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Resources/PeelSigningEntitlements.plist",
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Resources/COMPONENT_NOTICES.txt",
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Resources/CodexBar_CodexBarCore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${PEEL_BUNDLE_ARCHIVE_SUPPORT:-NO}\" != YES ]; then exit 0; fi\nexec \"${PEEL_DISTRIBUTION_PYTHON:?explicit validated Python interpreter required}\" \"${PROJECT_DIR}/../../scripts/bundle-host-support.py\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEE100000000000000000022 /* Stage private development support */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/../../scripts/stage-host-development-support.py",
+				"$(PROJECT_DIR)/../../scripts/host-distribution.py",
+				"$(PROJECT_DIR)/../../Tools/PeelMCP/peel_mcp_server.py",
+				"$(PROJECT_DIR)/Peel-Host/PeelHost.entitlements",
+				"$(PROJECT_DIR)/../SidePulse/LICENSE",
+				"$(PROJECT_DIR)/../SidePulse/NOTICE",
+				"$(PROJECT_DIR)/../CodexBar/LICENSE",
+				"$(PROJECT_DIR)/../CodexBar/Sources/CQuickJS/LICENSE",
+			);
+			name = "Stage private development support";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/peel-development-support-receipt.json",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${PEEL_STAGE_DEVELOPMENT_SUPPORT:-NO}\" != YES ]; then exit 0; fi\nexec \"${PEEL_DEVELOPMENT_PYTHON:?explicit validated Python interpreter required}\" -I -B \"${PROJECT_DIR}/../../scripts/stage-host-development-support.py\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9268C4C92F5F9FDB002D00D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9268C4D62F5F9FDC002D00D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9268C4D72F5F9FDC002D00D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		9268C4D92F5F9FDC002D00D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peel-Host/PeelHost.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 253;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peel-Host/Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro uses your local network to find and connect to your paired devices.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PEEL_ARCHIVE_SUPPORT_DIRECTORY = "$(PROJECT_DIR)/Peel-Host";
+				PEEL_ARCHIVE_SUPPORT_OUTPUT_FILE_LIST = "$(PROJECT_DIR)/../../scripts/host-support-empty.xcfilelist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zephyrstudiosllc.Peel-Host";
+				PRODUCT_NAME = "Peel Pro";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) PEEL_WORKSPACE PEEL_HOST_INTEGRATION";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9268C4DA2F5F9FDC002D00D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peel-Host/PeelHost.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 253;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peel-Host/Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro uses your local network to find and connect to your paired devices.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PEEL_ARCHIVE_SUPPORT_DIRECTORY = "$(PROJECT_DIR)/Peel-Host";
+				PEEL_ARCHIVE_SUPPORT_OUTPUT_FILE_LIST = "$(PROJECT_DIR)/../../scripts/host-support-empty.xcfilelist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zephyrstudiosllc.Peel-Host";
+				PRODUCT_NAME = "Peel Pro";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) PEEL_WORKSPACE PEEL_HOST_INTEGRATION";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9268C4C82F5F9FDB002D00D5 /* Build configuration list for PBXProject "Peel-Host" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9268C4D62F5F9FDC002D00D5 /* Debug */,
+				9268C4D72F5F9FDC002D00D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9268C4D82F5F9FDC002D00D5 /* Build configuration list for PBXNativeTarget "Peel-Host" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9268C4D92F5F9FDC002D00D5 /* Debug */,
+				9268C4DA2F5F9FDC002D00D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		929BB7FD2F648DA1004C61AE /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		929BB7FE2F648DA2004C61AE /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 929BB7FD2F648DA1004C61AE /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9268C4C52F5F9FDB002D00D5 /* Project object */;
+}

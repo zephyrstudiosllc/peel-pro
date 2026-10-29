@@ -1,0 +1,10 @@
+{
+  "source": "https://www.apple.com/certificateauthority/AppleWWDRCAG6.cer",
+  "sha256": "bdd4ed6e74691f0c2bfd01be0296197af1379e0418e2d300efa9c3bef642ca30",
+  "subject": "C=US,O=Apple Inc.,OU=G6,CN=Apple Worldwide Developer Relations Certification Authority",
+  "issuer": "C=US,O=Apple Inc.,OU=Apple Certification Authority,CN=Apple Root CA - G3",
+  "ocspURLs": [
+    "http://ocsp.apple.com/ocsp03-applerootcag3"
+  ],
+  "note": "Public certificate metadata only. This intermediate is an evidence reference, never added as a trust root."
+}

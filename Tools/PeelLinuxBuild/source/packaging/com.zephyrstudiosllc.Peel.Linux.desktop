@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Peel Pro
+Comment=Share and open computers
+Exec=peel-pro
+Icon=computer
+Terminal=false
+Categories=Network;RemoteAccess;
+StartupWMClass=com.zephyrstudiosllc.Peel.Linux

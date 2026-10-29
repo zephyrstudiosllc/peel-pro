@@ -1,0 +1,23 @@
+{
+  "vendor/THIRD_PARTY_NOTICES.md": "d81fcdeac549ebe8a9b083905cce045a51c83940c552df39a0c9690d076c9c42",
+  "vendor/global.json": "20c93ca7812d0a9825eef71217156f95ab2f4fe5aadfeb22ebc1c24b630018d3",
+  "vendor/Peel.Windows.Transport/BouncyCastlePskTransportFactory.cs": "7e1273c9479a8708856fb652b2abe5d05bdd52cefa4ebd635888468d4564e877",
+  "vendor/Peel.Windows.Transport/Peel.Windows.Transport.csproj": "39e692deb00d7d071ccc44081fa6751592a7e9cf7bf27ed4bf76feb1a4fd9d92",
+  "vendor/Peel.Windows.Transport/PeelPskSecurityProfile.cs": "b5600ccf150399de8d6bad45eb14b1a9010460445c376354a6f98704baece9bd",
+  "vendor/Peel.Windows.Transport/OwnedTlsStream.cs": "e3b0cca88de026280bf0c3cd1b36b4b7d287e63dc67066708738fb20acb2b828",
+  "vendor/Peel.Windows.Transport/PeelTlsPeers.cs": "83c0e90f32e6339beac4a64653d2c26083ec3a627caca6bc2efd1031217808ee",
+  "vendor/Peel.Windows.Protocol/SecureTransport.cs": "82b27aa84f841ee7e744e4102bf062fd1e068e491d91801a1179e0434dd974b6",
+  "vendor/Peel.Windows.Protocol/Peel.Windows.Protocol.csproj": "9b8458580be4e786dd73ed606f80627ab81a4545fbe8834e205dc430a56e7544",
+  "vendor/Peel.Windows.Protocol/PeelPinPairing.cs": "3405999866ba53a8dfda69d614a51bb30f36388c6d15d4257c2ad239554b2e1f",
+  "vendor/Peel.Windows.Protocol/PeelJson.cs": "c0e48f2e8174fc8f7eae63b88b3f2dbe1ac88d3233ea1e8a848f5073ed0fae9a",
+  "vendor/Peel.Windows.Protocol/BinaryPackets.cs": "e010a99f6260c8e6ba8d7cf43b38e3c694c903cad6355afd2c5b422a77eb7a49",
+  "vendor/Peel.Windows.Protocol/PeelProtocol.cs": "62925bc663940c7edb3fbb1ea0bfeaca704a26d31d9d5bc513039877a809dacb",
+  "vendor/Peel.Windows.Protocol/Messages.cs": "fa0c23c0f6aa716a65158a1285114b723df864940a8d61c8d41fde0226b563ed",
+  "managed/UpstreamClient/Models/ClientModels.cs": "bdff219615328962685125e515f230c68eb61c87a728bc8359adf5cca7c0964f",
+  "managed/UpstreamClient/Services/ClientVideoSessionContracts.cs": "29208898b9300d37f47cc3e5e6078cfc22d56db190d76167ebe4914a38bdcfc8",
+  "managed/UpstreamClient/Services/ClientServiceContracts.cs": "ac25142d25a460f564f4a3be616ebab3224522a49d90d7c9353c494116898954",
+  "managed/UpstreamClient/Services/ClientVideoSocketSession.cs": "cbc4f1d70fc8aa2248b31037de4a96ef9b2c64da2e5c425d39b78ff3b6cb8854",
+  "managed/UpstreamClient/Services/ClientSession.cs": "0664a83bc57a0e49f9aace7cea61813a62ab3cfaee005552af3600af59096df0",
+  "managed/UpstreamClient/Services/ClientSessionContracts.cs": "77cf836361c2e2fc7b4f973a08b840b9be1273779e22be375282fe493dc55f27",
+  "managed/UpstreamClient/Services/ClientStreamController.cs": "8e6ebfc91359205089b29f94a72e3dfc82fe7550780fdbca1ffefeb4c2d3ac94"
+}

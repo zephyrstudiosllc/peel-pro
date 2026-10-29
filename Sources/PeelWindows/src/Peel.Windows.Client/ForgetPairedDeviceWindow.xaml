@@ -1,0 +1,38 @@
+<Window x:Class="Peel.Windows.Client.ForgetPairedDeviceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Unpair device?"
+        Width="420"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        AutomationProperties.AutomationId="ForgetPairedDeviceConfirmation">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="ConfirmationMessage"
+                   FontSize="14"
+                   TextWrapping="Wrap" />
+
+        <StackPanel Grid.Row="1"
+                    Margin="0,22,0,0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Content="Cancel"
+                    MinWidth="82"
+                    Padding="12,6"
+                    IsCancel="True"
+                    IsDefault="True" />
+            <Button Content="Unpair"
+                    MinWidth="82"
+                    Margin="10,0,0,0"
+                    Padding="12,6"
+                    Click="Confirm_Click"
+                    AutomationProperties.AutomationId="ConfirmForgetPairedDevice" />
+        </StackPanel>
+    </Grid>
+</Window>

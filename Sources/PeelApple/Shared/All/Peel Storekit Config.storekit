@@ -1,0 +1,124 @@
+{
+  "appPolicies": {
+    "eula": "",
+    "policies": [
+      {
+        "locale": "en_US",
+        "policyText": "",
+        "policyURL": ""
+      }
+    ]
+  },
+  "identifier": "67465574",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "0.0",
+      "familyShareable": false,
+      "internalID": "6760325951",
+      "localizations": [
+        {
+          "description": "Unlock full access to Peel for three days",
+          "displayName": "Peel \u2013 3-Day Trial",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "peel.pro.3day.freetrial",
+      "referenceName": "Peel \u2013 3-Day Trial",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "119.99",
+      "familyShareable": true,
+      "internalID": "6760322922",
+      "localizations": [
+        {
+          "description": "All Peel Pro software features, for you and your family. Existing lifetime purchases include Pro.",
+          "displayName": "Peel Pro Lifetime",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "peel.pro.lifetime",
+      "referenceName": "Peel Pro Lifetime",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "6755941658",
+    "_askToBuyEnabled": false,
+    "_billingGracePeriodEnabled": true,
+    "_billingIssuesEnabled": false,
+    "_developerTeamID": "V729QMY3V6",
+    "_disableDialogs": false,
+    "_failTransactionsEnabled": false,
+    "_lastSynchronizedDate": 794860544.992668,
+    "_locale": "en_US",
+    "_renewalBillingIssuesEnabled": false,
+    "_storefront": "USA",
+    "_storeKitErrors": [],
+    "_timeRate": 0
+  },
+  "subscriptionGroups": [
+    {
+      "id": "peel-pro-subscriptions",
+      "localizations": [
+        {
+          "description": "Peel Pro",
+          "displayName": "Peel Pro",
+          "locale": "en_US"
+        }
+      ],
+      "name": "Peel Pro",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "4.99",
+          "familyShareable": true,
+          "groupNumber": 1,
+          "internalID": "181018001",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "All Peel Pro software features, for you and your family. Provider charges are separate.",
+              "displayName": "Peel Pro Monthly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "peel.pro.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Peel Pro Monthly",
+          "subscriptionGroupID": "peel-pro-subscriptions",
+          "type": "RecurringSubscription",
+          "winBackOffers": []
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "29.99",
+          "familyShareable": true,
+          "groupNumber": 1,
+          "internalID": "181018002",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "All Peel Pro software features, for you and your family. Provider charges are separate.",
+              "displayName": "Peel Pro Yearly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "peel.pro.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Peel Pro Yearly",
+          "subscriptionGroupID": "peel-pro-subscriptions",
+          "type": "RecurringSubscription",
+          "winBackOffers": []
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 4,
+    "minor": 0
+  }
+}

@@ -1,0 +1,13 @@
+<Window x:Class="Peel.Windows.Client.Utilities.UsageBarWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Peel.Windows.Client.Utilities"
+ Title="Peel Pro" Width="520" SizeToContent="Height" MinWidth="360" WindowStyle="ToolWindow" ResizeMode="CanResizeWithGrip"
+ ShowActivated="False" ShowInTaskbar="False" Topmost="True" Background="#202428" Foreground="#FAF7F2">
+ <Window.Resources><ResourceDictionary><ResourceDictionary.MergedDictionaries><ResourceDictionary Source="StudioTheme.xaml"/></ResourceDictionary.MergedDictionaries><BooleanToVisibilityConverter x:Key="VisibleWhenTrue"/></ResourceDictionary></Window.Resources>
+ <Grid Margin="16" MouseLeftButtonDown="DragBar"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <DockPanel><Button DockPanel.Dock="Right" Content="Open Peel Pro" Click="OpenPeel" Padding="10,4"/><TextBlock Text="{Binding TraySummary}" TextTrimming="CharacterEllipsis" ToolTip="{Binding TraySummary}" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,12,0"/></DockPanel>
+  <TextBlock Grid.Row="1" Text="{Binding PinnedUsageLabel}" TextTrimming="CharacterEllipsis" ToolTip="{Binding PinnedUsageLabel}" Visibility="{Binding ShowUsageInBar, Converter={StaticResource VisibleWhenTrue}}" Margin="0,14,0,0"/>
+  <TextBlock Grid.Row="2" Text="{Binding TopAppsLabel}" TextWrapping="Wrap" Visibility="{Binding ShowBarApps, Converter={StaticResource VisibleWhenTrue}}" Margin="0,10,0,0" Foreground="#CFCAC4"/>
+  <TextBlock Grid.Row="3" Text="{Binding CompactActivityLabel}" TextTrimming="CharacterEllipsis" ToolTip="{Binding CompactActivityLabel}" Margin="0,10,0,0" Foreground="#B5DCB0"/>
+  <local:SignalLights Grid.Row="4" Program="{Binding ActivityProgram}" StartedAt="{Binding ActivityStartedAt}" ValidUntil="{Binding ActivityValidUntil}" Visibility="{Binding ShowActivityLights, Converter={StaticResource VisibleWhenTrue}}" Height="22" Margin="0,10,0,0" AutomationProperties.Name="Activity lights"/>
+ </Grid>
+</Window>

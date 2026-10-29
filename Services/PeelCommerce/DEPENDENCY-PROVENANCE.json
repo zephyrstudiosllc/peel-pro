@@ -1,0 +1,150 @@
+{
+  "resolvedAt": "2026-10-20",
+  "environment": "isolated Python 3.14 macOS arm64; deployment may resolve a different wheel for the same pinned versions",
+  "packages": [
+    {
+      "name": "app-store-server-library",
+      "version": "3.1.2",
+      "url": "https://files.pythonhosted.org/packages/62/f9/1908c439040359869a42ba2f4aa3bb80134cc929e03de1b4d33a6c2d4194/app_store_server_library-3.1.2-py3-none-any.whl",
+      "hashes": {
+        "sha256": "8007b3dca89fd08a1123fae2ffdbe7bc72b99a7eabfb0a32e21b45a344159e62"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "asn1",
+      "version": "3.2.0",
+      "url": "https://files.pythonhosted.org/packages/26/50/fed4dc9ac21c77ddbb7893093d4208c7da8a35b83b13ebb880b1633c3349/asn1-3.2.0-py2.py3-none-any.whl",
+      "hashes": {
+        "sha256": "3c1788508d49f4f101c3c6b842b5a6d0fc9f68e2782e891d41af19bf321fedbb"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.15.1",
+      "url": "https://files.pythonhosted.org/packages/50/ca/44de4e75f8aadc457f0634be3b542815078ded46dca30efb960edeecad6e/pyjwt-2.15.1-py3-none-any.whl",
+      "hashes": {
+        "sha256": "42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+      "hashes": {
+        "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "url": "https://files.pythonhosted.org/packages/7c/8a/40db9aa9f5907bb0e6f8b6d64064bf8852fb33d4b813ff9414911df7647c/charset_normalizer-3.5.2-cp314-cp314-macosx_10_15_universal2.whl",
+      "hashes": {
+        "sha256": "fcff63213e8e6e47770541a4607175404f47cbb3ebea7b6058cc82d524a0e424"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "hashes": {
+        "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+      },
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "url": "https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "cattrs",
+      "version": "26.2.1",
+      "url": "https://files.pythonhosted.org/packages/e8/cf/22794a399d99480486120e26e879ef008e21f5e85274c2ed591d568bb326/cattrs-26.2.1-py3-none-any.whl",
+      "hashes": {
+        "sha256": "a12aaa3453dc8f633a815293179f08b7421ed18d2575c459c3c736f840beac24"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19",
+      "url": "https://files.pythonhosted.org/packages/c4/51/29046e48f693c54e5b7412216d447a1d8362c9653148d98c02cdf65fa733/certifi-2026.10.19-py3-none-any.whl",
+      "hashes": {
+        "sha256": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b"
+      },
+      "license": "MPL-2.0"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "url": "https://files.pythonhosted.org/packages/e5/56/d194340cc4a57535e82e1bee9e89667ac4b7c13b5d3f59686deae3094dd5/cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl",
+      "hashes": {
+        "sha256": "fa8f5efb344d6908a1ce62f4a24e2e5780f825d6f53f5f50ec5ffacac72936cb"
+      },
+      "license": "Apache-2.0 OR BSD-3-Clause"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "url": "https://files.pythonhosted.org/packages/b3/a9/9db617d05d7367c1ad0ab00b3aa6e6f9281edd689b4ee9ea0e5a84e89c97/cffi-2.1.1-cp314-cp314-macosx_11_0_arm64.whl",
+      "hashes": {
+        "sha256": "661c298b4821edebead0c91edd2b00374d67ad7c5a1f7a91d4442633b79d6a72"
+      },
+      "license": "MIT-0"
+    },
+    {
+      "name": "pyOpenSSL",
+      "version": "26.4.0",
+      "url": "https://files.pythonhosted.org/packages/51/ad/2cf6d3fa2fae5c79e1ed9960c0d42badd0f94d81dd12b50604cdc839e648/pyopenssl-26.4.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "f0eb0cb2d581d3ad2b9c489468485e7f2ab6727d08401bcf9d824c3caddf3c1c"
+      },
+      "license": "Apache License, Version 2.0"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+      },
+      "license": "PSF-2.0"
+    },
+    {
+      "name": "enum-compat",
+      "version": "0.0.3",
+      "url": "https://files.pythonhosted.org/packages/55/ae/467bc4509246283bb59746e21a1a2f5a8aecbef56b1fa6eaca78cd438c8b/enum_compat-0.0.3-py3-none-any.whl",
+      "hashes": {
+        "sha256": "88091b617c7fc3bbbceae50db5958023c48dc40b50520005aa3bf27f8f7ea157"
+      },
+      "license": "MIT"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.11",
+      "url": "https://files.pythonhosted.org/packages/90/11/0e6f11117525ff0eec40ebac3d313376f102df93ca44ad9e893ee85e4f89/pycparser-3.11-py3-none-any.whl",
+      "hashes": {
+        "sha256": "51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80"
+      },
+      "license": "BSD-3-Clause"
+    }
+  ]
+}

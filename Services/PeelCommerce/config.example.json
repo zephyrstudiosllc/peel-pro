@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "publicOrigin": "https://commerce.example.invalid",
+  "environment": "Production",
+  "privateSandbox": false,
+  "keyId": "ABCDEFGHIJ",
+  "issuerId": "00000000-0000-4000-8000-000000000000",
+  "privateKeyPath": "/private/operator/SubscriptionKey_ABCDEFGHIJ.p8"
+}

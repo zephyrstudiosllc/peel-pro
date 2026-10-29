@@ -1,0 +1,16 @@
+# Build-only environment, never claims a Wayland/portal/garage runtime.
+# Root supplies a reviewed official .NET10 Debian-trixie SDK image by digest.
+ARG DOTNET_SDK_IMAGE
+FROM ${DOTNET_SDK_IMAGE}
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential cmake ninja-build pkg-config \
+    libgtk-4-dev libportal-dev libportal-gtk4-dev libsecret-1-dev \
+    libjson-glib-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+    gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav gstreamer1.0-pipewire \
+    && rm -rf /var/lib/apt/lists/*
+ENV DOTNET_GENERATE_ASPNET_CERTIFICATE=false
+WORKDIR /source
+COPY . /source
+RUN ./tools/build-linux.sh
+# No ENTRYPOINT/GUI/host socket or volume permission; source and package stay here.

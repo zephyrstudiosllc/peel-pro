@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PeelICloudPairingAccessGroup</key>
+	<string>$(AppIdentifierPrefix)com.zephyrstudiosllc.Peel.icloud-pairing</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Peel Pro selects the existing Terminal tab of an agent session you choose to open. It only reads each tab's terminal device name and never types, runs commands or reads tab contents.</string>
+	<key>CFBundleDisplayName</key>
+	<string>Peel Pro</string>
+	<key>PeelBuildConfiguration</key>
+	<string>$(CONFIGURATION)</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_peel._tcp</string>
+		<string>_peelpair._tcp</string>
+		<string>_peel-signal._tcp</string>
+	</array>
+	<key>SUAllowsAutomaticUpadates</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://zephyrstudios.dev/peel/updates/mac/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>KFFDsYvOHWP5r6/4959D20axv9dfzP8hOw8D/pvTmrA=</string>
+</dict>
+</plist>

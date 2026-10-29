@@ -1,0 +1,14 @@
+{
+  "enabled": false,
+  "public_origin": "https://accounts.example.invalid",
+  "public_webroots": [
+    "/home/zephscrs/public_html",
+    "/home/zephscrs/peelpro.app",
+    "/home/zephscrs/thecarseatstudio.com"
+  ],
+  "private_dir": "/home/zephscrs/peel-private-accounts",
+  "apple_key_path": "/home/zephscrs/peel-private-accounts/SignInWithApple.p8",
+  "encryption_key_path": "/home/zephscrs/peel-private-accounts/encryption.key",
+  "lookup_key_path": "/home/zephscrs/peel-private-accounts/lookup.key",
+  "apple_key_id": "REPLACE-ME"
+}

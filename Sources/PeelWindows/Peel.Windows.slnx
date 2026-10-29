@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Peel.Windows.Mcp/Peel.Windows.Mcp.csproj" />
+    <Project Path="src/Peel.Windows.Client/Peel.Windows.Client.csproj" />
+    <Project Path="src/Peel.Windows.Discovery/Peel.Windows.Discovery.csproj" />
+    <Project Path="src/Peel.Windows.Host/Peel.Windows.Host.csproj" />
+    <Project Path="src/Peel.Windows.Protocol/Peel.Windows.Protocol.csproj" />
+    <Project Path="src/Peel.Windows.Transport/Peel.Windows.Transport.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Peel.Windows.Client.Tests/Peel.Windows.Client.Tests.csproj" />
+    <Project Path="tests/Peel.Windows.Discovery.Tests/Peel.Windows.Discovery.Tests.csproj" />
+    <Project Path="tests/Peel.Windows.Host.Tests/Peel.Windows.Host.Tests.csproj" />
+    <Project Path="tests/Peel.Windows.Protocol.Tests/Peel.Windows.Protocol.Tests.csproj" />
+    <Project Path="tests/Peel.Windows.Transport.Tests/Peel.Windows.Transport.Tests.csproj" />
+  </Folder>
+</Solution>

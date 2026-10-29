@@ -1,0 +1,11 @@
+* text=auto
+*.cs text eol=lf
+*.csproj text eol=lf
+*.props text eol=lf
+*.targets text eol=lf
+*.xaml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.slnx text eol=lf
+/eng/macos-lighting-vectors.swift text eol=lf
+/tests/Peel.Windows.Client.Tests/Fixtures/mac-lighting-vectors.json text eol=lf

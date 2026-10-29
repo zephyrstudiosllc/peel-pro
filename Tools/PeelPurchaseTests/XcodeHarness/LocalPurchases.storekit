@@ -1,0 +1,16 @@
+{
+  "identifier": "PeelDisposablePurchases",
+  "products": [{
+    "displayPrice": "0.01",
+    "familyShareable": false,
+    "internalID": "900000001",
+    "localizations": [{"description": "Local automated fixture only", "displayName": "Fixture lifetime", "locale": "en_US"}],
+    "productID": "dev.peel.disposable.fixture.lifetime",
+    "referenceName": "Fixture lifetime",
+    "type": "NonConsumable"
+  }],
+  "nonRenewingSubscriptions": [],
+  "subscriptionGroups": [],
+  "settings": {"_askToBuyEnabled": false, "_disableDialogs": true, "_locale": "en_US", "_storefront": "USA", "_timeRate": 0},
+  "version": {"major": 4, "minor": 0}
+}

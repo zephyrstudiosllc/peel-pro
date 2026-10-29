@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "publicOrigin": null,
+  "nativeApprovalURI": null,
+  "dataDirectory": null,
+  "principalKeyFile": null,
+  "brokerSigningKeyFile": null,
+  "brokerSigningKeyID": null,
+  "providerRegistrations": [],
+  "pluginClients": [],
+  "deliveryWorkerEnabled": false,
+  "commerceOrigin": null
+}

@@ -1,0 +1,9 @@
+# source_hz	expected_max_frames
+7999	reject
+8000	960
+48000	5760
+192000	23040
+192001	reject
+nan	reject
+inf	reject
+1e308	reject

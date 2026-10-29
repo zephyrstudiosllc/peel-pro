@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Peel.Windows</AssemblyName>
+    <RootNamespace>Peel.Windows.Client</RootNamespace>
+    <PeelMcpOutputDirectory>$(MSBuildProjectDirectory)\..\Peel.Windows.Mcp\bin\$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)</PeelMcpOutputDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\PeelHostMenuBarIcon_256x256.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Peel.Windows.Protocol\Peel.Windows.Protocol.csproj" />
+    <ProjectReference Include="..\Peel.Windows.Mcp\Peel.Windows.Mcp.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Peel.Windows.Discovery\Peel.Windows.Discovery.csproj" />
+    <ProjectReference Include="..\Peel.Windows.Host\Peel.Windows.Host.csproj" />
+  </ItemGroup>
+  <Target Name="CopyPeelMcp" AfterTargets="Build">
+    <ItemGroup><PeelMcpOutput Include="$(PeelMcpOutputDirectory)\Peel.Windows.Mcp.*" /></ItemGroup>
+    <Error Condition="'@(PeelMcpOutput)' == ''" Text="The matching Peel MCP companion build is missing." />
+    <Copy SourceFiles="@(PeelMcpOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="PublishPeelMcp" AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <PeelMcpPublish Include="$(PeelMcpOutputDirectory)\Peel.Windows.Mcp.*">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </PeelMcpPublish>
+    </ItemGroup>
+    <Error Condition="'@(PeelMcpPublish)' == ''" Text="The matching Peel MCP companion publish files are missing." />
+    <ItemGroup>
+      <!-- Project-reference content may already contribute some companion files.
+           Replace only this companion's entries with the matching RID build. -->
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)"
+                             Condition="$([System.String]::Copy('%(ResolvedFileToPublish.RelativePath)').StartsWith('Peel.Windows.Mcp.'))" />
+      <ResolvedFileToPublish Include="@(PeelMcpPublish)">
+        <RelativePath>%(PeelMcpPublish.Filename)%(PeelMcpPublish.Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

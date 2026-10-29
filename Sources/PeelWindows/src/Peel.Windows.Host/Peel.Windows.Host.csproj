@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>Peel.Windows.Host</RootNamespace>
+    <AssemblyName>Peel.Windows.Host</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Peel.Windows.Discovery/Peel.Windows.Discovery.csproj" />
+    <ProjectReference Include="../Peel.Windows.Protocol/Peel.Windows.Protocol.csproj" />
+    <ProjectReference Include="../Peel.Windows.Transport/Peel.Windows.Transport.csproj" />
+  </ItemGroup>
+</Project>

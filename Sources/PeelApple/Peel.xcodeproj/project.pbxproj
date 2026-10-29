@@ -1,0 +1,1346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D9FF9E3871BB7A0F2298BE /* PeelICloudPairingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85F5759A9F789069BBC0BC /* PeelICloudPairingClient.swift */; };
+		05D039ED5E15C8AE452E53BE /* PeelCompanionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BA36A02FAC006EF3295BE /* PeelCompanionModel.swift */; };
+		0AF287E4126F1E4DE1C82363 /* PeelVoiceAudioCaptureSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB86FD4A26991A8F52240C /* PeelVoiceAudioCaptureSupport.swift */; };
+		0B73164CF31544E9AD84017D /* Shared/Client/PeelAISubscriptionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D4075BA9C4E8190CEA0F4 /* Shared/Client/PeelAISubscriptionPolicy.swift */; };
+		120CB1423CDE4E418DA6A2E3 /* Shared/Client/PeelSourceMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0363822F94764B5232DB4 /* Shared/Client/PeelSourceMediaController.swift */; };
+		1343AB8D8E166500428089F9 /* PeelStreamDiagnosticsMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53619342D4A62841233190D8 /* PeelStreamDiagnosticsMessages.swift */; };
+		13F7846618E2F0020F95D551 /* PeelClientAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01730D0F58E8DC2DF4BB19A0 /* PeelClientAudioController.swift */; };
+		17025A585837577F0C30AD01 /* PeelVoiceAudioOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB6B5995F5DA4AFDBDD019 /* PeelVoiceAudioOwner.swift */; };
+		2771A5B9793AF4D3C9B9B5FA /* PeelCloudAgentBrokerCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BCA8D9BD529CDC5B0C5FE /* PeelCloudAgentBrokerCredentialStore.swift */; };
+		281C11022190952D6CD18349 /* PeelCloudAgentManualHandoffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59B77E650DD8C6FF0D4951 /* PeelCloudAgentManualHandoffView.swift */; };
+		2E9F84605D559E33A4E650E0 /* PeelAudioPlaybackPrimitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC76960B753DF8A260C0E0 /* PeelAudioPlaybackPrimitives.swift */; };
+		35363DF16B65732E25372F69 /* PeelICloudPairingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD016E7BBC3ECD4352072C /* PeelICloudPairingSection.swift */; };
+		35E082398CBA0C4E1F172207 /* PeelClientVideoDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0106507A547769236CC717E /* PeelClientVideoDiagnostics.swift */; };
+		3924BAFBC7A6AA5D1D7E6B34 /* PeelCloudAgentRelayRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BD0927004A8643DF761C6B /* PeelCloudAgentRelayRuntime.swift */; };
+		3D09A11B1B594F8C8E02076A /* PeelAudioPlaybackOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25138463F88F9654D98A37F0 /* PeelAudioPlaybackOwner.swift */; };
+		415E2DE0E9D36DD951B71D7F /* PeelWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA5BEB332EADF32CEF4AA35 /* PeelWatchApp.swift */; };
+		42F8F25D1E885472ABB27B74 /* PeelAudioPlaybackPrimitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC76960B753DF8A260C0E0 /* PeelAudioPlaybackPrimitives.swift */; };
+		493CDCB5E34AD909C77C0623 /* PeelWatchHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D40B8A31D7867DFBB8903CA /* PeelWatchHome.swift */; };
+		53209E6602F2E4C8A250F64E /* PeelStreamDiagnosticsMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53619342D4A62841233190D8 /* PeelStreamDiagnosticsMessages.swift */; };
+		5AFEA687CB744A7E9EEB9A61 /* Shared/Client/PeelSourceMediaControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F67C37C717C47FCA6C6D2B7 /* Shared/Client/PeelSourceMediaControlsView.swift */; };
+		5D987D74BBD097C44BCA9B90 /* PeelAudioPlatformCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950E2B49245387813F8A8A3 /* PeelAudioPlatformCapabilities.swift */; };
+		647A319A97BE411384EE1379 /* Shared/All/PeelSourceMediaMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539878A811B43769B410ED2 /* Shared/All/PeelSourceMediaMessages.swift */; };
+		6C7C421BF88C24B0B2EB7FFE /* PeelVoiceAudioCaptureSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB86FD4A26991A8F52240C /* PeelVoiceAudioCaptureSupport.swift */; };
+		70ADA81B9FA87FE945836C45 /* PeelClientAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01730D0F58E8DC2DF4BB19A0 /* PeelClientAudioController.swift */; };
+		7A46C4A6DB905A1F2B1B0BFA /* PeelWatchCore in Frameworks */ = {isa = PBXBuildFile; productRef = D6DF63A10D1B7FE65458A090 /* PeelWatchCore */; };
+		842D93EB7955176E27464067 /* PeelCloudAgentAppComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C5A1F3689A2A1A6F181ED /* PeelCloudAgentAppComposition.swift */; };
+		84883770B33A7FC4EBFF86A6 /* PeelClientVideoDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0106507A547769236CC717E /* PeelClientVideoDiagnostics.swift */; };
+		87E2D7276E37C95FE00F43F7 /* PeelICloudEnrollmentTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD182E58716F5D6478F23ECE /* PeelICloudEnrollmentTransport.swift */; };
+		9204DC212FC3699C009374A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204DC202FC3699C009374A3 /* SettingsView.swift */; };
+		9204DC222FC3699C009374A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204DC202FC3699C009374A3 /* SettingsView.swift */; };
+		9204DC242FC3A078009374A3 /* PeelProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204DC232FC3A078009374A3 /* PeelProFeature.swift */; };
+		9204DC252FC3A078009374A3 /* PeelProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204DC232FC3A078009374A3 /* PeelProFeature.swift */; };
+		921158492FC2354A005D79A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921158482FC2354A005D79A9 /* LoadingView.swift */; };
+		9211584A2FC2354A005D79A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921158482FC2354A005D79A9 /* LoadingView.swift */; };
+		9217E9F32EFC96A3003D31A3 /* OrnamentChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217E9F22EFC96A3003D31A3 /* OrnamentChrome.swift */; };
+		9217E9F42EFC96A3003D31A3 /* OrnamentChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217E9F22EFC96A3003D31A3 /* OrnamentChrome.swift */; };
+		9217EA722F04802A003D31A3 /* PeelTLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217EA712F04802A003D31A3 /* PeelTLS.swift */; };
+		9217EA732F04802A003D31A3 /* PeelTLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217EA712F04802A003D31A3 /* PeelTLS.swift */; };
+		92298C362FC51D4F00D6179D /* PairingState.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C352FC51D4F00D6179D /* PairingState.swift */; };
+		92298C372FC51D4F00D6179D /* PairingState.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C352FC51D4F00D6179D /* PairingState.swift */; };
+		92298C392FC51D6400D6179D /* Connection.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C382FC51D6400D6179D /* Connection.swift */; };
+		92298C3A2FC51D6400D6179D /* Connection.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C382FC51D6400D6179D /* Connection.swift */; };
+		92298C3C2FC51D7800D6179D /* WindowHandoff.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C3B2FC51D7800D6179D /* WindowHandoff.swift */; };
+		92298C3D2FC51D7800D6179D /* WindowHandoff.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C3B2FC51D7800D6179D /* WindowHandoff.swift */; };
+		92298C3F2FC51D8B00D6179D /* Input.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C3E2FC51D8B00D6179D /* Input.swift */; };
+		92298C402FC51D8B00D6179D /* Input.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C3E2FC51D8B00D6179D /* Input.swift */; };
+		92298C422FC51D9A00D6179D /* Media.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C412FC51D9A00D6179D /* Media.swift */; };
+		92298C432FC51D9A00D6179D /* Media.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C412FC51D9A00D6179D /* Media.swift */; };
+		92298C452FC51DA900D6179D /* Receive.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C442FC51DA900D6179D /* Receive.swift */; };
+		92298C462FC51DA900D6179D /* Receive.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C442FC51DA900D6179D /* Receive.swift */; };
+		92298C482FC51DC100D6179D /* LifecycleStreams.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C472FC51DC100D6179D /* LifecycleStreams.swift */; };
+		92298C492FC51DC100D6179D /* LifecycleStreams.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C472FC51DC100D6179D /* LifecycleStreams.swift */; };
+		92298C4B2FC51DCE00D6179D /* PairingHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C4A2FC51DCE00D6179D /* PairingHandshake.swift */; };
+		92298C4C2FC51DCE00D6179D /* PairingHandshake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C4A2FC51DCE00D6179D /* PairingHandshake.swift */; };
+		92298C4E2FC51DE600D6179D /* DiscoveryDelegates.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */; };
+		92298C4F2FC51DE600D6179D /* DiscoveryDelegates.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */; };
+		92298C502FC52E1700D6179D /* DiscoveryDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */; };
+		92298C512FC52E1C00D6179D /* LifecycleStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C472FC51DC100D6179D /* LifecycleStreams.swift */; };
+		92298C522FC52E2000D6179D /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C3E2FC51D8B00D6179D /* Input.swift */; };
+		92298C532FC52E2600D6179D /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C382FC51D6400D6179D /* Connection.swift */; };
+		92298C542FC52E2C00D6179D /* Receive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C442FC51DA900D6179D /* Receive.swift */; };
+		92298C552FC52E3200D6179D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C412FC51D9A00D6179D /* Media.swift */; };
+		92298C562FC52E3800D6179D /* WindowHandoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C3B2FC51D7800D6179D /* WindowHandoff.swift */; };
+		92298C572FC52E3E00D6179D /* PairingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C352FC51D4F00D6179D /* PairingState.swift */; };
+		92298C582FC52E4900D6179D /* DiscoveryDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */; };
+		92298C592FC52E4D00D6179D /* LifecycleStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C472FC51DC100D6179D /* LifecycleStreams.swift */; };
+		92298C5A2FC52E5200D6179D /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C3E2FC51D8B00D6179D /* Input.swift */; };
+		92298C5B2FC52E5700D6179D /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C382FC51D6400D6179D /* Connection.swift */; };
+		92298C5C2FC52E5B00D6179D /* Receive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C442FC51DA900D6179D /* Receive.swift */; };
+		92298C5D2FC52E6100D6179D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C412FC51D9A00D6179D /* Media.swift */; };
+		92298C5E2FC52E6600D6179D /* WindowHandoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C3B2FC51D7800D6179D /* WindowHandoff.swift */; };
+		92298C5F2FC52E6B00D6179D /* PairingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92298C352FC51D4F00D6179D /* PairingState.swift */; };
+		923935E92FD1133300BED7B2 /* ScrollControlOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923935E82FD1133300BED7B2 /* ScrollControlOverlay.swift */; };
+		923935EA2FD1133300BED7B2 /* ScrollControlOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923935E82FD1133300BED7B2 /* ScrollControlOverlay.swift */; };
+		92674E8D2F7FA3BE00B1D09D /* ClientViewportTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92674E8C2F7FA3BE00B1D09D /* ClientViewportTransform.swift */; };
+		92674E8E2F7FA3BE00B1D09D /* ClientViewportTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92674E8C2F7FA3BE00B1D09D /* ClientViewportTransform.swift */; };
+		92674EA22F7FAFED00B1D09D /* MacSymbolChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92674EA12F7FAFED00B1D09D /* MacSymbolChoice.swift */; };
+		92674EA32F7FAFED00B1D09D /* MacSymbolChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92674EA12F7FAFED00B1D09D /* MacSymbolChoice.swift */; };
+		9267C5ED2FE068080073CBB2 /* TrackpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C5DF2FE068080073CBB2 /* TrackpadView.swift */; };
+		9267C5FE2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C5FD2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift */; };
+		9267C5FF2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C5FD2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift */; };
+		9267C6012FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C6002FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift */; };
+		9267C6022FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C6002FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift */; };
+		9267C62E2FE107D30073CBB2 /* PeelHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C62D2FE107D30073CBB2 /* PeelHostSession.swift */; };
+		9267C62F2FE107D30073CBB2 /* PeelHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C62D2FE107D30073CBB2 /* PeelHostSession.swift */; };
+		9267C6312FE1081C0073CBB2 /* PeelHostKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C6302FE1081C0073CBB2 /* PeelHostKey.swift */; };
+		9267C6322FE1081C0073CBB2 /* PeelHostKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267C6302FE1081C0073CBB2 /* PeelHostKey.swift */; };
+		9268C5E62F6092DE002D00D5 /* PeelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268C5E52F6092DE002D00D5 /* PeelStore.swift */; };
+		9268C5E72F6092DE002D00D5 /* PeelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268C5E52F6092DE002D00D5 /* PeelStore.swift */; };
+		9268C5E92F6092F0002D00D5 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268C5E82F6092F0002D00D5 /* PaywallView.swift */; };
+		9268C5EA2F6092F0002D00D5 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9268C5E82F6092F0002D00D5 /* PaywallView.swift */; };
+		9268C5EC2F609707002D00D5 /* Peel Storekit Config.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 9268C5EB2F609707002D00D5 /* Peel Storekit Config.storekit */; };
+		9268C5ED2F609707002D00D5 /* Peel Storekit Config.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 9268C5EB2F609707002D00D5 /* Peel Storekit Config.storekit */; };
+		92AAC0A12F1CD22C00FC2BD6 /* PeelSharedMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC09F2F1CD22C00FC2BD6 /* PeelSharedMessages.swift */; };
+		92AAC0A22F1CD22C00FC2BD6 /* PeelSharedMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC09F2F1CD22C00FC2BD6 /* PeelSharedMessages.swift */; };
+		92AAC0A42F1CD23500FC2BD6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC0A32F1CD23500FC2BD6 /* InfoView.swift */; };
+		92AAC0A52F1CD23500FC2BD6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC0A32F1CD23500FC2BD6 /* InfoView.swift */; };
+		92AAC0A92F1CD24700FC2BD6 /* StatusDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC0A72F1CD24700FC2BD6 /* StatusDot.swift */; };
+		92AAC0AA2F1CD24700FC2BD6 /* StatusDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AAC0A72F1CD24700FC2BD6 /* StatusDot.swift */; };
+		92BDE7252F8FF231003E4D46 /* CompressedVideoRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BDE7242F8FF231003E4D46 /* CompressedVideoRenderer.swift */; };
+		92BDE7262F8FF231003E4D46 /* CompressedVideoRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BDE7242F8FF231003E4D46 /* CompressedVideoRenderer.swift */; };
+		92CD28B22EDFE5D10065C74B /* PeelClientBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD28AE2EDFE5D10065C74B /* PeelClientBrowser.swift */; };
+		92CD28F42EE036240065C74B /* PeelClientBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD28AE2EDFE5D10065C74B /* PeelClientBrowser.swift */; };
+		92CD28FB2EE1054C0065C74B /* InvisibleTextInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD28FA2EE1054C0065C74B /* InvisibleTextInputDelegate.swift */; };
+		92CD28FC2EE1054C0065C74B /* InvisibleTextInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD28FA2EE1054C0065C74B /* InvisibleTextInputDelegate.swift */; };
+		99BF4449E51E88B3BB69D4D0 /* PeelAudioPlaybackOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25138463F88F9654D98A37F0 /* PeelAudioPlaybackOwner.swift */; };
+		9DF8D7E29D9A95A552B1AAB0 /* PeelICloudPairingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB85F5759A9F789069BBC0BC /* PeelICloudPairingClient.swift */; };
+		A0619E14A920403BB607F773 /* PeelCloudAgentProEvidenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C87A22ACD14D7996A3BE01 /* PeelCloudAgentProEvidenceController.swift */; };
+		A1092E1FC17D338B5FB9E00C /* PeelAudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1FFAB18F603A1E0AA11B6 /* PeelAudioControls.swift */; };
+		A5DB459192FA45B1ACEAB0F7 /* Shared/All/PeelAudioPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9177F5C58584704B3CB5607 /* Shared/All/PeelAudioPacket.swift */; };
+		A65000000000000000000001 /* PeelCompanionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BA36A02FAC006EF3295BE /* PeelCompanionModel.swift */; };
+		A65000000000000000000002 /* PeelWatchCore in Frameworks */ = {isa = PBXBuildFile; productRef = A65000000000000000000003 /* PeelWatchCore */; };
+		A65000000000000000000004 /* Peel Pro.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A59E2C5DD1E5920C5F840168 /* Peel Pro.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A65000000000000000000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65000000000000000000008 /* Assets.xcassets */; };
+		A65100000000000000000001 /* PeelPhoneWatchRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65100000000000000000002 /* PeelPhoneWatchRelay.swift */; };
+		A65100000000000000000003 /* PeelWatchFrameDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65100000000000000000004 /* PeelWatchFrameDecoder.swift */; };
+		A65100000000000000000005 /* PeelWatchStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65100000000000000000006 /* PeelWatchStreamView.swift */; };
+		A65100000000000000000007 /* PeelWatchCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65100000000000000000008 /* PeelWatchCloudView.swift */; };
+		A65100000000000000000009 /* PeelCloudAgentPhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6510000000000000000000A /* PeelCloudAgentPhoneService.swift */; };
+		A73F8D3E36BD4D3485BE541D /* Shared/All/PeelAudioPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9177F5C58584704B3CB5607 /* Shared/All/PeelAudioPacket.swift */; };
+		AC9C0A436EA60DB836E10CFE /* PeelAudioMicrophoneCapturePrimitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419D25870DAA91B182F45F67 /* PeelAudioMicrophoneCapturePrimitives.swift */; };
+		B2DC34105CFE43E2B7FFBBBE /* Shared/All/PeelSourceMediaMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539878A811B43769B410ED2 /* Shared/All/PeelSourceMediaMessages.swift */; };
+		B8AA54A7D90E568DA0875337 /* PeelAudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1FFAB18F603A1E0AA11B6 /* PeelAudioControls.swift */; };
+		BA5762E2275444719FDB6E85 /* Shared/Client/PeelAISubscriptionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D4075BA9C4E8190CEA0F4 /* Shared/Client/PeelAISubscriptionPolicy.swift */; };
+		BB33732BDFB0F9BC0BC5FC94 /* PeelAudioMicrophoneCapturePrimitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419D25870DAA91B182F45F67 /* PeelAudioMicrophoneCapturePrimitives.swift */; };
+		BCAB1383BA944761AB82745C /* Shared/Client/PeelAISubscriptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159643CDE215476C861A7CAD /* Shared/Client/PeelAISubscriptionSection.swift */; };
+		BD87AA8FE072C80A83FF5827 /* PeelICloudEnrollmentTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD182E58716F5D6478F23ECE /* PeelICloudEnrollmentTransport.swift */; };
+		BF4F811ECF085A5312EDFFDE /* PeelICloudPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB2FBC9619A614AF0D2146 /* PeelICloudPairing.swift */; };
+		BF9E5112AE74414B7AE84776 /* PeelVoiceAudioOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB6B5995F5DA4AFDBDD019 /* PeelVoiceAudioOwner.swift */; };
+		C1A361203199A5D531B9D985 /* PeelWatchCloudEnrollment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF72289C5F7F09B8C3AA00F3 /* PeelWatchCloudEnrollment.swift */; };
+		C2E01DA148794CA497F54222 /* Shared/Client/PeelCapabilityPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E01DA148794CA497F54221 /* Shared/Client/PeelCapabilityPolicy.swift */; };
+		C2E01DA148794CA497F54223 /* Shared/Client/PeelCapabilityPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E01DA148794CA497F54221 /* Shared/Client/PeelCapabilityPolicy.swift */; };
+		C2E02DA148794CA497F54222 /* Shared/Client/PeelLegacyPurchasePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E02DA148794CA497F54221 /* Shared/Client/PeelLegacyPurchasePolicy.swift */; };
+		C2E02DA148794CA497F54223 /* Shared/Client/PeelLegacyPurchasePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E02DA148794CA497F54221 /* Shared/Client/PeelLegacyPurchasePolicy.swift */; };
+		C2E03DA148794CA497F54006 /* PeelShellUI in Frameworks */ = {isa = PBXBuildFile; productRef = C2E03DA148794CA497F54002 /* PeelShellUI */; };
+		C2E03DA148794CA497F54007 /* PeelShellCore in Frameworks */ = {isa = PBXBuildFile; productRef = C2E03DA148794CA497F54003 /* PeelShellCore */; };
+		C2E03DA148794CA497F54008 /* PeelShellUI in Frameworks */ = {isa = PBXBuildFile; productRef = C2E03DA148794CA497F54004 /* PeelShellUI */; };
+		C2E03DA148794CA497F54009 /* PeelShellCore in Frameworks */ = {isa = PBXBuildFile; productRef = C2E03DA148794CA497F54005 /* PeelShellCore */; };
+		C2E03DA148794CA497F54011 /* Shared/Client/PeelShellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E03DA148794CA497F54010 /* Shared/Client/PeelShellPreview.swift */; };
+		C2E03DA148794CA497F54012 /* Shared/Client/PeelShellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E03DA148794CA497F54010 /* Shared/Client/PeelShellPreview.swift */; };
+		C53159406C322F039281A7F9 /* PeelCloudAgentNativeBrokerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C05D1A9433AD7B43F9B3F3 /* PeelCloudAgentNativeBrokerConnector.swift */; };
+		C7A1D0B4A0C84D9FA8A2B102 /* Shared/Client/PeelClientMachineStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1D0B4A0C84D9FA8A2B101 /* Shared/Client/PeelClientMachineStatusController.swift */; };
+		C7A1D0B4A0C84D9FA8A2B103 /* Shared/Client/PeelClientMachineStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1D0B4A0C84D9FA8A2B101 /* Shared/Client/PeelClientMachineStatusController.swift */; };
+		C7A1D0B4A0C84D9FA8A2B105 /* Shared/Client/PeelMachineStatusSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1D0B4A0C84D9FA8A2B104 /* Shared/Client/PeelMachineStatusSheet.swift */; };
+		C7A1D0B4A0C84D9FA8A2B106 /* Shared/Client/PeelMachineStatusSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1D0B4A0C84D9FA8A2B104 /* Shared/Client/PeelMachineStatusSheet.swift */; };
+		CC911A000000000000000002 /* Shared/Client/PeelMachineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC911A000000000000000001 /* Shared/Client/PeelMachineStatusView.swift */; };
+		CC911A000000000000000003 /* Shared/Client/PeelMachineStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC911A000000000000000001 /* Shared/Client/PeelMachineStatusView.swift */; };
+		CDDFB858EC3A489CBC270E0F /* Shared/Client/PeelSourceMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0363822F94764B5232DB4 /* Shared/Client/PeelSourceMediaController.swift */; };
+		D1A2B3C4D5E60718293A4C01 /* PeelRemoteNotificationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B01 /* PeelRemoteNotificationPolicy.swift */; };
+		D1A2B3C4D5E60718293A4C02 /* PeelLocalRemoteNotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B02 /* PeelLocalRemoteNotificationPresenter.swift */; };
+		D1A2B3C4D5E60718293A4C03 /* PeelRemoteNotificationInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B03 /* PeelRemoteNotificationInbox.swift */; };
+		D1A2B3C4D5E60718293A4C04 /* PeelHostSessionRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B04 /* PeelHostSessionRemoteNotifications.swift */; };
+		D1A2B3C4D5E60718293A4D01 /* PeelRemoteNotificationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B01 /* PeelRemoteNotificationPolicy.swift */; };
+		D1A2B3C4D5E60718293A4D02 /* PeelLocalRemoteNotificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B02 /* PeelLocalRemoteNotificationPresenter.swift */; };
+		D1A2B3C4D5E60718293A4D03 /* PeelRemoteNotificationInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B03 /* PeelRemoteNotificationInbox.swift */; };
+		D1A2B3C4D5E60718293A4D04 /* PeelHostSessionRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A2B3C4D5E60718293A4B04 /* PeelHostSessionRemoteNotifications.swift */; };
+		D279E1039B9B15857CF25526 /* PeelICloudPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB2FBC9619A614AF0D2146 /* PeelICloudPairing.swift */; };
+		D3947BD151AD75D42CB01E7A /* PeelICloudPairingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD016E7BBC3ECD4352072C /* PeelICloudPairingSection.swift */; };
+		D6A100182026101800000002 /* Shared/Client/PeelWindowAdmission.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100182026101800000001 /* Shared/Client/PeelWindowAdmission.swift */; };
+		D6A100182026101800000003 /* Shared/Client/PeelWindowAdmission.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100182026101800000001 /* Shared/Client/PeelWindowAdmission.swift */; };
+		D6A100202026102000000101 /* PeelProEntitlementWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100202026102000000001 /* PeelProEntitlementWire.swift */; };
+		D6A100202026102000000102 /* PeelProEntitlementWire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100202026102000000001 /* PeelProEntitlementWire.swift */; };
+		D6A100202026102000000103 /* PeelProEvidenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100202026102000000002 /* PeelProEvidenceClient.swift */; };
+		D6A100202026102000000104 /* PeelProEvidenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A100202026102000000002 /* PeelProEvidenceClient.swift */; };
+		D6C895814CE24659B0E4EA6B /* Shared/Client/PeelAISubscriptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159643CDE215476C861A7CAD /* Shared/Client/PeelAISubscriptionSection.swift */; };
+		E1D0B0010000000000000001 /* PeelDirectEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000001 /* PeelDirectEndpoint.swift */; };
+		E1D0B0010000000000000002 /* PeelDirectEndpointSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000002 /* PeelDirectEndpointSection.swift */; };
+		E1D0B0010000000000000003 /* PeelMachineStatusMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000003 /* PeelMachineStatusMessages.swift */; };
+		E1D0B0020000000000000001 /* PeelDirectEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000001 /* PeelDirectEndpoint.swift */; };
+		E1D0B0020000000000000002 /* PeelDirectEndpointSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000002 /* PeelDirectEndpointSection.swift */; };
+		E1D0B0020000000000000003 /* PeelMachineStatusMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D0A0010000000000000003 /* PeelMachineStatusMessages.swift */; };
+		E2F0455D7B5A4EDAB47FA3F2 /* Shared/Client/PeelSourceMediaControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F67C37C717C47FCA6C6D2B7 /* Shared/Client/PeelSourceMediaControlsView.swift */; };
+		EEEBBAEDDDB04CB73D18DADD /* PeelWatchCloudClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3B5FEC7AE3AA2998EE887 /* PeelWatchCloudClient.swift */; };
+		F264E73659A346909947CB12 /* Shared/Client/PeelStreamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264E73659A346909947CB11 /* Shared/Client/PeelStreamDetailsView.swift */; };
+		F264E73659A346909947CB13 /* Shared/Client/PeelStreamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F264E73659A346909947CB11 /* Shared/Client/PeelStreamDetailsView.swift */; };
+		FB83DD8A9BE23375F4255C5C /* PeelAudioPlatformCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950E2B49245387813F8A8A3 /* PeelAudioPlatformCapabilities.swift */; };
+		A465C37D9ECEF23984D231CC /* PeelGameControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5090DBAED186062923A86CB /* PeelGameControllerInput.swift */; };
+		3B783527A38C2E484E74620B /* PeelGameControllerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5090DBAED186062923A86CB /* PeelGameControllerInput.swift */; };
+		660FD7B3D0D1F5742C67404A /* PeelGameControllerPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E295EB4FBF560CCC030A5EF /* PeelGameControllerPolicy.swift */; };
+		279D540B79CAB0052ACEB823 /* PeelGameControllerPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E295EB4FBF560CCC030A5EF /* PeelGameControllerPolicy.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A65000000000000000000005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 928383DD2EDD177A00108046 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7392E3807915F0FF03CBBDC8;
+			remoteInfo = "Peel Watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A65000000000000000000007 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A65000000000000000000004 /* Peel Pro.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01730D0F58E8DC2DF4BB19A0 /* PeelClientAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelClientAudioController.swift; sourceTree = "<group>"; };
+		03DB2FBC9619A614AF0D2146 /* PeelICloudPairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelICloudPairing.swift; sourceTree = "<group>"; };
+		08C87A22ACD14D7996A3BE01 /* PeelCloudAgentProEvidenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentProEvidenceController.swift; sourceTree = "<group>"; };
+		159643CDE215476C861A7CAD /* Shared/Client/PeelAISubscriptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelAISubscriptionSection.swift; sourceTree = SOURCE_ROOT; };
+		25138463F88F9654D98A37F0 /* PeelAudioPlaybackOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelAudioPlaybackOwner.swift; sourceTree = "<group>"; };
+		2B4BCA8D9BD529CDC5B0C5FE /* PeelCloudAgentBrokerCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentBrokerCredentialStore.swift; sourceTree = "<group>"; };
+		2D40B8A31D7867DFBB8903CA /* PeelWatchHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchHome.swift; sourceTree = "<group>"; };
+		2E7BA36A02FAC006EF3295BE /* PeelCompanionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCompanionModel.swift; sourceTree = "<group>"; };
+		419D25870DAA91B182F45F67 /* PeelAudioMicrophoneCapturePrimitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelAudioMicrophoneCapturePrimitives.swift; sourceTree = "<group>"; };
+		47DB86FD4A26991A8F52240C /* PeelVoiceAudioCaptureSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelVoiceAudioCaptureSupport.swift; sourceTree = "<group>"; };
+		50CB6B5995F5DA4AFDBDD019 /* PeelVoiceAudioOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelVoiceAudioOwner.swift; sourceTree = "<group>"; };
+		53619342D4A62841233190D8 /* PeelStreamDiagnosticsMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelStreamDiagnosticsMessages.swift; sourceTree = "<group>"; };
+		6B59B77E650DD8C6FF0D4951 /* PeelCloudAgentManualHandoffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentManualHandoffView.swift; sourceTree = "<group>"; };
+		83D3B5FEC7AE3AA2998EE887 /* PeelWatchCloudClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchCloudClient.swift; sourceTree = "<group>"; };
+		8BDC76960B753DF8A260C0E0 /* PeelAudioPlaybackPrimitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelAudioPlaybackPrimitives.swift; sourceTree = "<group>"; };
+		9204DC202FC3699C009374A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9204DC232FC3A078009374A3 /* PeelProFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelProFeature.swift; sourceTree = "<group>"; };
+		921158482FC2354A005D79A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		9217E9F22EFC96A3003D31A3 /* OrnamentChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentChrome.swift; sourceTree = "<group>"; };
+		9217EA712F04802A003D31A3 /* PeelTLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelTLS.swift; sourceTree = "<group>"; };
+		92298C352FC51D4F00D6179D /* PairingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingState.swift; sourceTree = "<group>"; };
+		92298C382FC51D6400D6179D /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		92298C3B2FC51D7800D6179D /* WindowHandoff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowHandoff.swift; sourceTree = "<group>"; };
+		92298C3E2FC51D8B00D6179D /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		92298C412FC51D9A00D6179D /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		92298C442FC51DA900D6179D /* Receive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receive.swift; sourceTree = "<group>"; };
+		92298C472FC51DC100D6179D /* LifecycleStreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleStreams.swift; sourceTree = "<group>"; };
+		92298C4A2FC51DCE00D6179D /* PairingHandshake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingHandshake.swift; sourceTree = "<group>"; };
+		92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDelegates.swift; sourceTree = "<group>"; };
+		923935E82FD1133300BED7B2 /* ScrollControlOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollControlOverlay.swift; sourceTree = "<group>"; };
+		92674E8C2F7FA3BE00B1D09D /* ClientViewportTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewportTransform.swift; sourceTree = "<group>"; };
+		92674EA12F7FAFED00B1D09D /* MacSymbolChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacSymbolChoice.swift; sourceTree = "<group>"; };
+		9267C5DF2FE068080073CBB2 /* TrackpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackpadView.swift; sourceTree = "<group>"; };
+		9267C5FD2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardMacroKeysOverlay.swift; sourceTree = "<group>"; };
+		9267C6002FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardArrowKeysOverlay.swift; sourceTree = "<group>"; };
+		9267C62D2FE107D30073CBB2 /* PeelHostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelHostSession.swift; sourceTree = "<group>"; };
+		9267C6302FE1081C0073CBB2 /* PeelHostKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelHostKey.swift; sourceTree = "<group>"; };
+		9268C5352F608574002D00D5 /* Peel Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peel Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9268C5362F608574002D00D5 /* Peel Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peel Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9268C5E52F6092DE002D00D5 /* PeelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelStore.swift; sourceTree = "<group>"; };
+		9268C5E82F6092F0002D00D5 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		9268C5EB2F609707002D00D5 /* Peel Storekit Config.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Peel Storekit Config.storekit"; sourceTree = "<group>"; };
+		92AAC09F2F1CD22C00FC2BD6 /* PeelSharedMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelSharedMessages.swift; sourceTree = "<group>"; };
+		92AAC0A32F1CD23500FC2BD6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		92AAC0A72F1CD24700FC2BD6 /* StatusDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDot.swift; sourceTree = "<group>"; };
+		92BDE7242F8FF231003E4D46 /* CompressedVideoRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressedVideoRenderer.swift; sourceTree = "<group>"; };
+		92CD28AE2EDFE5D10065C74B /* PeelClientBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelClientBrowser.swift; sourceTree = "<group>"; };
+		92CD28FA2EE1054C0065C74B /* InvisibleTextInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvisibleTextInputDelegate.swift; sourceTree = "<group>"; };
+		9539878A811B43769B410ED2 /* Shared/All/PeelSourceMediaMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/All/PeelSourceMediaMessages.swift; sourceTree = SOURCE_ROOT; };
+		9F67C37C717C47FCA6C6D2B7 /* Shared/Client/PeelSourceMediaControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelSourceMediaControlsView.swift; sourceTree = SOURCE_ROOT; };
+		A59E2C5DD1E5920C5F840168 /* Peel Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peel Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61D4075BA9C4E8190CEA0F4 /* Shared/Client/PeelAISubscriptionPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelAISubscriptionPolicy.swift; sourceTree = SOURCE_ROOT; };
+		A65000000000000000000008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A65100000000000000000002 /* PeelPhoneWatchRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelPhoneWatchRelay.swift; sourceTree = "<group>"; };
+		A65100000000000000000004 /* PeelWatchFrameDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchFrameDecoder.swift; sourceTree = "<group>"; };
+		A65100000000000000000006 /* PeelWatchStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchStreamView.swift; sourceTree = "<group>"; };
+		A65100000000000000000008 /* PeelWatchCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchCloudView.swift; sourceTree = "<group>"; };
+		A6510000000000000000000A /* PeelCloudAgentPhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentPhoneService.swift; sourceTree = "<group>"; };
+		ACA5BEB332EADF32CEF4AA35 /* PeelWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchApp.swift; sourceTree = "<group>"; };
+		B8A1FFAB18F603A1E0AA11B6 /* PeelAudioControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelAudioControls.swift; sourceTree = "<group>"; };
+		C2E01DA148794CA497F54221 /* Shared/Client/PeelCapabilityPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelCapabilityPolicy.swift; sourceTree = SOURCE_ROOT; };
+		C2E02DA148794CA497F54221 /* Shared/Client/PeelLegacyPurchasePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelLegacyPurchasePolicy.swift; sourceTree = SOURCE_ROOT; };
+		C2E03DA148794CA497F54010 /* Shared/Client/PeelShellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelShellPreview.swift; sourceTree = SOURCE_ROOT; };
+		C3BD0927004A8643DF761C6B /* PeelCloudAgentRelayRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentRelayRuntime.swift; sourceTree = "<group>"; };
+		C7A1D0B4A0C84D9FA8A2B101 /* Shared/Client/PeelClientMachineStatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelClientMachineStatusController.swift; sourceTree = SOURCE_ROOT; };
+		C7A1D0B4A0C84D9FA8A2B104 /* Shared/Client/PeelMachineStatusSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelMachineStatusSheet.swift; sourceTree = SOURCE_ROOT; };
+		C85C5A1F3689A2A1A6F181ED /* PeelCloudAgentAppComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentAppComposition.swift; sourceTree = "<group>"; };
+		CC911A000000000000000001 /* Shared/Client/PeelMachineStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelMachineStatusView.swift; sourceTree = SOURCE_ROOT; };
+		D0106507A547769236CC717E /* PeelClientVideoDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelClientVideoDiagnostics.swift; sourceTree = "<group>"; };
+		D1A2B3C4D5E60718293A4B01 /* PeelRemoteNotificationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelRemoteNotificationPolicy.swift; sourceTree = "<group>"; };
+		D1A2B3C4D5E60718293A4B02 /* PeelLocalRemoteNotificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelLocalRemoteNotificationPresenter.swift; sourceTree = "<group>"; };
+		D1A2B3C4D5E60718293A4B03 /* PeelRemoteNotificationInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelRemoteNotificationInbox.swift; sourceTree = "<group>"; };
+		D1A2B3C4D5E60718293A4B04 /* PeelHostSessionRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelHostSessionRemoteNotifications.swift; sourceTree = "<group>"; };
+		D4F0363822F94764B5232DB4 /* Shared/Client/PeelSourceMediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelSourceMediaController.swift; sourceTree = SOURCE_ROOT; };
+		D6A100182026101800000001 /* Shared/Client/PeelWindowAdmission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelWindowAdmission.swift; sourceTree = SOURCE_ROOT; };
+		D6A100202026102000000001 /* PeelProEntitlementWire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelProEntitlementWire.swift; sourceTree = "<group>"; };
+		D6A100202026102000000002 /* PeelProEvidenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelProEvidenceClient.swift; sourceTree = "<group>"; };
+		DD182E58716F5D6478F23ECE /* PeelICloudEnrollmentTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelICloudEnrollmentTransport.swift; sourceTree = "<group>"; };
+		DEAD016E7BBC3ECD4352072C /* PeelICloudPairingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelICloudPairingSection.swift; sourceTree = "<group>"; };
+		E1D0A0010000000000000001 /* PeelDirectEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelDirectEndpoint.swift; sourceTree = "<group>"; };
+		E1D0A0010000000000000002 /* PeelDirectEndpointSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelDirectEndpointSection.swift; sourceTree = "<group>"; };
+		E1D0A0010000000000000003 /* PeelMachineStatusMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelMachineStatusMessages.swift; sourceTree = "<group>"; };
+		E6C05D1A9433AD7B43F9B3F3 /* PeelCloudAgentNativeBrokerConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelCloudAgentNativeBrokerConnector.swift; sourceTree = "<group>"; };
+		E9177F5C58584704B3CB5607 /* Shared/All/PeelAudioPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/All/PeelAudioPacket.swift; sourceTree = SOURCE_ROOT; };
+		EB85F5759A9F789069BBC0BC /* PeelICloudPairingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelICloudPairingClient.swift; sourceTree = "<group>"; };
+		EF72289C5F7F09B8C3AA00F3 /* PeelWatchCloudEnrollment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelWatchCloudEnrollment.swift; sourceTree = "<group>"; };
+		F264E73659A346909947CB11 /* Shared/Client/PeelStreamDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Client/PeelStreamDetailsView.swift; sourceTree = SOURCE_ROOT; };
+		F950E2B49245387813F8A8A3 /* PeelAudioPlatformCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelAudioPlatformCapabilities.swift; sourceTree = "<group>"; };
+		E5090DBAED186062923A86CB /* PeelGameControllerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelGameControllerInput.swift; sourceTree = "<group>"; };
+		4E295EB4FBF560CCC030A5EF /* PeelGameControllerPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeelGameControllerPolicy.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9283840D2EDD4B2800108046 /* Exceptions for "Peel" folder in "Peel" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 928383E42EDD177A00108046 /* Peel */;
+		};
+		92CD28F72EE03CE20065C74B /* Exceptions for "Peel-iPad" folder in "Peel-iPad" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 92CD28E62EE036060065C74B /* Peel-iPad */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		928383E72EDD177A00108046 /* Peel */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9283840D2EDD4B2800108046 /* Exceptions for "Peel" folder in "Peel" target */,
+			);
+			path = Peel;
+			sourceTree = "<group>";
+		};
+		92CD28E82EE036060065C74B /* Peel-iPad */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92CD28F72EE03CE20065C74B /* Exceptions for "Peel-iPad" folder in "Peel-iPad" target */,
+			);
+			path = "Peel-iPad";
+			sourceTree = "<group>";
+		};
+		A7CC01000000000000000001 /* Optional Apple Account */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			name = "Optional Apple Account";
+			path = Shared/Account;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		928383E22EDD177A00108046 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E03DA148794CA497F54006 /* PeelShellUI in Frameworks */,
+				C2E03DA148794CA497F54007 /* PeelShellCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92CD28E42EE036060065C74B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65000000000000000000002 /* PeelWatchCore in Frameworks */,
+				C2E03DA148794CA497F54008 /* PeelShellUI in Frameworks */,
+				C2E03DA148794CA497F54009 /* PeelShellCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD12D427559AD7F6F57A4667 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A46C4A6DB905A1F2B1B0BFA /* PeelWatchCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B1FE10D67FBFB007D054259 /* Peel-Watch */ = {
+			isa = PBXGroup;
+			children = (
+				EF72289C5F7F09B8C3AA00F3 /* PeelWatchCloudEnrollment.swift */,
+				A65000000000000000000008 /* Assets.xcassets */,
+				ACA5BEB332EADF32CEF4AA35 /* PeelWatchApp.swift */,
+				2D40B8A31D7867DFBB8903CA /* PeelWatchHome.swift */,
+				A65100000000000000000006 /* PeelWatchStreamView.swift */,
+				A65100000000000000000008 /* PeelWatchCloudView.swift */,
+				83D3B5FEC7AE3AA2998EE887 /* PeelWatchCloudClient.swift */,
+			);
+			path = "Peel-Watch";
+			sourceTree = "<group>";
+		};
+		7967AF8E6B7731799A30BC47 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				B8A1FFAB18F603A1E0AA11B6 /* PeelAudioControls.swift */,
+				25138463F88F9654D98A37F0 /* PeelAudioPlaybackOwner.swift */,
+				8BDC76960B753DF8A260C0E0 /* PeelAudioPlaybackPrimitives.swift */,
+				01730D0F58E8DC2DF4BB19A0 /* PeelClientAudioController.swift */,
+				50CB6B5995F5DA4AFDBDD019 /* PeelVoiceAudioOwner.swift */,
+				47DB86FD4A26991A8F52240C /* PeelVoiceAudioCaptureSupport.swift */,
+				419D25870DAA91B182F45F67 /* PeelAudioMicrophoneCapturePrimitives.swift */,
+				F950E2B49245387813F8A8A3 /* PeelAudioPlatformCapabilities.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		9217EA752F04808C003D31A3 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				92AAC0A72F1CD24700FC2BD6 /* StatusDot.swift */,
+				921158482FC2354A005D79A9 /* LoadingView.swift */,
+				92AAC09F2F1CD22C00FC2BD6 /* PeelSharedMessages.swift */,
+				D6A100202026102000000001 /* PeelProEntitlementWire.swift */,
+				E1D0A0010000000000000003 /* PeelMachineStatusMessages.swift */,
+				53619342D4A62841233190D8 /* PeelStreamDiagnosticsMessages.swift */,
+				9217EA712F04802A003D31A3 /* PeelTLS.swift */,
+				03DB2FBC9619A614AF0D2146 /* PeelICloudPairing.swift */,
+				DD182E58716F5D6478F23ECE /* PeelICloudEnrollmentTransport.swift */,
+				9268C5EB2F609707002D00D5 /* Peel Storekit Config.storekit */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
+		9217EA762F048094003D31A3 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				E5090DBAED186062923A86CB /* PeelGameControllerInput.swift */,
+				4E295EB4FBF560CCC030A5EF /* PeelGameControllerPolicy.swift */,
+				7967AF8E6B7731799A30BC47 /* Audio */,
+				D1A2B3C4D5E60718293A4B00 /* Notifications */,
+				92298C342FC51D2000D6179D /* ClientBrowser */,
+				E1D0A0010000000000000002 /* PeelDirectEndpointSection.swift */,
+				DEAD016E7BBC3ECD4352072C /* PeelICloudPairingSection.swift */,
+				92BDE7242F8FF231003E4D46 /* CompressedVideoRenderer.swift */,
+				D0106507A547769236CC717E /* PeelClientVideoDiagnostics.swift */,
+				F264E73659A346909947CB11 /* Shared/Client/PeelStreamDetailsView.swift */,
+				9204DC232FC3A078009374A3 /* PeelProFeature.swift */,
+				92674EA12F7FAFED00B1D09D /* MacSymbolChoice.swift */,
+				92674E8C2F7FA3BE00B1D09D /* ClientViewportTransform.swift */,
+				9268C5E82F6092F0002D00D5 /* PaywallView.swift */,
+				C2E03DA148794CA497F54010 /* Shared/Client/PeelShellPreview.swift */,
+				C2E02DA148794CA497F54221 /* Shared/Client/PeelLegacyPurchasePolicy.swift */,
+				D6A100182026101800000001 /* Shared/Client/PeelWindowAdmission.swift */,
+				C2E01DA148794CA497F54221 /* Shared/Client/PeelCapabilityPolicy.swift */,
+				9268C5E52F6092DE002D00D5 /* PeelStore.swift */,
+				D6A100202026102000000002 /* PeelProEvidenceClient.swift */,
+				923935E82FD1133300BED7B2 /* ScrollControlOverlay.swift */,
+				C7A1D0B4A0C84D9FA8A2B101 /* Shared/Client/PeelClientMachineStatusController.swift */,
+				9F67C37C717C47FCA6C6D2B7 /* Shared/Client/PeelSourceMediaControlsView.swift */,
+				D4F0363822F94764B5232DB4 /* Shared/Client/PeelSourceMediaController.swift */,
+				9539878A811B43769B410ED2 /* Shared/All/PeelSourceMediaMessages.swift */,
+				C7A1D0B4A0C84D9FA8A2B104 /* Shared/Client/PeelMachineStatusSheet.swift */,
+				CC911A000000000000000001 /* Shared/Client/PeelMachineStatusView.swift */,
+				9267C5FD2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift */,
+				9267C6002FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift */,
+				92CD28FA2EE1054C0065C74B /* InvisibleTextInputDelegate.swift */,
+				9217E9F22EFC96A3003D31A3 /* OrnamentChrome.swift */,
+				9204DC202FC3699C009374A3 /* SettingsView.swift */,
+				92AAC0A32F1CD23500FC2BD6 /* InfoView.swift */,
+				9267C5DF2FE068080073CBB2 /* TrackpadView.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		92298C342FC51D2000D6179D /* ClientBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				9267C6302FE1081C0073CBB2 /* PeelHostKey.swift */,
+				9267C62D2FE107D30073CBB2 /* PeelHostSession.swift */,
+				E1D0A0010000000000000001 /* PeelDirectEndpoint.swift */,
+				EB85F5759A9F789069BBC0BC /* PeelICloudPairingClient.swift */,
+				92298C4D2FC51DE600D6179D /* DiscoveryDelegates.swift */,
+				92298C4A2FC51DCE00D6179D /* PairingHandshake.swift */,
+				92298C472FC51DC100D6179D /* LifecycleStreams.swift */,
+				92298C442FC51DA900D6179D /* Receive.swift */,
+				92298C412FC51D9A00D6179D /* Media.swift */,
+				92298C382FC51D6400D6179D /* Connection.swift */,
+				92298C3E2FC51D8B00D6179D /* Input.swift */,
+				92298C3B2FC51D7800D6179D /* WindowHandoff.swift */,
+				92298C352FC51D4F00D6179D /* PairingState.swift */,
+				92CD28AE2EDFE5D10065C74B /* PeelClientBrowser.swift */,
+			);
+			path = ClientBrowser;
+			sourceTree = "<group>";
+		};
+		928383DC2EDD177A00108046 = {
+			isa = PBXGroup;
+			children = (
+				A59E2C5DD1E5920C5F840168 /* Peel Pro.app */,
+				0B1FE10D67FBFB007D054259 /* Peel-Watch */,
+				928383E72EDD177A00108046 /* Peel */,
+				92CD28E82EE036060065C74B /* Peel-iPad */,
+				928384032EDD407100108046 /* Shared */,
+				9268C5352F608574002D00D5 /* Peel Pro.app */,
+				9268C5362F608574002D00D5 /* Peel Pro.app */,
+				92D7E75930849C0C0030A13A /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		928384032EDD407100108046 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9810CD3EF6285A74E5E828E6 /* WatchUI */,
+				A7CC01000000000000000001 /* Optional Apple Account */,
+				9217EA762F048094003D31A3 /* Client */,
+				9217EA752F04808C003D31A3 /* All */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		92D7E75930849C0C0030A13A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				159643CDE215476C861A7CAD /* Shared/Client/PeelAISubscriptionSection.swift */,
+				A61D4075BA9C4E8190CEA0F4 /* Shared/Client/PeelAISubscriptionPolicy.swift */,
+				E9177F5C58584704B3CB5607 /* Shared/All/PeelAudioPacket.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9810CD3EF6285A74E5E828E6 /* WatchUI */ = {
+			isa = PBXGroup;
+			children = (
+				6B59B77E650DD8C6FF0D4951 /* PeelCloudAgentManualHandoffView.swift */,
+				08C87A22ACD14D7996A3BE01 /* PeelCloudAgentProEvidenceController.swift */,
+				C85C5A1F3689A2A1A6F181ED /* PeelCloudAgentAppComposition.swift */,
+				2B4BCA8D9BD529CDC5B0C5FE /* PeelCloudAgentBrokerCredentialStore.swift */,
+				E6C05D1A9433AD7B43F9B3F3 /* PeelCloudAgentNativeBrokerConnector.swift */,
+				C3BD0927004A8643DF761C6B /* PeelCloudAgentRelayRuntime.swift */,
+				2E7BA36A02FAC006EF3295BE /* PeelCompanionModel.swift */,
+				A65100000000000000000002 /* PeelPhoneWatchRelay.swift */,
+				A65100000000000000000004 /* PeelWatchFrameDecoder.swift */,
+				A6510000000000000000000A /* PeelCloudAgentPhoneService.swift */,
+			);
+			path = WatchUI;
+			sourceTree = "<group>";
+		};
+		D1A2B3C4D5E60718293A4B00 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				D1A2B3C4D5E60718293A4B01 /* PeelRemoteNotificationPolicy.swift */,
+				D1A2B3C4D5E60718293A4B02 /* PeelLocalRemoteNotificationPresenter.swift */,
+				D1A2B3C4D5E60718293A4B03 /* PeelRemoteNotificationInbox.swift */,
+				D1A2B3C4D5E60718293A4B04 /* PeelHostSessionRemoteNotifications.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7392E3807915F0FF03CBBDC8 /* Peel Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2826A83B1FE03DEDF18908D8 /* Build configuration list for PBXNativeTarget "Peel Watch" */;
+			buildPhases = (
+				798C690A430410C99E6E9A82 /* Sources */,
+				A6500000000000000000000A /* Resources */,
+				DD12D427559AD7F6F57A4667 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Peel Watch";
+			packageProductDependencies = (
+				D6DF63A10D1B7FE65458A090 /* PeelWatchCore */,
+			);
+			productName = "Peel Pro";
+			productReference = A59E2C5DD1E5920C5F840168 /* Peel Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		928383E42EDD177A00108046 /* Peel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 928383F02EDD177B00108046 /* Build configuration list for PBXNativeTarget "Peel" */;
+			buildPhases = (
+				928383E12EDD177A00108046 /* Sources */,
+				928383E22EDD177A00108046 /* Frameworks */,
+				928383E32EDD177A00108046 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				928383E72EDD177A00108046 /* Peel */,
+				A7CC01000000000000000001 /* Optional Apple Account */,
+			);
+			name = Peel;
+			packageProductDependencies = (
+				C2E03DA148794CA497F54002 /* PeelShellUI */,
+				C2E03DA148794CA497F54003 /* PeelShellCore */,
+			);
+			productName = "Peel Pro";
+			productReference = 9268C5352F608574002D00D5 /* Peel Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92CD28E62EE036060065C74B /* Peel-iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92CD28EF2EE036070065C74B /* Build configuration list for PBXNativeTarget "Peel-iPad" */;
+			buildPhases = (
+				A65000000000000000000007 /* Embed Watch Content */,
+				92CD28E32EE036060065C74B /* Sources */,
+				92CD28E42EE036060065C74B /* Frameworks */,
+				92CD28E52EE036060065C74B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A65000000000000000000006 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				92CD28E82EE036060065C74B /* Peel-iPad */,
+				A7CC01000000000000000001 /* Optional Apple Account */,
+			);
+			name = "Peel-iPad";
+			packageProductDependencies = (
+				A65000000000000000000003 /* PeelWatchCore */,
+				C2E03DA148794CA497F54004 /* PeelShellUI */,
+				C2E03DA148794CA497F54005 /* PeelShellCore */,
+			);
+			productName = "Peel Pro";
+			productReference = 9268C5362F608574002D00D5 /* Peel Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		928383DD2EDD177A00108046 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					928383E42EDD177A00108046 = {
+						CreatedOnToolsVersion = 26.1;
+					};
+					92CD28E62EE036060065C74B = {
+						CreatedOnToolsVersion = 26.1;
+					};
+				};
+			};
+			buildConfigurationList = 928383E02EDD177A00108046 /* Build configuration list for PBXProject "Peel" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 928383DC2EDD177A00108046;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8E5760CD6DD102267D2CBF15 /* XCLocalSwiftPackageReference "Shared/WatchCompanion" */,
+				C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 928383DC2EDD177A00108046;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7392E3807915F0FF03CBBDC8 /* Peel Watch */,
+				928383E42EDD177A00108046 /* Peel */,
+				92CD28E62EE036060065C74B /* Peel-iPad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		928383E32EDD177A00108046 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92298C4F2FC51DE600D6179D /* DiscoveryDelegates.swift in Resources */,
+				92298C3D2FC51D7800D6179D /* WindowHandoff.swift in Resources */,
+				92298C402FC51D8B00D6179D /* Input.swift in Resources */,
+				9268C5EC2F609707002D00D5 /* Peel Storekit Config.storekit in Resources */,
+				92298C392FC51D6400D6179D /* Connection.swift in Resources */,
+				92298C482FC51DC100D6179D /* LifecycleStreams.swift in Resources */,
+				92298C362FC51D4F00D6179D /* PairingState.swift in Resources */,
+				92298C462FC51DA900D6179D /* Receive.swift in Resources */,
+				92298C432FC51D9A00D6179D /* Media.swift in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92CD28E52EE036060065C74B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92298C4E2FC51DE600D6179D /* DiscoveryDelegates.swift in Resources */,
+				92298C3C2FC51D7800D6179D /* WindowHandoff.swift in Resources */,
+				92298C3F2FC51D8B00D6179D /* Input.swift in Resources */,
+				9268C5ED2F609707002D00D5 /* Peel Storekit Config.storekit in Resources */,
+				92298C3A2FC51D6400D6179D /* Connection.swift in Resources */,
+				92298C492FC51DC100D6179D /* LifecycleStreams.swift in Resources */,
+				92298C372FC51D4F00D6179D /* PairingState.swift in Resources */,
+				92298C452FC51DA900D6179D /* Receive.swift in Resources */,
+				92298C422FC51D9A00D6179D /* Media.swift in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6500000000000000000000A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65000000000000000000009 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		798C690A430410C99E6E9A82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1A361203199A5D531B9D985 /* PeelWatchCloudEnrollment.swift in Sources */,
+				05D039ED5E15C8AE452E53BE /* PeelCompanionModel.swift in Sources */,
+				415E2DE0E9D36DD951B71D7F /* PeelWatchApp.swift in Sources */,
+				493CDCB5E34AD909C77C0623 /* PeelWatchHome.swift in Sources */,
+				A65100000000000000000005 /* PeelWatchStreamView.swift in Sources */,
+				A65100000000000000000007 /* PeelWatchCloudView.swift in Sources */,
+				EEEBBAEDDDB04CB73D18DADD /* PeelWatchCloudClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		928383E12EDD177A00108046 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				660FD7B3D0D1F5742C67404A /* PeelGameControllerPolicy.swift in Sources */,
+				A465C37D9ECEF23984D231CC /* PeelGameControllerInput.swift in Sources */,
+				BCAB1383BA944761AB82745C /* Shared/Client/PeelAISubscriptionSection.swift in Sources */,
+				C7A1D0B4A0C84D9FA8A2B105 /* Shared/Client/PeelMachineStatusSheet.swift in Sources */,
+				CC911A000000000000000002 /* Shared/Client/PeelMachineStatusView.swift in Sources */,
+				C7A1D0B4A0C84D9FA8A2B102 /* Shared/Client/PeelClientMachineStatusController.swift in Sources */,
+				5AFEA687CB744A7E9EEB9A61 /* Shared/Client/PeelSourceMediaControlsView.swift in Sources */,
+				CDDFB858EC3A489CBC270E0F /* Shared/Client/PeelSourceMediaController.swift in Sources */,
+				647A319A97BE411384EE1379 /* Shared/All/PeelSourceMediaMessages.swift in Sources */,
+				C2E02DA148794CA497F54222 /* Shared/Client/PeelLegacyPurchasePolicy.swift in Sources */,
+				C2E03DA148794CA497F54011 /* Shared/Client/PeelShellPreview.swift in Sources */,
+				D6A100182026101800000002 /* Shared/Client/PeelWindowAdmission.swift in Sources */,
+				C2E01DA148794CA497F54222 /* Shared/Client/PeelCapabilityPolicy.swift in Sources */,
+				0B73164CF31544E9AD84017D /* Shared/Client/PeelAISubscriptionPolicy.swift in Sources */,
+				A5DB459192FA45B1ACEAB0F7 /* Shared/All/PeelAudioPacket.swift in Sources */,
+				A1092E1FC17D338B5FB9E00C /* PeelAudioControls.swift in Sources */,
+				99BF4449E51E88B3BB69D4D0 /* PeelAudioPlaybackOwner.swift in Sources */,
+				42F8F25D1E885472ABB27B74 /* PeelAudioPlaybackPrimitives.swift in Sources */,
+				70ADA81B9FA87FE945836C45 /* PeelClientAudioController.swift in Sources */,
+				17025A585837577F0C30AD01 /* PeelVoiceAudioOwner.swift in Sources */,
+				6C7C421BF88C24B0B2EB7FFE /* PeelVoiceAudioCaptureSupport.swift in Sources */,
+				BB33732BDFB0F9BC0BC5FC94 /* PeelAudioMicrophoneCapturePrimitives.swift in Sources */,
+				5D987D74BBD097C44BCA9B90 /* PeelAudioPlatformCapabilities.swift in Sources */,
+				D1A2B3C4D5E60718293A4C01 /* PeelRemoteNotificationPolicy.swift in Sources */,
+				D1A2B3C4D5E60718293A4C02 /* PeelLocalRemoteNotificationPresenter.swift in Sources */,
+				D1A2B3C4D5E60718293A4C03 /* PeelRemoteNotificationInbox.swift in Sources */,
+				D1A2B3C4D5E60718293A4C04 /* PeelHostSessionRemoteNotifications.swift in Sources */,
+				E1D0B0010000000000000001 /* PeelDirectEndpoint.swift in Sources */,
+				E1D0B0010000000000000002 /* PeelDirectEndpointSection.swift in Sources */,
+				35363DF16B65732E25372F69 /* PeelICloudPairingSection.swift in Sources */,
+				BF4F811ECF085A5312EDFFDE /* PeelICloudPairing.swift in Sources */,
+				87E2D7276E37C95FE00F43F7 /* PeelICloudEnrollmentTransport.swift in Sources */,
+				9DF8D7E29D9A95A552B1AAB0 /* PeelICloudPairingClient.swift in Sources */,
+				9267C62F2FE107D30073CBB2 /* PeelHostSession.swift in Sources */,
+				92298C5F2FC52E6B00D6179D /* PairingState.swift in Sources */,
+				9267C6022FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift in Sources */,
+				92298C5E2FC52E6600D6179D /* WindowHandoff.swift in Sources */,
+				9267C5ED2FE068080073CBB2 /* TrackpadView.swift in Sources */,
+				92298C5D2FC52E6100D6179D /* Media.swift in Sources */,
+				92298C5C2FC52E5B00D6179D /* Receive.swift in Sources */,
+				92298C5B2FC52E5700D6179D /* Connection.swift in Sources */,
+				92298C5A2FC52E5200D6179D /* Input.swift in Sources */,
+				92298C592FC52E4D00D6179D /* LifecycleStreams.swift in Sources */,
+				92298C582FC52E4900D6179D /* DiscoveryDelegates.swift in Sources */,
+				9217EA722F04802A003D31A3 /* PeelTLS.swift in Sources */,
+				E1D0B0010000000000000003 /* PeelMachineStatusMessages.swift in Sources */,
+				53209E6602F2E4C8A250F64E /* PeelStreamDiagnosticsMessages.swift in Sources */,
+				923935E92FD1133300BED7B2 /* ScrollControlOverlay.swift in Sources */,
+				92298C4B2FC51DCE00D6179D /* PairingHandshake.swift in Sources */,
+				92AAC0A12F1CD22C00FC2BD6 /* PeelSharedMessages.swift in Sources */,
+				92AAC0A52F1CD23500FC2BD6 /* InfoView.swift in Sources */,
+				9217E9F32EFC96A3003D31A3 /* OrnamentChrome.swift in Sources */,
+				9267C5FF2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift in Sources */,
+				9267C6322FE1081C0073CBB2 /* PeelHostKey.swift in Sources */,
+				92674EA32F7FAFED00B1D09D /* MacSymbolChoice.swift in Sources */,
+				92CD28FB2EE1054C0065C74B /* InvisibleTextInputDelegate.swift in Sources */,
+				9268C5E72F6092DE002D00D5 /* PeelStore.swift in Sources */,
+				D6A100202026102000000101 /* PeelProEntitlementWire.swift in Sources */,
+				D6A100202026102000000103 /* PeelProEvidenceClient.swift in Sources */,
+				9268C5EA2F6092F0002D00D5 /* PaywallView.swift in Sources */,
+				92674E8D2F7FA3BE00B1D09D /* ClientViewportTransform.swift in Sources */,
+				9204DC222FC3699C009374A3 /* SettingsView.swift in Sources */,
+				92BDE7262F8FF231003E4D46 /* CompressedVideoRenderer.swift in Sources */,
+				84883770B33A7FC4EBFF86A6 /* PeelClientVideoDiagnostics.swift in Sources */,
+				F264E73659A346909947CB12 /* Shared/Client/PeelStreamDetailsView.swift in Sources */,
+				9204DC252FC3A078009374A3 /* PeelProFeature.swift in Sources */,
+				92AAC0A92F1CD24700FC2BD6 /* StatusDot.swift in Sources */,
+				92CD28B22EDFE5D10065C74B /* PeelClientBrowser.swift in Sources */,
+				9211584A2FC2354A005D79A9 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92CD28E32EE036060065C74B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279D540B79CAB0052ACEB823 /* PeelGameControllerPolicy.swift in Sources */,
+				3B783527A38C2E484E74620B /* PeelGameControllerInput.swift in Sources */,
+				842D93EB7955176E27464067 /* PeelCloudAgentAppComposition.swift in Sources */,
+				281C11022190952D6CD18349 /* PeelCloudAgentManualHandoffView.swift in Sources */,
+				A0619E14A920403BB607F773 /* PeelCloudAgentProEvidenceController.swift in Sources */,
+				2771A5B9793AF4D3C9B9B5FA /* PeelCloudAgentBrokerCredentialStore.swift in Sources */,
+				C53159406C322F039281A7F9 /* PeelCloudAgentNativeBrokerConnector.swift in Sources */,
+				3924BAFBC7A6AA5D1D7E6B34 /* PeelCloudAgentRelayRuntime.swift in Sources */,
+				A65000000000000000000001 /* PeelCompanionModel.swift in Sources */,
+				A65100000000000000000001 /* PeelPhoneWatchRelay.swift in Sources */,
+				A65100000000000000000003 /* PeelWatchFrameDecoder.swift in Sources */,
+				A65100000000000000000009 /* PeelCloudAgentPhoneService.swift in Sources */,
+				D6C895814CE24659B0E4EA6B /* Shared/Client/PeelAISubscriptionSection.swift in Sources */,
+				C7A1D0B4A0C84D9FA8A2B106 /* Shared/Client/PeelMachineStatusSheet.swift in Sources */,
+				CC911A000000000000000003 /* Shared/Client/PeelMachineStatusView.swift in Sources */,
+				C7A1D0B4A0C84D9FA8A2B103 /* Shared/Client/PeelClientMachineStatusController.swift in Sources */,
+				E2F0455D7B5A4EDAB47FA3F2 /* Shared/Client/PeelSourceMediaControlsView.swift in Sources */,
+				120CB1423CDE4E418DA6A2E3 /* Shared/Client/PeelSourceMediaController.swift in Sources */,
+				B2DC34105CFE43E2B7FFBBBE /* Shared/All/PeelSourceMediaMessages.swift in Sources */,
+				C2E02DA148794CA497F54223 /* Shared/Client/PeelLegacyPurchasePolicy.swift in Sources */,
+				C2E03DA148794CA497F54012 /* Shared/Client/PeelShellPreview.swift in Sources */,
+				D6A100182026101800000003 /* Shared/Client/PeelWindowAdmission.swift in Sources */,
+				C2E01DA148794CA497F54223 /* Shared/Client/PeelCapabilityPolicy.swift in Sources */,
+				BA5762E2275444719FDB6E85 /* Shared/Client/PeelAISubscriptionPolicy.swift in Sources */,
+				A73F8D3E36BD4D3485BE541D /* Shared/All/PeelAudioPacket.swift in Sources */,
+				B8AA54A7D90E568DA0875337 /* PeelAudioControls.swift in Sources */,
+				3D09A11B1B594F8C8E02076A /* PeelAudioPlaybackOwner.swift in Sources */,
+				2E9F84605D559E33A4E650E0 /* PeelAudioPlaybackPrimitives.swift in Sources */,
+				13F7846618E2F0020F95D551 /* PeelClientAudioController.swift in Sources */,
+				BF9E5112AE74414B7AE84776 /* PeelVoiceAudioOwner.swift in Sources */,
+				0AF287E4126F1E4DE1C82363 /* PeelVoiceAudioCaptureSupport.swift in Sources */,
+				AC9C0A436EA60DB836E10CFE /* PeelAudioMicrophoneCapturePrimitives.swift in Sources */,
+				FB83DD8A9BE23375F4255C5C /* PeelAudioPlatformCapabilities.swift in Sources */,
+				D1A2B3C4D5E60718293A4D01 /* PeelRemoteNotificationPolicy.swift in Sources */,
+				D1A2B3C4D5E60718293A4D02 /* PeelLocalRemoteNotificationPresenter.swift in Sources */,
+				D1A2B3C4D5E60718293A4D03 /* PeelRemoteNotificationInbox.swift in Sources */,
+				D1A2B3C4D5E60718293A4D04 /* PeelHostSessionRemoteNotifications.swift in Sources */,
+				E1D0B0020000000000000001 /* PeelDirectEndpoint.swift in Sources */,
+				E1D0B0020000000000000002 /* PeelDirectEndpointSection.swift in Sources */,
+				D3947BD151AD75D42CB01E7A /* PeelICloudPairingSection.swift in Sources */,
+				04D9FF9E3871BB7A0F2298BE /* PeelICloudPairingClient.swift in Sources */,
+				D279E1039B9B15857CF25526 /* PeelICloudPairing.swift in Sources */,
+				BD87AA8FE072C80A83FF5827 /* PeelICloudEnrollmentTransport.swift in Sources */,
+				92298C572FC52E3E00D6179D /* PairingState.swift in Sources */,
+				92298C562FC52E3800D6179D /* WindowHandoff.swift in Sources */,
+				92298C552FC52E3200D6179D /* Media.swift in Sources */,
+				92298C542FC52E2C00D6179D /* Receive.swift in Sources */,
+				9267C6312FE1081C0073CBB2 /* PeelHostKey.swift in Sources */,
+				92298C532FC52E2600D6179D /* Connection.swift in Sources */,
+				9267C6012FE069040073CBB2 /* KeyboardArrowKeysOverlay.swift in Sources */,
+				923935EA2FD1133300BED7B2 /* ScrollControlOverlay.swift in Sources */,
+				9267C5FE2FE068FE0073CBB2 /* KeyboardMacroKeysOverlay.swift in Sources */,
+				92298C522FC52E2000D6179D /* Input.swift in Sources */,
+				92298C512FC52E1C00D6179D /* LifecycleStreams.swift in Sources */,
+				92298C502FC52E1700D6179D /* DiscoveryDelegates.swift in Sources */,
+				92CD28F42EE036240065C74B /* PeelClientBrowser.swift in Sources */,
+				92AAC0A22F1CD22C00FC2BD6 /* PeelSharedMessages.swift in Sources */,
+				E1D0B0020000000000000003 /* PeelMachineStatusMessages.swift in Sources */,
+				1343AB8D8E166500428089F9 /* PeelStreamDiagnosticsMessages.swift in Sources */,
+				92298C4C2FC51DCE00D6179D /* PairingHandshake.swift in Sources */,
+				92AAC0A42F1CD23500FC2BD6 /* InfoView.swift in Sources */,
+				9268C5E62F6092DE002D00D5 /* PeelStore.swift in Sources */,
+				D6A100202026102000000102 /* PeelProEntitlementWire.swift in Sources */,
+				D6A100202026102000000104 /* PeelProEvidenceClient.swift in Sources */,
+				92674EA22F7FAFED00B1D09D /* MacSymbolChoice.swift in Sources */,
+				9268C5E92F6092F0002D00D5 /* PaywallView.swift in Sources */,
+				9217E9F42EFC96A3003D31A3 /* OrnamentChrome.swift in Sources */,
+				9217EA732F04802A003D31A3 /* PeelTLS.swift in Sources */,
+				9267C62E2FE107D30073CBB2 /* PeelHostSession.swift in Sources */,
+				9204DC212FC3699C009374A3 /* SettingsView.swift in Sources */,
+				92674E8E2F7FA3BE00B1D09D /* ClientViewportTransform.swift in Sources */,
+				92BDE7252F8FF231003E4D46 /* CompressedVideoRenderer.swift in Sources */,
+				35E082398CBA0C4E1F172207 /* PeelClientVideoDiagnostics.swift in Sources */,
+				F264E73659A346909947CB13 /* Shared/Client/PeelStreamDetailsView.swift in Sources */,
+				9204DC242FC3A078009374A3 /* PeelProFeature.swift in Sources */,
+				92CD28FC2EE1054C0065C74B /* InvisibleTextInputDelegate.swift in Sources */,
+				92AAC0AA2F1CD24700FC2BD6 /* StatusDot.swift in Sources */,
+				921158492FC2354A005D79A9 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A65000000000000000000006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7392E3807915F0FF03CBBDC8 /* Peel Watch */;
+			targetProxy = A65000000000000000000005 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A4D8818BFF3642816D78AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.zephyrstudiosllc.Peel;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel.watchkitapp;
+				PRODUCT_NAME = "Peel Pro";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		0F3C359453C690207EDF3572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.zephyrstudiosllc.Peel;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel.watchkitapp;
+				PRODUCT_NAME = "Peel Pro";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		928383EE2EDD177B00108046 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		928383EF2EDD177B00108046 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		928383F12EDD177B00108046 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Peel/Peel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Peel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro needs access to devices on your local network to find and connect to your Mac.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use your microphone for voice sessions with your paired Mac.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel;
+				PRODUCT_NAME = "Peel Pro";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		928383F22EDD177B00108046 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Peel/Peel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Peel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro needs access to devices on your local network to find and connect to your Mac.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use your microphone for voice sessions with your paired Mac.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel;
+				PRODUCT_NAME = "Peel Pro";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
+		92CD28F02EE036070065C74B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peel-iPad/Peel-iPad.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peel-iPad/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro needs access to devices on your local network to find and connect to your Mac.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use your microphone for voice sessions with your paired Mac.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel;
+				PRODUCT_NAME = "Peel Pro";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92CD28F12EE036070065C74B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peel-iPad/Peel-iPad.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				DEVELOPMENT_TEAM = V729QMY3V6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peel-iPad/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Peel Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Peel Pro needs access to devices on your local network to find and connect to your Mac.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use your microphone for voice sessions with your paired Mac.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyrstudiosllc.Peel;
+				PRODUCT_NAME = "Peel Pro";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2826A83B1FE03DEDF18908D8 /* Build configuration list for PBXNativeTarget "Peel Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F3C359453C690207EDF3572 /* Debug */,
+				0A4D8818BFF3642816D78AD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		928383E02EDD177A00108046 /* Build configuration list for PBXProject "Peel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				928383EE2EDD177B00108046 /* Debug */,
+				928383EF2EDD177B00108046 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		928383F02EDD177B00108046 /* Build configuration list for PBXNativeTarget "Peel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				928383F12EDD177B00108046 /* Debug */,
+				928383F22EDD177B00108046 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92CD28EF2EE036070065C74B /* Build configuration list for PBXNativeTarget "Peel-iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92CD28F02EE036070065C74B /* Debug */,
+				92CD28F12EE036070065C74B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8E5760CD6DD102267D2CBF15 /* XCLocalSwiftPackageReference "Shared/WatchCompanion" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Shared/WatchCompanion;
+		};
+		C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Shared/Client/Shell;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A65000000000000000000003 /* PeelWatchCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E5760CD6DD102267D2CBF15 /* XCLocalSwiftPackageReference "Shared/WatchCompanion" */;
+			productName = PeelWatchCore;
+		};
+		C2E03DA148794CA497F54002 /* PeelShellUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */;
+			productName = PeelShellUI;
+		};
+		C2E03DA148794CA497F54003 /* PeelShellCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */;
+			productName = PeelShellCore;
+		};
+		C2E03DA148794CA497F54004 /* PeelShellUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */;
+			productName = PeelShellUI;
+		};
+		C2E03DA148794CA497F54005 /* PeelShellCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2E03DA148794CA497F54001 /* XCLocalSwiftPackageReference "Shared/Client/Shell" */;
+			productName = PeelShellCore;
+		};
+		D6DF63A10D1B7FE65458A090 /* PeelWatchCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PeelWatchCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 928383DD2EDD177A00108046 /* Project object */;
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+peel_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export LD_LIBRARY_PATH="$peel_dir/app${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec "$peel_dir/app/Peel.Pro.Linux" "$@"

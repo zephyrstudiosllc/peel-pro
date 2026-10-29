@@ -1,0 +1,683 @@
+import CodexBarCore
+import Foundation
+import Testing
+@testable import CodexBar
+
+struct UsageStorePlanUtilizationCodexOwnershipTests {
+    @MainActor
+    @Test
+    func `codex plan history migrates pre-normalization provider account key casing`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let persistedKey = "codex:v1:provider-account:WORKSPACE-X"
+        let canonicalKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "workspace-x")))
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(accounts: [
+            persistedKey: [weekly],
+        ])
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person@example.com",
+            workspaceAccountID: "workspace-x",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: Date(),
+            identity: .providerAccount(id: "workspace-x"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(
+            UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: "person@example.com"),
+            provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(history == [weekly])
+        #expect(buckets.accounts[canonicalKey] == [weekly])
+        #expect(buckets.accounts[persistedKey] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex plan history aliases pre-upgrade codex email hash bucket into canonical email hash`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: "alice@example.com")
+        let canonicalKey = try #require(
+            UsageStore._planUtilizationAccountKeyForTesting(
+                provider: .codex,
+                snapshot: snapshot))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: "alice@example.com")
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(accounts: [
+            legacyEmailHash: [weekly],
+        ])
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(buckets.preferredAccountKey == canonicalKey)
+        #expect(history == [weekly])
+        #expect(buckets.accounts[canonicalKey] == [weekly])
+        #expect(buckets.accounts[legacyEmailHash] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex strict continuity adopts unscoped only when there is one owner`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: "alice@example.com")
+        let canonicalKey = try #require(
+            UsageStore._planUtilizationAccountKeyForTesting(
+                provider: .codex,
+                snapshot: snapshot))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: "alice@example.com")
+        let bootstrap = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_913_600), usedPercent: 15),
+        ])
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(
+            unscoped: [bootstrap],
+            accounts: [
+                legacyEmailHash: [weekly],
+            ])
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(buckets.preferredAccountKey == canonicalKey)
+        #expect(history == [bootstrap, weekly])
+        #expect(buckets.unscoped.isEmpty)
+        #expect(buckets.accounts[canonicalKey] == [bootstrap, weekly])
+        #expect(buckets.accounts[legacyEmailHash] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex strict continuity ignores later unrelated owners outside the unscoped period`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: "alice@example.com")
+        let canonicalKey = try #require(
+            UsageStore._planUtilizationAccountKeyForTesting(
+                provider: .codex,
+                snapshot: snapshot))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: "alice@example.com")
+        let laterOtherKey = "codex:v1:provider-account:acct-later"
+        let bootstrap = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_913_600), usedPercent: 15),
+        ])
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+        let laterWeekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_701_900_000), usedPercent: 35),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(
+            unscoped: [bootstrap],
+            accounts: [
+                legacyEmailHash: [weekly],
+                laterOtherKey: [laterWeekly],
+            ])
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(buckets.preferredAccountKey == canonicalKey)
+        #expect(history == [bootstrap, weekly])
+        #expect(buckets.unscoped.isEmpty)
+        #expect(buckets.accounts[canonicalKey] == [bootstrap, weekly])
+        #expect(buckets.accounts[laterOtherKey] == [laterWeekly])
+    }
+
+    @MainActor
+    @Test
+    func `codex real fixture carries local opaque weekly continuity into provider account`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: "person-fdb8152811c2@example.test")
+        let canonicalEmailHashKey = CodexHistoryOwnership.canonicalEmailHashKey(for: "person-fdb8152811c2@example.test")
+        let opaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let weeklyResetAt = try #require(ISO8601DateFormatter().date(from: "2026-04-08T07:57:12Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        store.planUtilizationHistory[.codex] = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+        let session = try #require(findSeries(history, name: .session, windowMinutes: 300))
+        let expectedOldestWeekly = try #require(formatter.date(from: "2026-03-23T09:55:44Z"))
+        let expectedNewestWeekly = try #require(formatter.date(from: "2026-04-01T20:33:41Z"))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedOldestWeekly)
+        #expect(weekly.entries.last?.capturedAt == expectedNewestWeekly)
+        #expect(session.entries.first?.capturedAt == expectedOldestWeekly)
+        #expect(buckets.accounts[providerAccountKey] == history)
+        #expect(buckets.accounts[opaqueKey] == nil)
+        #expect(buckets.accounts[legacyEmailHash] == nil)
+        #expect(buckets.accounts[canonicalEmailHashKey] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex real fixture keeps opaque history separate when multiple opaque candidates could match`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let originalOpaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let duplicateOpaqueKey = "legacy-codex-opaque-duplicate"
+        let weeklyResetAt = try #require(ISO8601DateFormatter().date(from: "2026-04-08T07:57:12Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        var fixture = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        fixture.accounts[duplicateOpaqueKey] = fixture.accounts[originalOpaqueKey]
+        store.planUtilizationHistory[.codex] = fixture
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+        let expectedNonOpaqueStart = try #require(formatter.date(from: "2026-03-28T06:50:16Z"))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedNonOpaqueStart)
+        #expect(buckets.accounts[originalOpaqueKey] != nil)
+        #expect(buckets.accounts[duplicateOpaqueKey] != nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex real fixture keeps opaque history separate when overlapping non target owner exists`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let opaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let overlappingOtherKey = "codex:v1:provider-account:acct-other"
+        let weeklyResetAt = try #require(formatter.date(from: "2026-04-08T07:57:12Z"))
+        let expectedNonOpaqueStart = try #require(formatter.date(from: "2026-03-28T06:50:16Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        let overlappingCapturedAt = try #require(formatter.date(from: "2026-03-30T12:00:00Z"))
+        var fixture = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        fixture.accounts[overlappingOtherKey] = [
+            planSeries(name: .weekly, windowMinutes: 10080, entries: [
+                planEntry(
+                    at: overlappingCapturedAt,
+                    usedPercent: 35,
+                    resetsAt: weeklyResetAt),
+            ]),
+        ]
+        store.planUtilizationHistory[.codex] = fixture
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedNonOpaqueStart)
+        #expect(buckets.accounts[opaqueKey] != nil)
+        #expect(buckets.accounts[overlappingOtherKey] != nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex opaque recovery uses normalized dashboard weekly reset when snapshot has only session window`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let opaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let weeklyResetAt = try #require(formatter.date(from: "2026-04-08T07:57:12Z"))
+        let expectedOpaqueStart = try #require(formatter.date(from: "2026-03-23T09:55:44Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: nil,
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        store.planUtilizationHistory[.codex] = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        store.openAIDashboard = OpenAIDashboardSnapshot(
+            signedInEmail: "person-fdb8152811c2@example.test",
+            codeReviewRemainingPercent: nil,
+            creditEvents: [],
+            dailyBreakdown: [],
+            usageBreakdown: [],
+            creditsPurchaseURL: nil,
+            primaryLimit: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            secondaryLimit: nil,
+            creditsRemaining: nil,
+            accountPlan: "plus",
+            updatedAt: weeklyResetAt)
+        store.openAIDashboardAttachmentAuthorized = true
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedOpaqueStart)
+        #expect(buckets.accounts[opaqueKey] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex display only dashboard does not drive opaque recovery when snapshot has only session window`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let opaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let weeklyResetAt = try #require(formatter.date(from: "2026-04-08T07:57:12Z"))
+        let expectedNonOpaqueStart = try #require(formatter.date(from: "2026-03-28T06:50:16Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: nil,
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        store.planUtilizationHistory[.codex] = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        store.openAIDashboard = OpenAIDashboardSnapshot(
+            signedInEmail: "person-fdb8152811c2@example.test",
+            codeReviewRemainingPercent: nil,
+            creditEvents: [],
+            dailyBreakdown: [],
+            usageBreakdown: [],
+            creditsPurchaseURL: nil,
+            primaryLimit: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            secondaryLimit: nil,
+            creditsRemaining: nil,
+            accountPlan: "plus",
+            updatedAt: weeklyResetAt)
+        store.openAIDashboardAttachmentAuthorized = false
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedNonOpaqueStart)
+        #expect(buckets.accounts[opaqueKey] != nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex adjacent managed and live accounts veto unscoped adoption`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let managedAccount = ManagedCodexAccount(
+            id: UUID(),
+            email: "managed@example.com",
+            managedHomePath: "/tmp/managed-codex-home",
+            createdAt: 1,
+            updatedAt: 1,
+            lastAuthenticatedAt: 1)
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: managedAccount.email)
+        let canonicalKey = try #require(
+            UsageStore._planUtilizationAccountKeyForTesting(
+                provider: .codex,
+                snapshot: snapshot))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: managedAccount.email)
+        let bootstrap = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_913_600), usedPercent: 15),
+        ])
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(
+            unscoped: [bootstrap],
+            accounts: [
+                legacyEmailHash: [weekly],
+            ])
+        store.settings._test_activeManagedCodexAccount = managedAccount
+        store.settings.codexActiveSource = .managedAccount(id: managedAccount.id)
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "live@example.com",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: Date(),
+            identity: .providerAccount(id: "live-acct"))
+        defer {
+            store.settings._test_activeManagedCodexAccount = nil
+            store.settings._test_liveSystemCodexAccount = nil
+            store.settings.codexActiveSource = .liveSystem
+        }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(history == [weekly])
+        #expect(buckets.unscoped == [bootstrap])
+        #expect(buckets.accounts[canonicalKey] == [weekly])
+    }
+
+    @MainActor
+    @Test(arguments: [false, true])
+    func `selected workspace does not adopt ambiguous runtime owner history without live evidence`(
+        emailOnlyRuntime: Bool) throws
+    {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let managedAccount = ManagedCodexAccount(
+            id: UUID(),
+            email: "member@example.com",
+            workspaceAccountID: "selected-workspace",
+            managedHomePath: "/tmp/selected-workspace",
+            createdAt: 1,
+            updatedAt: 2,
+            lastAuthenticatedAt: 3)
+        let runtimeIdentity: CodexIdentity = emailOnlyRuntime
+            ? .emailOnly(normalizedEmail: managedAccount.email)
+            : .providerAccount(id: "auth-default")
+        let reconciliationSnapshot = CodexAccountReconciliationSnapshot(
+            storedAccounts: [managedAccount],
+            activeStoredAccount: managedAccount,
+            liveSystemAccount: nil,
+            matchingStoredAccountForLiveSystemAccount: nil,
+            activeSource: .managedAccount(id: managedAccount.id),
+            hasUnreadableAddedAccountStore: false,
+            storedAccountRuntimeIdentities: [
+                managedAccount.id: runtimeIdentity,
+            ],
+            storedAccountRuntimeEmails: [managedAccount.id: managedAccount.email])
+        let selectedWorkspaceKey = try #require(
+            CodexHistoryOwnership.canonicalKey(for: .providerAccount(id: "selected-workspace")))
+        let canonicalEmailHashKey = CodexHistoryOwnership.canonicalEmailHashKey(for: managedAccount.email)
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: managedAccount.email)
+        let unscoped = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_900_000), usedPercent: 10),
+        ])
+        let canonicalEmail = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_950_000), usedPercent: 15),
+        ])
+        let legacyEmail = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(
+            unscoped: [unscoped],
+            accounts: [
+                canonicalEmailHashKey: [canonicalEmail],
+                legacyEmailHash: [legacyEmail],
+            ])
+        store.settings._test_codexAccountSnapshotLoader = { _ in reconciliationSnapshot }
+        store.settings._test_activeManagedCodexAccount = managedAccount
+        store.settings.codexActiveSource = .managedAccount(id: managedAccount.id)
+        defer {
+            store.settings._test_codexAccountSnapshotLoader = nil
+            store.settings._test_activeManagedCodexAccount = nil
+            store.settings.codexActiveSource = .liveSystem
+        }
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(history.isEmpty)
+        #expect(buckets.preferredAccountKey == selectedWorkspaceKey)
+        #expect(buckets.unscoped == [unscoped])
+        #expect(buckets.accounts[canonicalEmailHashKey] == [canonicalEmail])
+        #expect(buckets.accounts[legacyEmailHash] == [legacyEmail])
+        #expect(buckets.accounts[selectedWorkspaceKey] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex extra saved managed accounts do not veto active account adoption`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let activeManagedAccount = ManagedCodexAccount(
+            id: UUID(),
+            email: "managed@example.com",
+            managedHomePath: "/tmp/managed-codex-home",
+            createdAt: 1,
+            updatedAt: 1,
+            lastAuthenticatedAt: 1)
+        let inactiveManagedAccount = ManagedCodexAccount(
+            id: UUID(),
+            email: "other@example.com",
+            managedHomePath: "/tmp/other-codex-home",
+            createdAt: 2,
+            updatedAt: 2,
+            lastAuthenticatedAt: 2)
+        let managedStoreURL = try #require(store.settings._test_managedCodexAccountStoreURL)
+        let managedStore = FileManagedCodexAccountStore(fileURL: managedStoreURL)
+        try managedStore.storeAccounts(ManagedCodexAccountSet(
+            version: FileManagedCodexAccountStore.currentVersion,
+            accounts: [activeManagedAccount, inactiveManagedAccount]))
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: activeManagedAccount.email)
+        let canonicalKey = try #require(
+            UsageStore._planUtilizationAccountKeyForTesting(
+                provider: .codex,
+                snapshot: snapshot))
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: activeManagedAccount.email)
+        let bootstrap = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_913_600), usedPercent: 15),
+        ])
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(
+            unscoped: [bootstrap],
+            accounts: [
+                legacyEmailHash: [weekly],
+            ])
+        store.settings._test_activeManagedCodexAccount = activeManagedAccount
+        store.settings.codexActiveSource = .managedAccount(id: activeManagedAccount.id)
+        defer {
+            store.settings._test_activeManagedCodexAccount = nil
+            store.settings.codexActiveSource = .liveSystem
+        }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(history == [bootstrap, weekly])
+        #expect(buckets.unscoped.isEmpty)
+        #expect(buckets.accounts[canonicalKey] == [bootstrap, weekly])
+    }
+
+    @MainActor
+    @Test
+    func `codex inactive managed accounts do not veto live opaque recovery`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let formatter = ISO8601DateFormatter()
+        let providerAccountKey = try #require(CodexHistoryOwnership.canonicalKey(for: .providerAccount(
+            id: "090aee34-33e2-5543-a98c-37e994abb0aa")))
+        let managedAccount = ManagedCodexAccount(
+            id: UUID(),
+            email: "managed@example.com",
+            managedHomePath: "/tmp/managed-codex-home",
+            createdAt: 1,
+            updatedAt: 1,
+            lastAuthenticatedAt: 1)
+        let opaqueKey = "90f9443a61c1cf14bb3067b811060cb043ae3c803c3aabed3377601b7971a10a"
+        let weeklyResetAt = try #require(formatter.date(from: "2026-04-08T07:57:12Z"))
+        let expectedOpaqueStart = try #require(formatter.date(from: "2026-03-23T09:55:44Z"))
+        let snapshot = UsageSnapshot(
+            primary: RateWindow(usedPercent: 10, windowMinutes: 300, resetsAt: nil, resetDescription: nil),
+            secondary: RateWindow(
+                usedPercent: 12,
+                windowMinutes: 10080,
+                resetsAt: weeklyResetAt,
+                resetDescription: nil),
+            updatedAt: weeklyResetAt,
+            identity: ProviderIdentitySnapshot(
+                providerID: .codex,
+                accountEmail: "person-fdb8152811c2@example.test",
+                accountOrganization: nil,
+                loginMethod: "plus"))
+
+        store.planUtilizationHistory[.codex] = try UsageStorePlanUtilizationTests.loadPlanUtilizationFixture(
+            named: "codex-plan-utilization-real-migration.json")
+        store.settings._test_activeManagedCodexAccount = managedAccount
+        store.settings.codexActiveSource = .liveSystem
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: "person-fdb8152811c2@example.test",
+            codexHomePath: "/Users/test/.codex",
+            observedAt: weeklyResetAt,
+            identity: .providerAccount(id: "090aee34-33e2-5543-a98c-37e994abb0aa"))
+        defer {
+            store.settings._test_activeManagedCodexAccount = nil
+            store.settings._test_liveSystemCodexAccount = nil
+        }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+        let weekly = try #require(findSeries(history, name: .weekly, windowMinutes: 10080))
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(weekly.entries.first?.capturedAt == expectedOpaqueStart)
+        #expect(buckets.accounts[opaqueKey] == nil)
+    }
+
+    @MainActor
+    @Test
+    func `codex provider account continuity absorbs matching email scoped history`() throws {
+        let store = UsageStorePlanUtilizationTests.makeStore()
+        let normalizedEmail = "alice@example.com"
+        let snapshot = UsageStorePlanUtilizationTests.makeSnapshot(provider: .codex, email: normalizedEmail)
+        let providerAccountKey = try #require(
+            CodexHistoryOwnership.canonicalKey(for: .providerAccount(id: "live-acct")))
+        let canonicalEmailHashKey = CodexHistoryOwnership.canonicalEmailHashKey(for: normalizedEmail)
+        let legacyEmailHash = UsageStore._codexLegacyPlanUtilizationEmailHashKeyForTesting(
+            normalizedEmail: normalizedEmail)
+        let session = planSeries(name: .session, windowMinutes: 300, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_699_913_600), usedPercent: 15),
+        ])
+        let weekly = planSeries(name: .weekly, windowMinutes: 10080, entries: [
+            planEntry(at: Date(timeIntervalSince1970: 1_700_000_000), usedPercent: 20),
+        ])
+
+        store.planUtilizationHistory[.codex] = PlanUtilizationHistoryBuckets(accounts: [
+            canonicalEmailHashKey: [session],
+            legacyEmailHash: [weekly],
+        ])
+        store.settings._test_liveSystemCodexAccount = ObservedSystemCodexAccount(
+            email: normalizedEmail,
+            codexHomePath: "/Users/test/.codex",
+            observedAt: Date(),
+            identity: .providerAccount(id: "live-acct"))
+        defer { store.settings._test_liveSystemCodexAccount = nil }
+        store._setSnapshotForTesting(snapshot, provider: .codex)
+
+        let history = store.planUtilizationHistory(for: .codex)
+        let buckets = try #require(store.planUtilizationHistory[.codex])
+
+        #expect(buckets.preferredAccountKey == providerAccountKey)
+        #expect(history == [session, weekly])
+        #expect(buckets.accounts[providerAccountKey] == [session, weekly])
+        #expect(buckets.accounts[canonicalEmailHashKey] == nil)
+        #expect(buckets.accounts[legacyEmailHash] == nil)
+    }
+}

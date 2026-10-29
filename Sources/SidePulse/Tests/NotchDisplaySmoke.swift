@@ -1,0 +1,139 @@
+import AppKit
+
+@main
+enum NotchDisplaySmoke {
+    @MainActor
+    static func main() throws {
+        let screen = CGRect(x: -1728, y: 400, width: 1728, height: 1117)
+        let notch = NotchDisplayGeometry.frame(screen: screen, notchDepth: 32, notchWidth: 200)
+        precondition(notch == CGRect(x: -964, y: 1480, width: 200, height: 37))
+        // Live 14-inch MacBook Pro geometry at the user's scaled resolution:
+        // auxiliary areas end at x=593 and begin at x=759 (a 166pt cutout).
+        let compactScreen = CGRect(x: 0, y: 0, width: 1352, height: 878)
+        let compact = NotchDisplayGeometry.frame(screen: compactScreen, notchDepth: 29, notchWidth: 759 - 593)
+        precondition(compact == CGRect(x: 593, y: 844, width: 166, height: 34))
+        // The same physical cutout at another display scale must remain exact,
+        // even below the old 120pt detection threshold or above the old cap.
+        for width: CGFloat in [100, 166, 200, 360] {
+            let scaled = NotchDisplayGeometry.frame(screen: screen, notchDepth: 32, notchWidth: width)
+            precondition(scaled.width == width && scaled.midX == screen.midX)
+            precondition(scaled.maxY == screen.maxY)
+        }
+
+        precondition(NotchDisplayStyle.resolve(notchDepth: 32) == .physicalNotch)
+        precondition(NotchDisplayStyle.resolve(notchDepth: 0) == .syntheticIsland)
+        let styledPhysical = NotchDisplayGeometry.frame(
+            screen: screen,
+            notchDepth: 32,
+            notchWidth: 200,
+            style: .physicalNotch
+        )
+        precondition(styledPhysical == notch, "Physical notch geometry must remain unchanged")
+
+        let flat = NotchDisplayGeometry.frame(screen: screen, notchDepth: 0, notchWidth: nil)
+        precondition(flat.height == 5 && flat.maxY == screen.maxY && flat.midX == screen.midX)
+        let synthetic = NotchDisplayGeometry.frame(
+            screen: screen,
+            notchDepth: 0,
+            notchWidth: nil,
+            style: .syntheticIsland
+        )
+        precondition(synthetic == NotchDisplayGeometry.syntheticFrame(screen: screen))
+        precondition(synthetic.width == NotchDisplayGeometry.syntheticWidth)
+        precondition(synthetic.height == NotchDisplayGeometry.syntheticHeight)
+        precondition(synthetic.midX == screen.midX && synthetic.maxY == screen.maxY)
+        let narrow = NotchDisplayGeometry.frame(screen: CGRect(x: 0, y: 0, width: 150, height: 100), notchDepth: -1, notchWidth: 999)
+        precondition(narrow.width == 150 && narrow.height == 5)
+        let red = LEDProgramColor(red: 1, green: 0, blue: 0)
+        let colors = [red] + Array(repeating: LEDProgramColor.black, count: 7)
+        precondition(NotchDisplayGeometry.blendedColor(colors, x: 10, width: 160) == red)
+        precondition(NotchDisplayGeometry.blendedColor(colors, x: 30, width: 160).red > 0)
+        precondition(NotchDisplayGeometry.blendedColor(colors, x: 41, width: 160) == .black)
+        precondition(NotchDisplayGeometry.blendedColor([], x: 0, width: 0) == .black)
+
+        let suite = "sidepulse.notch-smoke.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        var custom = LightingProfile.factoryDefault
+        custom.name = "Keep my lighting"
+        custom.deviceBrightness = 0.317
+        ProfileLibrary.save(profiles: [custom], selectedProfileID: custom.id, to: defaults)
+        AppPreferences.saveMenuBarIconStyle(.horizontalFour, to: defaults)
+        let original = defaults.dictionaryRepresentation()
+        precondition(!AppPreferences.notchEnabled(from: defaults))
+        precondition(AppPreferences.notchBrightness(from: defaults) == 1)
+        AppPreferences.saveNotchEnabled(true, to: defaults)
+        AppPreferences.saveNotchBrightness(0.37, to: defaults)
+        precondition(AppPreferences.notchEnabled(from: defaults))
+        precondition(AppPreferences.notchBrightness(from: defaults) == 0.37)
+        for (key, value) in original {
+            precondition(NSDictionary(dictionary: [key: value]).isEqual(to: [key: defaults.object(forKey: key)!]))
+        }
+        AppPreferences.saveNotchBrightness(2, to: defaults)
+        precondition(AppPreferences.notchBrightness(from: defaults) == 1)
+        AppPreferences.saveNotchBrightness(-1, to: defaults)
+        precondition(AppPreferences.notchBrightness(from: defaults) == 0)
+
+        _ = NSApplication.shared
+        let controller = NotchDisplayController()
+        controller.update(enabled: false, program: "#FF00FF", ledCount: 8, clockOrigin: nil, brightness: 1)
+        precondition(!NSApp.windows.contains { $0.title == "SidePulse Notch" })
+        if !NSScreen.screens.isEmpty {
+            controller.update(enabled: true, program: "#FF00FF", ledCount: 8, clockOrigin: nil, brightness: 1)
+            let panel = NSApp.windows.first { $0.title == "SidePulse Notch" }!
+            precondition(panel.isVisible && panel.ignoresMouseEvents && !panel.isKeyWindow)
+            precondition(panel.level == .statusBar && panel.collectionBehavior.contains(.fullScreenAuxiliary))
+            let screen = NSScreen.screens.first(where: { $0.safeAreaInsets.top > 0 }) ?? NSScreen.screens[0]
+            let depth = screen.safeAreaInsets.top
+            let notchWidth: CGFloat?
+            if let left = screen.auxiliaryTopLeftArea, let right = screen.auxiliaryTopRightArea,
+               right.minX > left.maxX {
+                notchWidth = right.minX - left.maxX
+            } else {
+                notchWidth = nil
+            }
+            let style = NotchDisplayStyle.resolve(notchDepth: depth)
+            let expected = NotchDisplayGeometry.frame(
+                screen: screen.frame,
+                notchDepth: depth,
+                notchWidth: notchWidth,
+                style: style
+            )
+            precondition(panel.frame == expected)
+            if style == .physicalNotch {
+                if let notchWidth {
+                    precondition(panel.frame.width == notchWidth,
+                                 "The overlay must use the actual display cutout width")
+                }
+                precondition(panel.frame.height == depth + NotchDisplayGeometry.bandHeight)
+            } else {
+                precondition(panel.frame.width == min(screen.frame.width, NotchDisplayGeometry.syntheticWidth))
+                precondition(panel.frame.height == min(screen.frame.height, NotchDisplayGeometry.syntheticHeight))
+            }
+            controller.update(enabled: true, program: "#FF00FF", ledCount: 8, clockOrigin: nil, brightness: 0)
+            precondition(!panel.isVisible)
+            controller.update(enabled: false, program: "#FF00FF", ledCount: 8, clockOrigin: nil, brightness: 1)
+            precondition(!panel.isVisible)
+        }
+        // Offscreen visual fixtures exercise physical, flat, and synthetic
+        // display shapes without touching
+        // the running app, its settings, hardware, or event socket.
+        if let output = ProcessInfo.processInfo.environment["SIDEPULSE_NOTCH_QA_DIR"] {
+            let fixtures: [(name: String, hasNotch: Bool, isSynthetic: Bool, size: CGSize)] = [
+                ("flat-display.png", false, false, CGSize(width: 220, height: 5)),
+                ("synthetic-island.png", false, true, CGSize(width: NotchDisplayGeometry.syntheticWidth, height: NotchDisplayGeometry.syntheticHeight)),
+                ("notch.png", true, false, CGSize(width: 220, height: 37)),
+            ]
+            for fixture in fixtures {
+                let view = NotchLEDView(frame: CGRect(origin: .zero, size: fixture.size))
+                view.configure(program: "0:#FF00FF; 1:#FF00FF; 2:#8000FF; 3:#0000FF; 4:#00FFFF; 5:#00FF80; 6:#FFFF00; 7:#FF8000", ledCount: 8, clockOrigin: nil, brightness: 1, hasNotch: fixture.hasNotch, isSynthetic: fixture.isSynthetic)
+                let bitmap = view.bitmapImageRepForCachingDisplay(in: view.bounds)!
+                view.cacheDisplay(in: view.bounds, to: bitmap)
+                let data = bitmap.representation(using: .png, properties: [:])!
+                try data.write(to: URL(fileURLWithPath: output).appendingPathComponent(fixture.name))
+                view.stopAnimating()
+            }
+        }
+        print("Notch display smoke passed")
+    }
+}
