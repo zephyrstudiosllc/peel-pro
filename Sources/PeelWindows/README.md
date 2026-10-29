@@ -283,5 +283,6 @@ attempt to prevent user-initiated sleep.
 - `tests/Peel.Windows.Transport.Tests` — hostile TLS-PSK loopback and lifecycle checks
 - `docs` — operating rules, design, compatibility, and runtime handoffs
 
-There is no license file yet. Distribution and licensing are a product decision, not
-an implementation default.
+Original Peel Windows source is licensed under the monorepo's
+[0BSD license](../../LICENSE). Dependencies retain their own licenses; see
+[third-party notices](THIRD_PARTY_NOTICES.md).
