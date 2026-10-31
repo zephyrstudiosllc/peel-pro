@@ -131,8 +131,8 @@ final class SidePulseMenuBarController: NSObject {
 
         popover.behavior = .transient
         popover.animates = false
-        let hostingController = NSHostingController(
-            rootView: AnyView(
+        let hostingController = PopoverContentHostingController(
+            content: AnyView(
                 SidePulseMenuBarView(
                     store: store,
                     openAgent: { [weak self] agent in self?.openAgent(agent) },
@@ -142,6 +142,7 @@ final class SidePulseMenuBarController: NSObject {
         )
         hostingController.sizingOptions = [.preferredContentSize]
         popover.contentViewController = hostingController
+        popover.delegate = hostingController
 
         notchDisplay.setIslandContent(NotchContentHostingView(rootView: AnyView(NotchIslandView(
             store: store,
@@ -198,9 +199,10 @@ final class SidePulseMenuBarController: NSObject {
         hasUnifiedPresentation = true
         statusItem.autosaveName = "PeelHostStatusItem"
         button.setAccessibilityLabel("Peel Pro: Remote Desktop, Notch Pulse, usage and system status")
-        let hostingController = NSHostingController(rootView: menu)
+        let hostingController = PopoverContentHostingController(content: menu)
         hostingController.sizingOptions = [.preferredContentSize]
         popover.contentViewController = hostingController
+        popover.delegate = hostingController
         notchDisplay.setIslandContent(NotchContentHostingView(rootView: notch))
 
         iconView.removeFromSuperview()
@@ -236,6 +238,7 @@ final class SidePulseMenuBarController: NSObject {
         store.setNotchEnabled(false)
         refreshStatusItemVisibility()
         guard let button = statusItem.button else { return }
+        (popover.contentViewController as? PopoverContentHostingController)?.prepareForPresentation()
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         popover.contentViewController?.view.window?.makeKey()
     }
@@ -278,6 +281,7 @@ final class SidePulseMenuBarController: NSObject {
         if popover.isShown {
             popover.performClose(sender)
         } else {
+            (popover.contentViewController as? PopoverContentHostingController)?.prepareForPresentation()
             popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
             popover.contentViewController?.view.window?.makeKey()
         }

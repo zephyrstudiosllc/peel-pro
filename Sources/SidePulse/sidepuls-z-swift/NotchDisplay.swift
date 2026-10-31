@@ -2,6 +2,35 @@ import AppKit
 import QuartzCore
 import SwiftUI
 
+/// A closed NSPopover retains its hosting controller. Release the mounted
+/// SwiftUI tree when it closes so live models cannot keep rendering it.
+@MainActor
+final class PopoverContentHostingController: NSHostingController<AnyView>, NSPopoverDelegate {
+    private let content: AnyView
+    private var contentIsActive = false
+
+    init(content: AnyView) {
+        self.content = content
+        super.init(rootView: AnyView(EmptyView()))
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    /// Mount before show() measures the popover's preferred size.
+    func prepareForPresentation() {
+        guard !contentIsActive else { return }
+        contentIsActive = true
+        rootView = content
+    }
+
+    func popoverDidClose(_ notification: Notification) {
+        guard let popover = notification.object as? NSPopover, !popover.isShown else { return }
+        contentIsActive = false
+        rootView = AnyView(EmptyView())
+    }
+}
+
 /// AppKit's isHidden does not stop SwiftUI observation, relative-time updates,
 /// or animations. Unmount the dashboard when it is not being presented; keep
 /// the model alive so expansion reads its latest state immediately.

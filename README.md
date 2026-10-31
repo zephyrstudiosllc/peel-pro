@@ -86,8 +86,9 @@ establish physical streaming, latency, controller, audio or multi-device parity.
 
 ## Development status
 
-Mac build 254 fixes unnecessary dashboard updates while the notch is collapsed.
-See the [cause, regression coverage and measured CPU results](docs/macos-build-254.md).
+Mac build 255 stops closed menu-bar popovers from continuing to update, alongside
+build 254's collapsed-notch fix. See the [popover follow-up](docs/macos-build-255.md)
+and [original notch measurements](docs/macos-build-254.md).
 
 This publication is a source snapshot, not a new signed binary release. Existing
 code includes StoreKit and optional hosted integrations, but production service

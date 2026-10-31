@@ -1,5 +1,9 @@
 # macOS build 254: collapsed-notch CPU use
 
+Build 255 adds the [closed menu-bar popover fix](macos-build-255.md). The tests
+below verified the notch path; later open/close testing exposed that separate
+popover lifecycle issue.
+
 When the notch was collapsed, AppKit hid its hosting view but SwiftUI kept the
 dashboard mounted. Live model updates still rebuilt usage rows, formatted
 relative timestamps, updated layout and ran meter animations.

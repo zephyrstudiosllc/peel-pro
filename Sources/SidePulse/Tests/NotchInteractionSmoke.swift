@@ -28,7 +28,56 @@ enum NotchInteractionSmoke {
         testDisplayStyleGeometry()
         testExpandedGeometry()
         await testPanelExpansionContract()
+        await testPopoverContentLifecycle()
         print("Notch interaction smoke passed")
+    }
+
+    @MainActor
+    private static func testPopoverContentLifecycle() async {
+        let probe = NotchObservationProbe()
+        let host = PopoverContentHostingController(content: AnyView(NotchObservationProbeView(probe: probe)))
+        host.sizingOptions = [.preferredContentSize]
+        let popover = NSPopover()
+        popover.animates = false
+        popover.contentViewController = host
+        popover.delegate = host
+        let anchor = NSView(frame: NSRect(x: 0, y: 0, width: 80, height: 40))
+        let window = NSPanel(contentRect: NSRect(x: 100, y: 100, width: 80, height: 40),
+                             styleMask: [.borderless], backing: .buffered, defer: false)
+        window.contentView = anchor
+        window.orderFront(nil)
+        defer { popover.close(); window.close() }
+
+        _ = host.view
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(probe.renderedValues.isEmpty, "A closed popover must not mount its dashboard")
+
+        func show() {
+            host.prepareForPresentation()
+            popover.show(relativeTo: anchor.bounds, of: anchor, preferredEdge: .minY)
+        }
+        show()
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(popover.isShown && probe.renderedValues.last == 0,
+                     "Opening a popover must mount and size its live dashboard")
+        precondition(popover.contentSize.width > 0 && popover.contentSize.height > 0)
+        popover.performClose(nil)
+        try? await Task.sleep(for: .milliseconds(150))
+        let count = probe.renderedValues.count
+        probe.value = 1
+        try? await Task.sleep(for: .milliseconds(150))
+        host.view.layoutSubtreeIfNeeded()
+        precondition(!popover.isShown && probe.renderedValues.count == count,
+                     "Model publications must not rebuild a closed popover")
+        show()
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(probe.renderedValues.last == 1, "Reopening must show updates received while closed")
+        popover.performClose(nil)
+        show()
+        probe.value = 2
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(popover.isShown && probe.renderedValues.last == 2,
+                     "Immediate reopening must keep the new presentation mounted")
     }
 
     private static func testMenuBarVisibilityMatrix() {
