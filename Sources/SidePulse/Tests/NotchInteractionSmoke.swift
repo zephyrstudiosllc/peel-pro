@@ -1,4 +1,22 @@
 import AppKit
+import SwiftUI
+
+@MainActor
+private final class NotchObservationProbe: ObservableObject {
+    @Published var value = 0
+    var renderedValues: [Int] = []
+
+    func renderedText() -> String {
+        renderedValues.append(value)
+        return "Live value: \(value)"
+    }
+}
+
+private struct NotchObservationProbeView: View {
+    @ObservedObject var probe: NotchObservationProbe
+
+    var body: some View { Text(probe.renderedText()) }
+}
 
 @main
 enum NotchInteractionSmoke {
@@ -205,10 +223,13 @@ enum NotchInteractionSmoke {
             return
         }
 
-        let island = NSView(frame: .zero)
+        let probe = NotchObservationProbe()
+        let island = NotchContentHostingView(rootView: AnyView(NotchObservationProbeView(probe: probe)))
         controller.setIslandContent(island, height: 200)
         precondition(!controller.isExpanded)
         precondition(island.isHidden)
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(probe.renderedValues.isEmpty, "The collapsed dashboard must not mount its SwiftUI body")
 
         guard let panel = NSApp.windows.first(where: { $0.title == "SidePulse Notch" }) else {
             preconditionFailure("The enabled controller did not create its panel")
@@ -254,6 +275,9 @@ enum NotchInteractionSmoke {
         precondition(panel.frame == expectedExpanded)
         precondition(panel.frame.maxY == screen.frame.maxY)
         precondition(panel.collectionBehavior.contains(.fullScreenAuxiliary))
+        try? await Task.sleep(for: .milliseconds(150))
+        island.layoutSubtreeIfNeeded()
+        precondition(probe.renderedValues.last == 0, "Expansion must mount the live dashboard")
 
         controller.setIslandContentHeight(118)
         try? await Task.sleep(for: .milliseconds(450))
@@ -266,10 +290,18 @@ enum NotchInteractionSmoke {
         precondition(!controller.isExpanded && controller.isPresented)
         precondition(island.isHidden && panel.isVisible)
         precondition(panel.frame == collapsed)
+        try? await Task.sleep(for: .milliseconds(150))
+        let collapsedRenderCount = probe.renderedValues.count
+        probe.value = 1
+        try? await Task.sleep(for: .milliseconds(150))
+        island.layoutSubtreeIfNeeded()
+        precondition(probe.renderedValues.count == collapsedRenderCount,
+                     "Model publications must not rebuild the collapsed dashboard")
 
         controller.setExpanded(true)
         try? await Task.sleep(for: .milliseconds(450))
         precondition(!island.isHidden && island.alphaValue == 1)
+        precondition(probe.renderedValues.last == 1, "Reopening must show state received while collapsed")
         controller.setExpanded(false)
         if !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
             precondition(!island.isHidden, "Closing contents must stay present during their fade")
@@ -278,6 +310,9 @@ enum NotchInteractionSmoke {
         try? await Task.sleep(for: .milliseconds(450))
         precondition(controller.isExpanded && !island.isHidden && island.alphaValue == 1,
                      "An interrupted close must not hide a reopened island")
+        probe.value = 2
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(probe.renderedValues.last == 2, "An interrupted close must not unmount the reopened dashboard")
         controller.setExpanded(false)
         try? await Task.sleep(for: .milliseconds(400))
         precondition(island.isHidden && island.alphaValue == 0 && panel.frame == collapsed)
@@ -304,6 +339,12 @@ enum NotchInteractionSmoke {
         controller.update(enabled: false, program: program, ledCount: 8, clockOrigin: nil, brightness: 1)
         precondition(!controller.isPresented && !controller.isExpanded)
         precondition(island.isHidden && !panel.isVisible)
+        try? await Task.sleep(for: .milliseconds(150))
+        let disabledRenderCount = probe.renderedValues.count
+        probe.value = 3
+        try? await Task.sleep(for: .milliseconds(150))
+        precondition(probe.renderedValues.count == disabledRenderCount,
+                     "Disabling the notch must also stop hidden SwiftUI updates")
         controller.setExpanded(true, animated: false)
         precondition(!controller.isExpanded)
     }

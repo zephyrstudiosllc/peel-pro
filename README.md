@@ -86,6 +86,9 @@ establish physical streaming, latency, controller, audio or multi-device parity.
 
 ## Development status
 
+Mac build 254 fixes unnecessary dashboard updates while the notch is collapsed.
+See the [cause, regression coverage and measured CPU results](docs/macos-build-254.md).
+
 This publication is a source snapshot, not a new signed binary release. Existing
 code includes StoreKit and optional hosted integrations, but production service
 credentials, signing identities and infrastructure are not included. Configure

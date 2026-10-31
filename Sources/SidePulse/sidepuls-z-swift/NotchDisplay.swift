@@ -1,5 +1,31 @@
 import AppKit
 import QuartzCore
+import SwiftUI
+
+/// AppKit's isHidden does not stop SwiftUI observation, relative-time updates,
+/// or animations. Unmount the dashboard when it is not being presented; keep
+/// the model alive so expansion reads its latest state immediately.
+@MainActor
+final class NotchContentHostingView: NSHostingView<AnyView> {
+    private let content: AnyView
+    private var contentIsActive = false
+
+    required init(rootView: AnyView) {
+        content = rootView
+        super.init(rootView: AnyView(EmptyView()))
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+
+    func setContentActive(_ active: Bool) {
+        guard contentIsActive != active else { return }
+        contentIsActive = active
+        rootView = active ? content : AnyView(EmptyView())
+    }
+}
 
 /// Native adaptation of Peter Kuhar's SidePulse Notch geometry and light blend.
 /// Source: inteliwear/sidepulse, virtual_device.py, MIT (see NOTICE).
@@ -127,9 +153,11 @@ final class NotchDisplayController: NSObject {
     }
 
     func setIslandContent(_ view: NSView, height: CGFloat = 200) {
+        (islandView as? NotchContentHostingView)?.setContentActive(false)
         islandView?.removeFromSuperview()
         islandView = view
         islandContentHeight = height
+        (view as? NotchContentHostingView)?.setContentActive(isExpanded && enabled && !suspended && brightness > 0)
         view.isHidden = !isExpanded
         containerView?.islandView = view
         containerView?.addSubview(view)
@@ -189,6 +217,7 @@ final class NotchDisplayController: NSObject {
             isExpanded = false
             transitionID += 1
             islandView?.isHidden = true
+            (islandView as? NotchContentHostingView)?.setContentActive(false)
             containerView?.backdrop.isHidden = true
             targetFrame = nil
             ledView?.stopAnimating()
@@ -248,6 +277,7 @@ final class NotchDisplayController: NSObject {
             transitionID += 1
             let transition = transitionID
             if isExpanded {
+                (islandView as? NotchContentHostingView)?.setContentActive(true)
                 // Keep the contents at their final size while the window reveals
                 // them. Reflowing every row during expansion makes it stutter.
                 containerView?.islandSize = CGSize(width: max(0, frame.width - 32),
@@ -299,6 +329,7 @@ final class NotchDisplayController: NSObject {
         guard transitionID == transition else { return }
         if !isExpanded {
             islandView?.isHidden = true
+            (islandView as? NotchContentHostingView)?.setContentActive(false)
             containerView?.backdrop.isHidden = true
             containerView?.isExpanded = false
             panel?.hasShadow = false

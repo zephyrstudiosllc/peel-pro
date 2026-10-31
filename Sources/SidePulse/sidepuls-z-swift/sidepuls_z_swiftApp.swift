@@ -73,16 +73,6 @@ struct CommandCenterWindowReader: NSViewRepresentable {
     }
 }
 
-private final class NotchIslandHostingView: NSHostingView<NotchIslandView> {
-    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
-}
-
-#if PEEL_HOST_INTEGRATION
-private final class PeelNotchHostingView: NSHostingView<AnyView> {
-    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
-}
-#endif
-
 @MainActor
 final class SidePulseMenuBarController: NSObject {
     private let store: CommandCenterStore
@@ -153,7 +143,7 @@ final class SidePulseMenuBarController: NSObject {
         hostingController.sizingOptions = [.preferredContentSize]
         popover.contentViewController = hostingController
 
-        notchDisplay.setIslandContent(NotchIslandHostingView(rootView: NotchIslandView(
+        notchDisplay.setIslandContent(NotchContentHostingView(rootView: AnyView(NotchIslandView(
             store: store,
             openAgent: { [weak self] agent in self?.openAgent(agent) },
             openCommandCenter: { [weak self] in
@@ -161,7 +151,7 @@ final class SidePulseMenuBarController: NSObject {
                 self?.openCommandCenter()
             },
             togglePower: { [weak self] in self?.store.toggleOutputPower() }
-        )))
+        ))))
         notchDisplay.onPresentationChanged = { [weak self] in self?.refreshStatusItemVisibility() }
 
         if let button = statusItem.button {
@@ -211,7 +201,7 @@ final class SidePulseMenuBarController: NSObject {
         let hostingController = NSHostingController(rootView: menu)
         hostingController.sizingOptions = [.preferredContentSize]
         popover.contentViewController = hostingController
-        notchDisplay.setIslandContent(PeelNotchHostingView(rootView: notch))
+        notchDisplay.setIslandContent(NotchContentHostingView(rootView: notch))
 
         iconView.removeFromSuperview()
         let brand = NSImageView()
